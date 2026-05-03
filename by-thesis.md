@@ -25,7 +25,7 @@ GMP-grade traceability, audit trails, signed protocol versions.
 - **Agilent** — m3/i4 — trusted analytical instrument
 - **Beckman Coulter Life Sciences** — m3/i4 — the workhorse
 - **Benchling** — m3/i4 — modern biotech R&D cloud
-- **PerkinElmer / Revvity** — m3/i4 — lab analytics & automation
+- **Revvity** — m3/i4 — lab analytics & automation
 - **Tecan** — m3/i4 — the European workhorse
 - **Multiply Labs** — m5/i3 — robotic cell therapy manufacturing
 - **Dash Bio** — m4/i3 — bioanalysis 10x faster
@@ -43,7 +43,7 @@ modules with common interfaces — the lab equivalent of PCIe.
 
 - **[primary]** **Beckman Coulter Life Sciences** — m4/i4 — the workhorse
 - **[primary]** **Cytiva** — m4/i4 — bioprocess from research to GMP
-- **[primary]** **HighRes Biosolutions** — m4/i4 — modular benchtop integrations
+- **[primary]** **HighRes Biosolutions** `[acquired]` — m4/i4 — modular benchtop integrations
 - **Hamilton** — m3/i4 — the precision instrument
 - **[primary]** **Sartorius** — m3/i4 — bioprocess at scale
 - **[primary]** **Thermo Fisher Scientific** — m3/i4 — the everything store
@@ -53,7 +53,7 @@ modules with common interfaces — the lab equivalent of PCIe.
 - **[primary]** **Agilent** — m3/i3 — trusted analytical instrument
 - **[primary]** **Miltenyi Biotec** — m3/i3 — cell therapy infrastructure
 - **[primary]** **Molecular Devices** — m3/i3 — imaging & high-content readers
-- **[primary]** **PerkinElmer / Revvity** — m3/i3 — lab analytics & automation
+- **[primary]** **Revvity** — m3/i3 — lab analytics & automation
 - **Tecan** — m3/i3 — the European workhorse
 - **[primary]** **Celltrio** — m3/i2 — cell culture robotics
 - **[primary]** **Trilobio** — m5/i1 — software-defined modular automation
@@ -75,7 +75,7 @@ Aggregate demand into a few cloud labs and amortize hardware capex.
 - **[primary]** **Plasmidsaurus** — m4/i4 — cheap, fast plasmid sequencing
 - **Arctoris** — m4/i3 — data-driven drug discovery
 - **[primary]** **Dash Bio** — m4/i3 — bioanalysis 10x faster
-- **[primary]** **Strateos** `[dormant]` — m4/i3 — robotic cloud lab
+- **[primary]** **Strateos** `[acquired]` — m4/i3 — robotic cloud lab
 - **Lila Sciences** — m4/i2 — building scientific superintelligence
 - **[primary]** **Cromatic** — m3/i2 — AI-native RevOps for life sciences
 - **Cornucopia Bio** — m3/i1 — the AI-native CRO
@@ -95,7 +95,7 @@ surfactants, volumes, surface chemistry. Whoever solves this owns the bottom of 
 - **Beckman Coulter Life Sciences** — m3/i4 — the workhorse
 - **Formulatrix** — m3/i3 — instruments at every price tier
 - **Miltenyi Biotec** — m2/i3 — cell therapy infrastructure
-- **PerkinElmer / Revvity** — m2/i3 — lab analytics & automation
+- **Revvity** — m2/i3 — lab analytics & automation
 - **Dynamic Devices** — m3/i2 — agile liquid handlers with sensor feedback
 - **Integra Biosciences** — m2/i2 — ergonomic pipettes
 
@@ -137,7 +137,7 @@ distributed lab) is the unlock.
 - **Plasmidsaurus** — m3/i4 — cheap, fast plasmid sequencing
 - **Arctoris** — m4/i3 — data-driven drug discovery
 - **Dash Bio** — m4/i3 — bioanalysis 10x faster
-- **Strateos** `[dormant]` — m4/i3 — robotic cloud lab
+- **Strateos** `[acquired]` — m4/i3 — robotic cloud lab
 - **Charles River** — m2/i3 — the CRO
 - **[primary]** **Cornucopia Bio** — m5/i2 — the AI-native CRO
 - **Lila Sciences** — m3/i2 — building scientific superintelligence
@@ -167,7 +167,7 @@ the gap.
 > Automation is gated by per-workstation capex. Drop the entry-level cost an order
 of magnitude and adoption follows the way Opentrons proved at the low end.
 
-**9 holders** · marketing-weighted **32** · influence-weighted **24** · _narrative outrunning track record_
+**9 holders** · marketing-weighted **32** · influence-weighted **23** · _narrative outrunning track record_
 
 - **[primary]** **Opentrons** — m5/i4 — Python-scriptable, accessible automation
 - **[primary]** **Formulatrix** — m4/i4 — instruments at every price tier
@@ -177,7 +177,7 @@ of magnitude and adoption follows the way Opentrons proved at the low end.
 - **SPT Labtech** — m3/i3 — low-volume specialists
 - **Automata** — m2/i2 — linear movement, integrated workflows
 - **Trilobio** — m4/i1 — software-defined modular automation
-- **Genie Life Sciences** — m3/i1 — cloud-based lab execution
+- **Genie Life Sciences** `[defunct]` — m3/i0 — cloud-based lab execution
 
 ## Standardization
 
@@ -191,7 +191,7 @@ every integration is N×M custom work.
 - **[primary]** **PyLabRobot** — m4/i3 — open Python lab control
 - **[primary]** **RetiSoft** — m4/i3 — vendor-neutral scheduler
 - **Artificial** — m3/i3 — the digital orchestration platform
-- **HighRes Biosolutions** — m3/i3 — modular benchtop integrations
+- **HighRes Biosolutions** `[acquired]` — m3/i3 — modular benchtop integrations
 - **[primary]** **UniteLabs** — m5/i2 — automation OS for ambitious labs
 - **Cheshire Labs** — m3/i1 — AI-native lab automation tools
 
@@ -201,7 +201,7 @@ every integration is N×M custom work.
 feedback, weight, temperature, vibration, capacitance, force. The unlock is
 instruments that combine many sensor modalities.
 
-**9 holders** · marketing-weighted **27** · influence-weighted **23** · _narrative ahead of track record_
+**9 holders** · marketing-weighted **27** · influence-weighted **22** · _narrative ahead of track record_
 
 - **Molecular Devices** — m4/i4 — imaging & high-content readers
 - **Hamilton** — m3/i4 — the precision instrument
@@ -211,14 +211,14 @@ instruments that combine many sensor modalities.
 - **Multiply Labs** — m3/i2 — robotic cell therapy manufacturing
 - **Formulatrix** — m2/i2 — instruments at every price tier
 - **Spaero Bio** — m4/i1 — scale automation on existing handlers
-- **Genie Life Sciences** — m3/i1 — cloud-based lab execution
+- **Genie Life Sciences** `[defunct]` — m3/i0 — cloud-based lab execution
 
 ## Compiler / abstraction / interface
 
 > Lab work needs an LLVM: a high-level protocol language that compiles down to whatever
 hardware is available. Without this, every protocol is bound to a specific instrument.
 
-**12 holders** · marketing-weighted **44** · influence-weighted **21** · _narrative outrunning track record_
+**12 holders** · marketing-weighted **44** · influence-weighted **20** · _narrative outrunning track record_
 
 - **[primary]** **Synthace** — m5/i3 — computer-aided experimentation
 - **[primary]** **Artificial** — m4/i3 — the digital orchestration platform
@@ -227,11 +227,11 @@ hardware is available. Without this, every protocol is bound to a specific instr
 - **[primary]** **Scispot** — m3/i2 — AI-native LIMS
 - **RetiSoft** — m2/i2 — vendor-neutral scheduler
 - **[primary]** **Cheshire Labs** — m4/i1 — AI-native lab automation tools
-- **[primary]** **Genie Life Sciences** — m4/i1 — cloud-based lab execution
 - **[primary]** **Monomer Bio** — m4/i1 — cell-culture automation, scientifically aware
 - **[primary]** **Spaero Bio** — m4/i1 — scale automation on existing handlers
 - **Trilobio** — m4/i1 — software-defined modular automation
 - **Phylo** — m3/i1 — integrated biology environment
+- **[primary]** **Genie Life Sciences** `[defunct]` — m4/i0 — cloud-based lab execution
 
 ## Eroom's law / R&D productivity
 
@@ -260,7 +260,7 @@ model update → next hypothesis, with no human in the inner loop.
 - **[primary]** **Lila Sciences** — m5/i2 — building scientific superintelligence
 - **[primary]** **Medra** — m5/i2 — hand over lab work
 - **Emerald Cloud Lab** — m3/i2 — the cloud lab
-- **Strateos** `[dormant]` — m3/i2 — robotic cloud lab
+- **Strateos** `[acquired]` — m3/i2 — robotic cloud lab
 - **Tetsuwan Scientific** — m5/i1 — autonomous AI scientist robots
 - **Monomer Bio** — m2/i1 — cell-culture automation, scientifically aware
 
@@ -351,17 +351,17 @@ experiment, inspect the data, see the LLM's reasoning.
 | Knowledge work bottlenecks | 18 | 65 | 31 | +34 |
 | Hardware modularity | 18 | 62 | 53 | +9 |
 | Scale | 12 | 51 | 39 | +12 |
-| Compiler / abstraction / interface | 12 | 44 | 21 | +23 |
+| Compiler / abstraction / interface | 12 | 44 | 20 | +24 |
 | Liquid classes | 11 | 37 | 38 | -1 |
 | Predictive validity | 9 | 37 | 27 | +10 |
 | Remote execution | 10 | 35 | 29 | +6 |
-| Hardware cost | 9 | 32 | 24 | +8 |
+| Hardware cost | 9 | 32 | 23 | +9 |
 | Standardization | 8 | 31 | 23 | +8 |
 | Next-generation hardware | 8 | 31 | 15 | +16 |
 | Closed loop | 8 | 30 | 16 | +14 |
 | Eroom's law / R&D productivity | 7 | 28 | 18 | +10 |
 | Dexterity | 6 | 27 | 11 | +16 |
-| Multi-modal sensing | 9 | 27 | 23 | +4 |
+| Multi-modal sensing | 9 | 27 | 22 | +5 |
 | VLA / mimicking scientists | 4 | 19 | 5 | +14 |
 | Protocol libraries | 5 | 16 | 9 | +7 |
 | DOE — Design of experiments | 3 | 12 | 6 | +6 |

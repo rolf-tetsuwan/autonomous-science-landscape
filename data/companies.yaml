@@ -478,24 +478,24 @@
 
 - name: Genie Life Sciences
   slug: genie-life-sciences
-  domain: genielifesciences.com
-  url: https://genielifesciences.com
-  status: active
+  domain: null
+  url: null
+  status: defunct
   categories:
-    - {k: liquid-handling-hardware, m: 3, i: 1}
-    - {k: orchestration-scheduling, m: 4, i: 1}
-    - {k: integration-software-drivers, m: 3, i: 1}
-    - {k: flexible-protocol-generation, m: 4, i: 1}
+    - {k: liquid-handling-hardware, m: 3, i: 0}
+    - {k: orchestration-scheduling, m: 4, i: 0}
+    - {k: integration-software-drivers, m: 3, i: 0}
+    - {k: flexible-protocol-generation, m: 4, i: 0}
   theses:
-    - {k: compiler-abstraction, m: 4, i: 1}
-    - {k: hardware-cost, m: 3, i: 1}
-    - {k: multi-modal-sensing, m: 3, i: 1}
+    - {k: compiler-abstraction, m: 4, i: 0}
+    - {k: hardware-cost, m: 3, i: 0}
+    - {k: multi-modal-sensing, m: 3, i: 0}
   ai_level: ai-adopting
   maturity: early
   customers: [biotech, academia]
   pricing: mid
   posture: cloud-based lab execution
-  notes: LabOS orchestration plus LabMate liquid handler; integrates Opentrons and other third-party instruments via drag-and-drop protocol design.
+  notes: Formally dissolved 2024-12-17. Built LabOS orchestration plus LabMate liquid handler integrating Opentrons and third-party instruments. Influence scores zeroed since the company no longer ships product.
 
 - name: Ginkgo Bioworks
   slug: ginkgo-bioworks
@@ -547,7 +547,7 @@
   slug: highres-biosolutions
   domain: highresbio.com
   url: https://highresbio.com
-  status: active
+  status: acquired
   categories:
     - {k: integration-hardware, m: 5, i: 5}
     - {k: mobility-transport, m: 4, i: 4}
@@ -560,7 +560,7 @@
   customers: [pharma]
   pricing: premium
   posture: modular benchtop integrations
-  notes: Custom workcell integrations. Cellario scheduler.
+  notes: Custom workcell integrations. Cellario scheduler. Acquired by Axel Johnson Group (Dec 2022); still operating under that ownership.
 
 - name: Insilico Medicine
   slug: insilico-medicine
@@ -574,11 +574,11 @@
     - {k: predictive-validity, m: 5, i: 4}
     - {k: eroom, m: 5, i: 3}
   ai_level: ai-native
-  maturity: late-stage
+  maturity: public
   customers: [pharma]
   pricing: premium
   posture: generative AI drug discovery
-  notes: Generative chemistry + biology platform. Pharma.AI.
+  notes: Generative chemistry + biology platform (Pharma.AI). IPO'd on HKEX (3696.HK) Dec 2025, raising HKD 2.27B.
 
 - name: Integra Biosciences
   slug: integra-biosciences
@@ -791,7 +791,7 @@
   customers: [cell-therapy-gmp, pharma]
   pricing: premium
   posture: robotic cell therapy manufacturing
-  notes: Cell & gene therapy GMP automation. Robotic-arm-based individualized cell-therapy workcells.
+  notes: Cell & gene therapy GMP automation. Robotic-arm-based individualized cell-therapy workcells. Acquired Strateos (Dec 2023). AstraZeneca + Thermo Fisher partnerships 2025–26.
 
 - name: Opentrons
   slug: opentrons
@@ -831,8 +831,8 @@
   posture: federated AI on patient data
   notes: Federated learning for biopharma.
 
-- name: PerkinElmer / Revvity
-  slug: perkinelmer-revvity
+- name: Revvity
+  slug: revvity
   domain: revvity.com
   url: https://www.revvity.com
   status: active
@@ -849,7 +849,7 @@
   customers: [pharma]
   pricing: premium
   posture: lab analytics & automation
-  notes: Janus, Sciclone. Now branded Revvity (rebranded from PerkinElmer Life Sciences).
+  notes: Janus, Sciclone. Public as RVTY since 2023 (the "PerkinElmer" name was sold separately to New Mountain Capital in 2022 — current entity is just Revvity).
 
 - name: Phylo
   slug: phylo
@@ -1102,8 +1102,8 @@
 - name: Strateos
   slug: strateos
   domain: strateos.com
-  url: https://www.strateos.com
-  status: dormant
+  url: https://strateos.com
+  status: acquired
   categories:
     - {k: cloud-labs, m: 4, i: 3}
     - {k: orchestration-scheduling, m: 2, i: 2}
@@ -1116,7 +1116,7 @@
   customers: [pharma, biotech]
   pricing: premium
   posture: robotic cloud lab
-  notes: Formerly Transcriptic. Site (strateos.com) currently unresponsive — flagged dormant pending verification.
+  notes: Formerly Transcriptic. Acquired by Multiply Labs (Dec 2023); brand still operates with ~28 employees as of Feb 2026.
 
 - name: Synthace
   slug: synthace
@@ -1200,8 +1200,8 @@
 
 - name: Trilobio
   slug: trilobio
-  domain: trilobio.com
-  url: https://www.trilobio.com
+  domain: trilo.bio
+  url: https://www.trilo.bio
   status: active
   categories:
     - {k: liquid-handling-hardware, m: 4, i: 1}

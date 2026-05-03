@@ -74,8 +74,8 @@ python3 scripts/generate.py --fetch-logos    # also download missing logos
 **By maturity:**
 
 - `early` — 17
-- `late-stage` — 15
-- `public` — 12
+- `late-stage` — 14
+- `public` — 13
 - `mature-private` — 12
 - `mid-stage` — 4
 - `standard` — 2

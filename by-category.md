@@ -23,15 +23,15 @@ modularity (Trilobio, Robot On Rails), or specialty volumes (SPT, Cytena, Dispen
 - **SPT Labtech** — m5/i4 — low-volume specialists
 - **Formulatrix** — m4/i4 — instruments at every price tier
 - **Agilent** — m3/i4 — trusted analytical instrument
-- **PerkinElmer / Revvity** — m3/i4 — lab analytics & automation
+- **Revvity** — m3/i4 — lab analytics & automation
 - **Thermo Fisher Scientific** — m3/i4 — the everything store
 - **Dynamic Devices** — m4/i3 — agile liquid handlers with sensor feedback
 - **Integra Biosciences** — m4/i3 — ergonomic pipettes
 - **Cytena** — m3/i3 — single-cell printer
 - **Trilobio** — m4/i1 — software-defined modular automation
-- **Genie Life Sciences** — m3/i1 — cloud-based lab execution
 - **Medra** — m1/i1 — hand over lab work
 - **Robot On Rails** — m1/i1 — run more experiments autonomously
+- **Genie Life Sciences** `[defunct]` — m3/i0 — cloud-based lab execution
 
 ## Material transport / plate transfer
 
@@ -44,7 +44,7 @@ bare movement layer — what carries plates, samples, and reagents between fixed
 **14 companies, sorted by influence:**
 
 - **Automata** — m5/i4 — linear movement, integrated workflows
-- **HighRes Biosolutions** — m4/i4 — modular benchtop integrations
+- **HighRes Biosolutions** `[acquired]` — m4/i4 — modular benchtop integrations
 - **Formulatrix** — m3/i3 — instruments at every price tier
 - **Cellares** — m2/i3 — scale up cell therapy manufacturing
 - **Medra** — m3/i2 — hand over lab work
@@ -69,7 +69,7 @@ classic incumbent; Multiply Labs, Trilobio, Robot On Rails are the modular-moder
 
 **20 companies, sorted by influence:**
 
-- **HighRes Biosolutions** — m5/i5 — modular benchtop integrations
+- **HighRes Biosolutions** `[acquired]` — m5/i5 — modular benchtop integrations
 - **Cellares** — m5/i4 — scale up cell therapy manufacturing
 - **Multiply Labs** — m5/i3 — robotic cell therapy manufacturing
 - **Automata** — m4/i3 — linear movement, integrated workflows
@@ -77,7 +77,7 @@ classic incumbent; Multiply Labs, Trilobio, Robot On Rails are the modular-moder
 - **Miltenyi Biotec** — m3/i3 — cell therapy infrastructure
 - **Arctoris** — m2/i3 — data-driven drug discovery
 - **Beckman Coulter Life Sciences** — m2/i3 — the workhorse
-- **PerkinElmer / Revvity** — m2/i3 — lab analytics & automation
+- **Revvity** — m2/i3 — lab analytics & automation
 - **Tecan** — m2/i3 — the European workhorse
 - **Medra** — m4/i2 — hand over lab work
 - **Celltrio** — m3/i2 — cell culture robotics
@@ -113,7 +113,7 @@ Small specialty players (Cytena, Celltrio, Multiply Labs) attack niches.
 - **Celltrio** — m4/i2 — cell culture robotics
 - **Formulatrix** — m3/i2 — instruments at every price tier
 - **Charles River** — m2/i2 — the CRO
-- **PerkinElmer / Revvity** — m2/i2 — lab analytics & automation
+- **Revvity** — m2/i2 — lab analytics & automation
 - **Tecan** — m2/i2 — the European workhorse
 - **Monomer Bio** — m5/i1 — cell-culture automation, scientifically aware
 
@@ -133,21 +133,21 @@ autonomous (LILA, Medra).
 - **RetiSoft** — m4/i3 — vendor-neutral scheduler
 - **Cellares** — m3/i3 — scale up cell therapy manufacturing
 - **Emerald Cloud Lab** — m3/i3 — the cloud lab
-- **HighRes Biosolutions** — m3/i3 — modular benchtop integrations
+- **HighRes Biosolutions** `[acquired]` — m3/i3 — modular benchtop integrations
 - **Medra** — m4/i2 — hand over lab work
 - **Automata** — m3/i2 — linear movement, integrated workflows
 - **Lila Sciences** — m3/i2 — building scientific superintelligence
 - **Multiply Labs** — m3/i2 — robotic cell therapy manufacturing
 - **Scispot** — m3/i2 — AI-native LIMS
 - **Ginkgo Bioworks** — m2/i2 — the biofoundry
-- **Strateos** `[dormant]` — m2/i2 — robotic cloud lab
+- **Strateos** `[acquired]` — m2/i2 — robotic cloud lab
 - **Cheshire Labs** — m5/i1 — AI-native lab automation tools
-- **Genie Life Sciences** — m4/i1 — cloud-based lab execution
 - **Monomer Bio** — m4/i1 — cell-culture automation, scientifically aware
 - **Trilobio** — m4/i1 — software-defined modular automation
 - **Robot On Rails** — m3/i1 — run more experiments autonomously
 - **UniteLabs** — m3/i1 — automation OS for ambitious labs
 - **Zeon Systems** — m3/i1 — AI-powered robotics for labs
+- **Genie Life Sciences** `[defunct]` — m4/i0 — cloud-based lab execution
 
 ## Integration software / drivers / standards
 
@@ -167,8 +167,8 @@ physical workcell housing).
 - **Biosero** — m3/i3 — Green Button Go orchestration
 - **UniteLabs** — m5/i2 — automation OS for ambitious labs
 - **Cheshire Labs** — m4/i1 — AI-native lab automation tools
-- **Genie Life Sciences** — m3/i1 — cloud-based lab execution
 - **Monomer Bio** — m3/i1 — cell-culture automation, scientifically aware
+- **Genie Life Sciences** `[defunct]` — m3/i0 — cloud-based lab execution
 
 ## Literature review / synthesis
 
@@ -321,7 +321,6 @@ unsettled — vendor-specific scripts, DSLs, LLM-generated, or a shared library.
 - **Medra** — m4/i2 — hand over lab work
 - **Lila Sciences** — m3/i2 — building scientific superintelligence
 - **PyLabRobot** — m3/i2 — open Python lab control
-- **Genie Life Sciences** — m4/i1 — cloud-based lab execution
 - **Monomer Bio** — m4/i1 — cell-culture automation, scientifically aware
 - **Robot On Rails** — m4/i1 — run more experiments autonomously
 - **Spaero Bio** — m4/i1 — scale automation on existing handlers
@@ -330,6 +329,7 @@ unsettled — vendor-specific scripts, DSLs, LLM-generated, or a shared library.
 - **Zeon Systems** — m4/i1 — AI-powered robotics for labs
 - **Phylo** — m3/i1 — integrated biology environment
 - **Potato** — m3/i1 — accelerate scientific execution
+- **Genie Life Sciences** `[defunct]` — m4/i0 — cloud-based lab execution
 
 ## Closed-loop experimentation
 
@@ -370,7 +370,7 @@ results — Emerald and Strateos are the proof points.
 
 - **Emerald Cloud Lab** — m5/i5 — the cloud lab
 - **Ginkgo Bioworks** — m4/i3 — the biofoundry
-- **Strateos** `[dormant]` — m4/i3 — robotic cloud lab
+- **Strateos** `[acquired]` — m4/i3 — robotic cloud lab
 - **Arctoris** — m3/i3 — data-driven drug discovery
 - **Lila Sciences** — m4/i2 — building scientific superintelligence
 - **Dash Bio** — m3/i2 — bioanalysis 10x faster

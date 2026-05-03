@@ -21,7 +21,7 @@ model update → next hypothesis, with no human in the inner loop.
 - ★ Lila Sciences — m5/i2
 - ★ Medra — m5/i2
 - Emerald Cloud Lab — m3/i2
-- Strateos `[dormant]` — m3/i2
+- Strateos `[acquired]` — m3/i2
 - Tetsuwan Scientific — m5/i1
 - Monomer Bio — m2/i1
 
@@ -72,7 +72,7 @@ modules with common interfaces — the lab equivalent of PCIe.
 
 - ★ Beckman Coulter Life Sciences — m4/i4
 - ★ Cytiva — m4/i4
-- ★ HighRes Biosolutions — m4/i4
+- ★ HighRes Biosolutions `[acquired]` — m4/i4
 - Hamilton — m3/i4
 - ★ Sartorius — m3/i4
 - ★ Thermo Fisher Scientific — m3/i4
@@ -82,7 +82,7 @@ modules with common interfaces — the lab equivalent of PCIe.
 - ★ Agilent — m3/i3
 - ★ Miltenyi Biotec — m3/i3
 - ★ Molecular Devices — m3/i3
-- ★ PerkinElmer / Revvity — m3/i3
+- ★ Revvity — m3/i3
 - Tecan — m3/i3
 - ★ Celltrio — m3/i2
 - ★ Trilobio — m5/i1
@@ -107,11 +107,11 @@ hardware is available. Without this, every protocol is bound to a specific instr
 - ★ Scispot — m3/i2
 - RetiSoft — m2/i2
 - ★ Cheshire Labs — m4/i1
-- ★ Genie Life Sciences — m4/i1
 - ★ Monomer Bio — m4/i1
 - ★ Spaero Bio — m4/i1
 - Trilobio — m4/i1
 - Phylo — m3/i1
+- ★ Genie Life Sciences `[defunct]` — m4/i0
 
 ## Standardization
 
@@ -129,7 +129,7 @@ every integration is N×M custom work.
 - ★ PyLabRobot — m4/i3
 - ★ RetiSoft — m4/i3
 - Artificial — m3/i3
-- HighRes Biosolutions — m3/i3
+- HighRes Biosolutions `[acquired]` — m3/i3
 - ★ UniteLabs — m5/i2
 - Cheshire Labs — m3/i1
 
@@ -169,7 +169,7 @@ GMP-grade traceability, audit trails, signed protocol versions.
 - Agilent — m3/i4
 - Beckman Coulter Life Sciences — m3/i4
 - Benchling — m3/i4
-- PerkinElmer / Revvity — m3/i4
+- Revvity — m3/i4
 - Tecan — m3/i4
 - Multiply Labs — m5/i3
 - Dash Bio — m4/i3
@@ -211,7 +211,7 @@ Aggregate demand into a few cloud labs and amortize hardware capex.
 - ★ Plasmidsaurus — m4/i4
 - Arctoris — m4/i3
 - ★ Dash Bio — m4/i3
-- ★ Strateos `[dormant]` — m4/i3
+- ★ Strateos `[acquired]` — m4/i3
 - Lila Sciences — m4/i2
 - ★ Cromatic — m3/i2
 - Cornucopia Bio — m3/i1
@@ -265,7 +265,7 @@ surfactants, volumes, surface chemistry. Whoever solves this owns the bottom of 
 - Beckman Coulter Life Sciences — m3/i4
 - Formulatrix — m3/i3
 - Miltenyi Biotec — m2/i3
-- PerkinElmer / Revvity — m2/i3
+- Revvity — m2/i3
 - Dynamic Devices — m3/i2
 - Integra Biosciences — m2/i2
 
@@ -288,7 +288,7 @@ of magnitude and adoption follows the way Opentrons proved at the low end.
 - SPT Labtech — m3/i3
 - Automata — m2/i2
 - Trilobio — m4/i1
-- Genie Life Sciences — m3/i1
+- Genie Life Sciences `[defunct]` — m3/i0
 
 ## Predictive validity
 
@@ -385,7 +385,7 @@ distributed lab) is the unlock.
 - Plasmidsaurus — m3/i4
 - Arctoris — m4/i3
 - Dash Bio — m4/i3
-- Strateos `[dormant]` — m4/i3
+- Strateos `[acquired]` — m4/i3
 - Charles River — m2/i3
 - ★ Cornucopia Bio — m5/i2
 - Lila Sciences — m3/i2
@@ -412,4 +412,4 @@ instruments that combine many sensor modalities.
 - Multiply Labs — m3/i2
 - Formulatrix — m2/i2
 - Spaero Bio — m4/i1
-- Genie Life Sciences — m3/i1
+- Genie Life Sciences `[defunct]` — m3/i0

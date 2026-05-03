@@ -192,6 +192,7 @@ def fetch_logos(companies, force: bool = False) -> None:
     """
     LOGOS.mkdir(exist_ok=True)
     fetched = skipped = failed = 0
+    logo_exts = ("png", "svg", "jpg", "jpeg", "webp", "ico")
     for c in companies:
         domain = c.get("domain")
         slug = c["slug"]
@@ -199,7 +200,8 @@ def fetch_logos(companies, force: bool = False) -> None:
         if not domain:
             skipped += 1
             continue
-        if out.exists() and not force:
+        # Skip if a logo in any supported extension already exists
+        if not force and any((LOGOS / f"{slug}.{ext}").exists() for ext in logo_exts):
             skipped += 1
             continue
 
