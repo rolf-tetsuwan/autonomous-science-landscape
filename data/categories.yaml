@@ -1,12 +1,12 @@
-# Functional categories — the columns of the Cheshire Labs landscape map.
+# Functional categories — the columns of the lab automation landscape.
 # `group` is used for tag-pill coloring in the HTML view.
 #
 # groups:
 #   hardware  — physical instruments
-#   movement  — material transport / mobility
+#   movement  — material transport / mobility / physical integration of workcells
 #   software  — orchestration, abstraction, drivers
-#   records   — LIMS, ELN, structured documentation
-#   thinking  — hypothesis, planning, models
+#   records   — LIMS, ELN, scheduling, pipeline tracking
+#   thinking  — literature, hypothesis, planning, models
 #   business  — cloud labs, CROs, closed-loop products
 
 - key: liquid-handling-hardware
@@ -18,29 +18,23 @@
     modularity (Trilobio, Robot On Rails), or specialty volumes (SPT, Cytena, Dispendix).
 
 - key: mobility-transport
-  name: Mobility & material transport
+  name: Material transport / plate transfer
   group: movement
   one_liner: The thing that moves the plate from A to B.
   commentary: |
-    Linear rails, gantries, mobile robots. Crowded with both incumbents (HighRes,
-    Formulatrix) and modern entrants (Automata, Multiply Labs).
+    Linear rails, gantries, mobile robots, AGVs. Distinct from `integration-hardware`,
+    which is the physical *housing* of multi-instrument workcells; this category is the
+    bare movement layer — what carries plates, samples, and reagents between fixed points.
 
-- key: orchestration-scheduling
-  name: Automation orchestration & scheduling
-  group: software
-  one_liner: The brain that decides what runs when.
+- key: integration-hardware
+  name: Integration hardware (workcells)
+  group: movement
+  one_liner: The physical box that houses multiple instruments together.
   commentary: |
-    The most contested column on the map. Old guard (Biosero, HighRes, RetiSoft) versus
-    modern API-first (Artificial, Trilobio, UniteLabs, Scispot) versus AI-native autonomous
-    (LILA, Medra).
-
-- key: hardware-integration-standards
-  name: Hardware integration standards / software
-  group: software
-  one_liner: The driver layer.
-  commentary: |
-    Where the standardization thesis is most explicit. Standards bodies, OSS projects, and
-    a small number of vendors that commercialize them.
+    Workcells, enclosures, robot arms that connect adjacent instruments. Distinct from
+    `mobility-transport` (which is just "move from A to B") and from
+    `integration-software-drivers` (the driver/spec layer). HighRes Biosolutions are the
+    classic incumbent; Multiply Labs, Trilobio, Robot On Rails are the modular-modern wave.
 
 - key: cell-culture-automation
   name: Cell culture automation
@@ -50,42 +44,92 @@
     Bioprocess incumbents dominate (Sartorius, Cytiva, Miltenyi, Beckman, ThermoFisher).
     Small specialty players (Cytena, Celltrio, Multiply Labs) attack niches.
 
-- key: hypothesis-generation
-  name: Hypothesis generation / Literature review
-  group: thinking
-  one_liner: AI co-scientist for reading and proposing.
+- key: orchestration-scheduling
+  name: Automation orchestration & scheduling (software)
+  group: software
+  one_liner: The brain that decides what runs when.
   commentary: |
-    Where the knowledge-work thesis lives. Heavy AI-native presence.
+    Software layer — should not be conflated with the physical hardware that gets
+    orchestrated. Old guard (Biosero, HighRes, RetiSoft) versus modern API-first
+    (Artificial, Trilobio, UniteLabs, Scispot, Cheshire Labs Orca) versus AI-native
+    autonomous (LILA, Medra).
+
+- key: integration-software-drivers
+  name: Integration software / drivers / standards
+  group: software
+  one_liner: The driver and interop layer.
+  commentary: |
+    The software side of integration — drivers, specifications, protocols that let
+    instruments from different vendors talk. SiLA (the spec), PyLabRobot (OSS),
+    UniteLabs (commercial driver layer). Distinct from `integration-hardware` (the
+    physical workcell housing).
+
+- key: literature-review
+  name: Literature review / synthesis
+  group: thinking
+  one_liner: Reading the field for you.
+  commentary: |
+    Search, synthesis, deep-research over biomedical lit. Edison Scientific's Kosmos
+    is the most explicit pure-play; Owkin, Potato, and Phylo all have lit features
+    embedded in broader scientist-agent products.
+
+- key: hypothesis-generation
+  name: Hypothesis generation
+  group: thinking
+  one_liner: AI proposing what to investigate next.
+  commentary: |
+    Distinct from `literature-review` — generation, not retrieval. Many AI-co-scientist
+    products hold both.
 
 - key: biofoundation-models
   name: Biofoundation models
   group: thinking
   one_liner: Foundation models trained on biology.
   commentary: |
-    Almost every player here is AI-native. The "predictive validity" thesis lives here.
+    Almost every player here is AI-native. The `predictive-validity` thesis lives here.
 
 - key: lims
   name: LIMS
   group: records
   one_liner: The system of record for samples.
   commentary: |
-    Benchling is dominant; Labguru is the long-tail incumbent; Scispot and UniteLabs are
-    modern challengers.
+    Benchling is dominant; Labguru is the long-tail incumbent; Scispot and UniteLabs
+    are modern challengers.
 
 - key: eln
-  name: ELN / human scheduling / pipeline docs
+  name: ELN
   group: records
-  one_liner: Where scientists actually write things down.
+  one_liner: Where individual experiments are recorded.
   commentary: |
-    Overlaps with LIMS. Briefly Bio and Potato are AI-native challengers to Benchling/Labguru.
+    Distinct from `human-scheduling-pipeline` — ELN is per-experiment notebook entries;
+    pipeline tracking is the project-level "where am I in this multi-step process."
+
+- key: human-scheduling-pipeline
+  name: Human scheduling / pipeline tracking
+  group: records
+  one_liner: Project-level "where am I in the pipeline?"
+  commentary: |
+    Calendar, batch tracking, multi-step pipeline progress. Often bundled into ELN
+    products (Benchling, Labguru) but a distinct concern; pure-plays in this layer
+    are rarer than ELN pure-plays.
 
 - key: experiment-planning
   name: Experiment planning, model integration
   group: thinking
-  one_liner: What should I run next?
+  one_liner: What experiments should I run next?
   commentary: |
+    Campaign-level planning — distinct from `assay-optimization` (per-assay tuning).
     Thin column. Most planning logic ends up bundled into orchestrators or
     biofoundation-model layers.
+
+- key: assay-optimization
+  name: Assay optimization
+  group: thinking
+  one_liner: Tune the conditions of a specific assay until it works.
+  commentary: |
+    DOE applied at the assay level — finding the right buffer, pH, concentration,
+    timing for one protocol to be sensitive and reproducible. Synthace's Antha
+    targets this directly; LILA, Medra, Arctoris embed it in closed-loop platforms.
 
 - key: flexible-protocol-generation
   name: Flexible protocol generation
@@ -100,8 +144,8 @@
   group: business
   one_liner: Hypothesis → execute → learn → repeat, autonomously.
   commentary: |
-    Thinnest column on the map. Either an under-served niche or a thesis that hasn't yet
-    produced enough companies to fill a column.
+    Thin column on Cheshire's original map; broader if you count cloud labs and
+    biofoundries that do partial loops. The most ambitious AI-native bet.
 
 - key: data-generation
   name: Data generation
@@ -116,8 +160,8 @@
   group: business
   one_liner: Send your protocol, get data back.
   commentary: |
-    The "scale" thesis in product form. Decade-old commercial pattern with mixed results
-    — Emerald and Strateos are the proof points.
+    The `scale` thesis in product form. Decade-old commercial pattern with mixed
+    results — Emerald and Strateos are the proof points.
 
 - key: cros-saas
   name: CROs and Science as a Service
@@ -125,4 +169,5 @@
   one_liner: Outsourced experiments — the non-AI baseline.
   commentary: |
     Where AI-native bets get tested commercially against the incumbent CRO model.
-    Charles River anchors the traditional end; Recursion anchors the AI-native end.
+    Charles River anchors the traditional end; Recursion and Arctoris anchor the
+    AI-native end.

@@ -50,17 +50,86 @@ def load_data():
     return categories, theses, companies
 
 
+# ---------------------------------------------------------------------------
+# tag schema helpers
+#
+# A tag is either a plain string key (legacy) OR a dict {k, m, i} where
+#   k = category/thesis key
+#   m = marketing emphasis 0-5 (how loud the company is in their pitch)
+#   i = influence/maturity 0-5 (actual track record / install base / revenue)
+# ---------------------------------------------------------------------------
+
+def tag_key(item) -> str:
+    if isinstance(item, str):
+        return item
+    return item["k"]
+
+
+def tag_m(item) -> int | None:
+    if isinstance(item, dict):
+        return item.get("m")
+    return None
+
+
+def tag_i(item) -> int | None:
+    if isinstance(item, dict):
+        return item.get("i")
+    return None
+
+
+def tag_score(item) -> tuple[int | None, int | None]:
+    return tag_m(item), tag_i(item)
+
+
+VALID_AI_LEVELS = {"ai-native", "ai-adopting", "ai-adjacent", "standard-oss"}
+VALID_MATURITIES = {"public", "late-stage", "mid-stage", "early", "stealth", "mature-private", "standard"}
+VALID_PRICINGS = {"premium", "mid", "economical", "free"}
+VALID_STATUSES = {"active", "acquired", "defunct", "dormant"}
+
+
 def validate(categories, theses, companies) -> None:
     cat_keys = {c["key"] for c in categories}
     thesis_keys = {t["key"] for t in theses}
     errors: list[str] = []
+    warnings: list[str] = []
     for c in companies:
-        for k in c.get("categories") or []:
+        for item in c.get("categories") or []:
+            k = tag_key(item)
             if k not in cat_keys:
                 errors.append(f"{c['name']}: unknown category '{k}'")
-        for k in c.get("theses") or []:
+            m, i = tag_score(item)
+            if m is not None and not (0 <= m <= 5):
+                errors.append(f"{c['name']}: category {k} marketing score {m} out of [0,5]")
+            if i is not None and not (0 <= i <= 5):
+                errors.append(f"{c['name']}: category {k} influence score {i} out of [0,5]")
+            if isinstance(item, dict) and (m is None or i is None):
+                warnings.append(f"{c['name']}: category {k} missing m or i score")
+        for item in c.get("theses") or []:
+            k = tag_key(item)
             if k not in thesis_keys:
                 errors.append(f"{c['name']}: unknown thesis '{k}'")
+            m, i = tag_score(item)
+            if m is not None and not (0 <= m <= 5):
+                errors.append(f"{c['name']}: thesis {k} marketing score {m} out of [0,5]")
+            if i is not None and not (0 <= i <= 5):
+                errors.append(f"{c['name']}: thesis {k} influence score {i} out of [0,5]")
+            if isinstance(item, dict) and (m is None or i is None):
+                warnings.append(f"{c['name']}: thesis {k} missing m or i score")
+        s = c.get("status") or "active"
+        if s not in VALID_STATUSES:
+            errors.append(f"{c['name']}: invalid status '{s}' (must be one of {VALID_STATUSES})")
+        a = c.get("ai_level")
+        if a and a not in VALID_AI_LEVELS:
+            errors.append(f"{c['name']}: invalid ai_level '{a}'")
+        m_ = c.get("maturity")
+        if m_ and m_ not in VALID_MATURITIES:
+            errors.append(f"{c['name']}: invalid maturity '{m_}'")
+        p = c.get("pricing")
+        if p and p not in VALID_PRICINGS:
+            errors.append(f"{c['name']}: invalid pricing '{p}'")
+    if warnings:
+        for w in warnings:
+            print(f"WARN: {w}", file=sys.stderr)
     if errors:
         for e in errors:
             print(f"ERROR: {e}", file=sys.stderr)
@@ -181,12 +250,26 @@ def _index(items, key="key"):
 
 
 def _company_count_by(companies, field):
-    """Count companies that have a given key in a list-typed field."""
+    """Count companies that have a given key in a list-typed field (handles scored tags)."""
     counter: Counter = Counter()
     for c in companies:
-        for k in c.get(field) or []:
-            counter[k] += 1
+        for item in c.get(field) or []:
+            counter[tag_key(item)] += 1
     return counter
+
+
+def _score_sums_by(companies, field):
+    """Sum marketing and influence scores per tag key. Returns dict[key] = {'m': int, 'i': int, 'n': int}."""
+    out: dict[str, dict[str, int]] = defaultdict(lambda: {"m": 0, "i": 0, "n": 0})
+    for c in companies:
+        for item in c.get(field) or []:
+            k = tag_key(item)
+            m = tag_m(item) or 0
+            i = tag_i(item) or 0
+            out[k]["m"] += m
+            out[k]["i"] += i
+            out[k]["n"] += 1
+    return dict(out)
 
 
 def _md_escape(s: str) -> str:
@@ -326,6 +409,25 @@ __BANNER__
   .g-data                     { background: #fce7ff; color: #9b1c8c; }
   .g-macro                    { background: #f2f4f7; color: #475467; }
 
+  /* score badges within a tag pill */
+  .pill .scores {
+    margin-left: 6px;
+    font-size: 9px;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.75;
+    letter-spacing: 0;
+  }
+  .pill .scores .sep { opacity: 0.5; margin: 0 1px; }
+  .pill .scores .m::before { content: "m"; opacity: 0.65; }
+  .pill .scores .i::before { content: "i"; opacity: 0.65; }
+  /* Faded pill = primary axis is weakly held: average score < 2 */
+  .pill.weak  { opacity: 0.55; }
+  .pill.faint { opacity: 0.7; }
+  /* status pill colors (for company status, not tag scores) */
+  .status-acquired { background: #e9d7fe; color: #6941c6; }
+  .status-defunct  { background: #fee4e2; color: #b42318; }
+  .status-dormant  { background: #f2f4f7; color: #475467; }
+
   /* AI-level pill colors */
   .ai-ai-native    { background: #d1e9ff; color: #1849a9; }
   .ai-ai-adopting  { background: #d1fadf; color: #027a48; }
@@ -374,6 +476,14 @@ __BANNER__
   }
   thead th:hover { color: var(--fg); }
   thead th.sorted { color: var(--accent); }
+  thead th .hint {
+    font-weight: 400;
+    font-size: 9px;
+    opacity: 0.65;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-left: 4px;
+  }
   thead th.sorted::after {
     content: " ▾";
     font-size: 10px;
@@ -492,9 +602,10 @@ __BANNER__
         <tr id="thead-row">
           <th class="no-sort"></th>
           <th data-sort="name">Company</th>
-          <th data-sort="categories" class="num">Cat</th>
-          <th class="no-sort">Categories</th>
-          <th class="no-sort">Theses</th>
+          <th data-sort="status">Status</th>
+          <th data-sort="categories" class="num" title="Number of categories">Cat</th>
+          <th class="no-sort">Categories <span class="hint">m·i</span></th>
+          <th class="no-sort">Theses <span class="hint">m·i</span></th>
           <th data-sort="ai_level">AI level</th>
           <th data-sort="maturity">Maturity</th>
           <th data-sort="pricing">Pricing</th>
@@ -529,6 +640,7 @@ __BANNER__
       ai_level: new Set(),
       maturity: new Set(),
       pricing: new Set(),
+      status: new Set(),
     },
     sortBy: "name",
     sortDir: "asc",
@@ -548,6 +660,8 @@ __BANNER__
         opts: ["public","late-stage","mid-stage","early","stealth","mature-private","standard"].map(v => ({ value: v, label: v })) },
       { key: "pricing", label: "Pricing",
         opts: ["premium","mid","economical","free"].map(v => ({ value: v, label: v })) },
+      { key: "status", label: "Status",
+        opts: ["active","acquired","defunct","dormant"].map(v => ({ value: v, label: v })) },
     ];
 
     // Counts per option, computed against companies that pass *all other* filter groups.
@@ -607,6 +721,12 @@ __BANNER__
     render();
   }
 
+  // Helper: extract list of keys from a tag list (handles {k,m,i} objects)
+  function tagKeys(arr) {
+    if (!Array.isArray(arr)) return [];
+    return arr.map(x => (typeof x === "string" ? x : x.k));
+  }
+
   // For each filter axis, count companies that match all *other* axes plus the search.
   function computeOptionCounts() {
     const out = {};
@@ -614,7 +734,14 @@ __BANNER__
       out[k] = {};
       for (const c of DATA.companies) {
         if (!matchesExcept(c, k)) continue;
-        const vs = Array.isArray(c[k]) ? c[k] : (c[k] != null ? [c[k]] : []);
+        let arr = c[k];
+        if (k === "status" && arr == null) arr = "active";
+        let vs;
+        if (k === "categories" || k === "theses") {
+          vs = tagKeys(arr);
+        } else {
+          vs = Array.isArray(arr) ? arr : (arr != null ? [arr] : []);
+        }
         for (const v of vs) out[k][v] = (out[k][v] || 0) + 1;
       }
     }
@@ -629,12 +756,17 @@ __BANNER__
       if (k === exceptKey) continue;
       const sel = state.filters[k];
       if (sel.size === 0) continue;
-      const cv = c[k];
-      if (Array.isArray(cv)) {
-        if (!cv.some(v => sel.has(v))) return false;
+      let cv = c[k];
+      // status defaults to "active" if unset
+      if (k === "status" && cv == null) cv = "active";
+      let vs;
+      if (k === "categories" || k === "theses") {
+        vs = tagKeys(cv);
       } else {
-        if (!sel.has(cv)) return false;
+        vs = Array.isArray(cv) ? cv : (cv != null ? [cv] : []);
       }
+      if (vs.length === 0) return false;
+      if (!vs.some(v => sel.has(v))) return false;
     }
     return true;
   }
@@ -643,18 +775,47 @@ __BANNER__
   }
 
   // --- table render ---
-  function pillCategory(key) {
-    const c = catByKey[key]; if (!c) return "";
-    return `<span class="pill g-${c.group}" data-pill="categories" data-val="${key}">${c.name}</span>`;
+  function scoreSpan(m, i) {
+    if (m == null && i == null) return "";
+    return `<span class="scores"><span class="m">${m ?? "?"}</span><span class="sep">·</span><span class="i">${i ?? "?"}</span></span>`;
   }
-  function pillThesis(key, primary) {
+  function tagWeakness(m, i) {
+    // Visual fade for tags where the company is weakly held (avg < 2)
+    const avg = ((m ?? 0) + (i ?? 0)) / 2;
+    if (avg < 1) return "weak";
+    if (avg < 2) return "faint";
+    return "";
+  }
+  function pillCategory(item) {
+    const key = (typeof item === "string") ? item : item.k;
+    const m = (typeof item === "string") ? null : item.m;
+    const i = (typeof item === "string") ? null : item.i;
+    const c = catByKey[key]; if (!c) return "";
+    const weakCls = tagWeakness(m, i);
+    const tip = (m != null && i != null)
+      ? `${c.name} — marketing emphasis ${m}/5, influence/maturity ${i}/5`
+      : c.name;
+    return `<span class="pill g-${c.group} ${weakCls}" data-pill="categories" data-val="${key}" title="${tip}">${c.name}${scoreSpan(m, i)}</span>`;
+  }
+  function pillThesis(item, primary) {
+    const key = (typeof item === "string") ? item : item.k;
+    const m = (typeof item === "string") ? null : item.m;
+    const i = (typeof item === "string") ? null : item.i;
     const t = thesByKey[key]; if (!t) return "";
+    const weakCls = tagWeakness(m, i);
     const label = primary ? `<strong>${t.name}</strong>` : t.name;
-    return `<span class="pill g-${t.group}" data-pill="theses" data-val="${key}" title="${primary ? 'primary' : 'secondary'}">${label}</span>`;
+    const tip = (m != null && i != null)
+      ? `${t.name} (${primary ? 'primary' : 'secondary'}) — marketing ${m}/5, influence ${i}/5`
+      : `${t.name} (${primary ? 'primary' : 'secondary'})`;
+    return `<span class="pill g-${t.group} ${weakCls}" data-pill="theses" data-val="${key}" title="${tip}">${label}${scoreSpan(m, i)}</span>`;
   }
   function pillSimple(field, value, classPrefix) {
     if (!value) return "";
     return `<span class="pill ${classPrefix}-${value}" data-pill="${field}" data-val="${value}">${value}</span>`;
+  }
+  function statusBadge(s) {
+    if (!s || s === "active") return "";
+    return `<span class="pill status-${s}" data-pill="status" data-val="${s}" title="${s}">${s}</span>`;
   }
   function logoCell(c) {
     if (c.logo_path) {
@@ -664,8 +825,8 @@ __BANNER__
   }
 
   function renderRow(c) {
-    const cats = (c.categories || []).map(k => pillCategory(k)).join(" ");
-    const thes = (c.theses || []).map((k, i) => pillThesis(k, i === 0)).join(" ");
+    const cats = (c.categories || []).map(it => pillCategory(it)).join(" ");
+    const thes = (c.theses || []).map((it, idx) => pillThesis(it, idx === 0)).join(" ");
     const nameCell = c.url
       ? `<a href="${c.url}" target="_blank" rel="noopener">${c.name}</a>`
       : c.name;
@@ -675,6 +836,7 @@ __BANNER__
     return `<tr>
       <td class="cell-logo">${logoCell(c)}</td>
       <td class="cell-name">${nameCell}${unverified}</td>
+      <td>${statusBadge(c.status)}</td>
       <td class="num">${(c.categories || []).length}</td>
       <td class="cell-tags">${cats}</td>
       <td class="cell-tags">${thes}</td>
@@ -901,6 +1063,16 @@ def gen_readme(categories, theses, companies):
     (ROOT / "README.md").write_text("\n".join(lines))
 
 
+def _fmt_tag_md(item, idx) -> str:
+    """Format a tag item for markdown — '<name> (m4/i2)'."""
+    k = tag_key(item)
+    name = idx[k]["name"] if k in idx else k
+    m, i = tag_score(item)
+    if m is None and i is None:
+        return name
+    return f"{name} (m{m}/i{i})"
+
+
 def gen_companies_md(categories, theses, companies):
     cat_idx = _index(categories)
     th_idx = _index(theses)
@@ -910,24 +1082,27 @@ def gen_companies_md(categories, theses, companies):
         "",
         "# Master company table",
         "",
-        f"{len(companies)} companies. One row each. Multi-value fields use `; `. `?` after a name flags entries with unverified fields.",
+        f"{len(companies)} companies. One row each. Multi-value fields use `; `. ",
+        "Per-tag scores `(mN/iN)` are **marketing emphasis** (how loud they are about it) and **influence/maturity** (actual track record), each 0–5.",
         "",
         "For sortable / filterable views, use [`index.html`](./index.html).",
         "",
-        "| Company | Categories | Theses (primary first) | AI level | Maturity | Customer | Pricing | Posture | Notes |",
-        "|---|---|---|---|---|---|---|---|---|",
+        "| Company | Status | Categories | Theses (primary first) | AI level | Maturity | Customer | Pricing | Posture | Notes |",
+        "|---|---|---|---|---|---|---|---|---|---|",
     ]
     sorted_co = sorted(companies, key=lambda c: c["name"].lower())
     for c in sorted_co:
-        cats = "; ".join(cat_idx[k]["name"] for k in (c.get("categories") or []) if k in cat_idx) or "—"
-        thes = "; ".join(th_idx[k]["name"] for k in (c.get("theses") or []) if k in th_idx) or "—"
+        cats = "; ".join(_fmt_tag_md(it, cat_idx) for it in (c.get("categories") or [])) or "—"
+        thes = "; ".join(_fmt_tag_md(it, th_idx) for it in (c.get("theses") or [])) or "—"
         custs = "; ".join(c.get("customers") or []) or "—"
         flag = " <sup>?</sup>" if c.get("unverified") else ""
         nm = c["name"] + flag
         if c.get("url"):
             nm = f"[{nm}]({c['url']})"
-        lines.append("| {} | {} | {} | {} | {} | {} | {} | {} | {} |".format(
+        status = c.get("status") or "active"
+        lines.append("| {} | {} | {} | {} | {} | {} | {} | {} | {} | {} |".format(
             nm,
+            status,
             _md_escape(cats),
             _md_escape(thes),
             c.get("ai_level") or "—",
@@ -943,12 +1118,16 @@ def gen_companies_md(categories, theses, companies):
     lines.append("## Quick stats")
     lines.append("")
     ai_count = Counter(c.get("ai_level") for c in companies if c.get("ai_level"))
+    status_count = Counter(c.get("status") or "active" for c in companies)
     lines.append(f"- **Total:** {len(companies)} companies")
     for level, n in ai_count.most_common():
         lines.append(f"- **{level}:** {n}")
-    cat_count = _company_count_by(companies, "categories")
-    most_cats = sorted(companies, key=lambda c: -len(c.get("categories") or []))[:3]
     lines.append("")
+    lines.append("**By status:**")
+    for s, n in status_count.most_common():
+        lines.append(f"- `{s}`: {n}")
+    lines.append("")
+    most_cats = sorted(companies, key=lambda c: -len(c.get("categories") or []))[:3]
     lines.append("**Broadest claims (most categories):**")
     for c in most_cats:
         lines.append(f"- {c['name']} — {len(c.get('categories') or [])} categories")
@@ -958,14 +1137,19 @@ def gen_companies_md(categories, theses, companies):
 
 def gen_by_category_md(categories, theses, companies):
     lines = [BANNER_MD, "", "# By category", "",
-             "Companies grouped by Cheshire-style functional category. A company in multiple categories appears in each.", ""]
-    by_cat: dict[str, list] = defaultdict(list)
+             "Companies grouped by functional category. A company in multiple categories appears in each. ",
+             "Score format: **m**arketing emphasis · **i**nfluence/maturity, both 0–5.",
+             "Each category lists its companies sorted by influence (descending), then marketing.",
+             ""]
+    by_cat: dict[str, list[tuple]] = defaultdict(list)
     for c in companies:
-        for k in c.get("categories") or []:
-            by_cat[k].append(c)
+        for item in c.get("categories") or []:
+            k = tag_key(item)
+            m, i = tag_score(item)
+            by_cat[k].append((c, m or 0, i or 0))
 
     for cat in categories:
-        in_cat = sorted(by_cat.get(cat["key"], []), key=lambda c: c["name"].lower())
+        rows = sorted(by_cat.get(cat["key"], []), key=lambda r: (-r[2], -r[1], r[0]["name"].lower()))
         lines.append(f"## {cat['name']}")
         lines.append("")
         lines.append(f"> {cat['one_liner']}")
@@ -973,54 +1157,73 @@ def gen_by_category_md(categories, theses, companies):
         if cat.get("commentary"):
             lines.append(cat["commentary"].strip())
             lines.append("")
-        if not in_cat:
+        if not rows:
             lines.append("_no companies tagged_")
             lines.append("")
             continue
-        lines.append(f"**{len(in_cat)} companies:** " + ", ".join(c["name"] for c in in_cat))
+        lines.append(f"**{len(rows)} companies, sorted by influence:**")
+        lines.append("")
+        for c, m, i in rows:
+            status = c.get("status") or "active"
+            status_tag = "" if status == "active" else f" `[{status}]`"
+            lines.append(f"- **{c['name']}**{status_tag} — m{m}/i{i} — {c.get('posture') or ''}")
         lines.append("")
     (ROOT / "by-category.md").write_text("\n".join(lines))
 
 
 def gen_by_thesis_md(categories, theses, companies):
     lines = [BANNER_MD, "", "# By thesis", "",
-             "Companies grouped by which bottleneck thesis they hold. **Primary** = first thesis listed in their record. ",
-             "Most companies hold 2–3.", "",
-             "*A thesis with many companies is a crowded narrative; a thesis with few is either contrarian or under-served.*", ""]
-    primary_by_thes: dict[str, list] = defaultdict(list)
-    secondary_by_thes: dict[str, list] = defaultdict(list)
+             "Companies grouped by which bottleneck thesis they hold. ",
+             "Score format: **m**arketing emphasis · **i**nfluence/maturity, both 0–5.",
+             "",
+             "*Two density numbers per thesis:* **marketing-weighted** (sum of m-scores) shows how loud a narrative is; **influence-weighted** (sum of i-scores) shows how much actual track record sits behind it. ",
+             "Loud narratives with low influence sums are early-stage hype; quiet ones with high influence are established but invisible.",
+             ""]
+    # Group: list of (company, m, i, primary)
+    by_thes: dict[str, list] = defaultdict(list)
     for c in companies:
-        for i, k in enumerate(c.get("theses") or []):
-            (primary_by_thes if i == 0 else secondary_by_thes)[k].append(c)
+        for idx, item in enumerate(c.get("theses") or []):
+            k = tag_key(item)
+            m, i = tag_score(item)
+            by_thes[k].append((c, m or 0, i or 0, idx == 0))
 
-    # Render each thesis ordered by total holders desc.
-    th_with_count = sorted(
-        theses,
-        key=lambda t: -(len(primary_by_thes.get(t["key"], [])) + len(secondary_by_thes.get(t["key"], []))),
-    )
-    for th in th_with_count:
-        prim = sorted(primary_by_thes.get(th["key"], []), key=lambda c: c["name"].lower())
-        sec = sorted(secondary_by_thes.get(th["key"], []), key=lambda c: c["name"].lower())
-        total = len(prim) + len(sec)
-        crowd = (
-            "**very crowded**" if total >= 8 else
-            "**crowded**" if total >= 6 else
-            "moderate" if total >= 4 else
-            "thin" if total >= 2 else
-            "**very thin**"
+    # Order theses by total influence (desc), so highest-track-record first
+    def _i_sum(th):
+        return sum(r[2] for r in by_thes.get(th["key"], []))
+    def _m_sum(th):
+        return sum(r[1] for r in by_thes.get(th["key"], []))
+    th_sorted = sorted(theses, key=lambda t: (-_i_sum(t), -_m_sum(t)))
+
+    for th in th_sorted:
+        rows = by_thes.get(th["key"], [])
+        n = len(rows)
+        m_sum = sum(r[1] for r in rows)
+        i_sum = sum(r[2] for r in rows)
+        # Sort holders by influence then marketing
+        rows_sorted = sorted(rows, key=lambda r: (-r[2], -r[1], r[0]["name"].lower()))
+        gap = m_sum - i_sum
+        gap_label = (
+            "narrative outrunning track record" if gap >= 6 else
+            "narrative ahead of track record"     if gap >= 3 else
+            "balanced"                            if abs(gap) < 3 else
+            "track record outrunning narrative"   if gap >= -6 else
+            "established but quiet"
         )
         lines.append(f"## {th['name']}")
         lines.append("")
         lines.append(f"> {th['bet'].strip()}")
         lines.append("")
-        lines.append(f"**Holders: {total} total** ({crowd}) — {len(prim)} primary, {len(sec)} secondary")
+        lines.append(f"**{n} holders** · marketing-weighted **{m_sum}** · influence-weighted **{i_sum}** · _{gap_label}_")
         lines.append("")
-        if prim:
-            lines.append("**Primary holders:** " + ", ".join(c["name"] for c in prim))
-        if sec:
-            lines.append("**Secondary holders:** " + ", ".join(c["name"] for c in sec))
-        if not prim and not sec:
-            lines.append("_no companies holding this thesis_")
+        if not rows_sorted:
+            lines.append("_no companies hold this thesis_")
+            lines.append("")
+            continue
+        for c, m, i, primary in rows_sorted:
+            status = c.get("status") or "active"
+            status_tag = "" if status == "active" else f" `[{status}]`"
+            prim = "**[primary]** " if primary else ""
+            lines.append(f"- {prim}**{c['name']}**{status_tag} — m{m}/i{i} — {c.get('posture') or ''}")
         lines.append("")
 
     # Density ranking
@@ -1028,41 +1231,38 @@ def gen_by_thesis_md(categories, theses, companies):
     lines.append("")
     lines.append("## Density ranking")
     lines.append("")
-    lines.append("| Thesis | Total holders | Primary | Secondary | Crowdedness |")
-    lines.append("|---|---:|---:|---:|---|")
-    rows = []
+    lines.append("| Thesis | Holders | Marketing-weighted | Influence-weighted | Gap (m − i) |")
+    lines.append("|---|---:|---:|---:|---:|")
+    rank_rows = []
     for th in theses:
-        prim = primary_by_thes.get(th["key"], [])
-        sec = secondary_by_thes.get(th["key"], [])
-        total = len(prim) + len(sec)
-        crowd = (
-            "very crowded" if total >= 8 else
-            "crowded" if total >= 6 else
-            "moderate" if total >= 4 else
-            "thin" if total >= 2 else
-            "very thin"
-        )
-        rows.append((th["name"], total, len(prim), len(sec), crowd))
-    rows.sort(key=lambda r: -r[1])
-    for r in rows:
-        lines.append(f"| {r[0]} | {r[1]} | {r[2]} | {r[3]} | {r[4]} |")
+        rows = by_thes.get(th["key"], [])
+        m_sum = sum(r[1] for r in rows)
+        i_sum = sum(r[2] for r in rows)
+        rank_rows.append((th["name"], len(rows), m_sum, i_sum, m_sum - i_sum))
+    rank_rows.sort(key=lambda r: -r[2])  # by marketing-weighted
+    for r in rank_rows:
+        lines.append(f"| {r[0]} | {r[1]} | {r[2]} | {r[3]} | {r[4]:+d} |")
+    lines.append("")
+    lines.append("_Sorted by marketing-weighted total — top rows are the loudest narratives._")
     lines.append("")
     (ROOT / "by-thesis.md").write_text("\n".join(lines))
 
 
 def gen_theses_md(theses, companies):
-    primary_by_thes: dict[str, list] = defaultdict(list)
-    secondary_by_thes: dict[str, list] = defaultdict(list)
+    by_thes: dict[str, list] = defaultdict(list)
     for c in companies:
-        for i, k in enumerate(c.get("theses") or []):
-            (primary_by_thes if i == 0 else secondary_by_thes)[k].append(c)
+        for idx, item in enumerate(c.get("theses") or []):
+            k = tag_key(item)
+            m, i = tag_score(item)
+            by_thes[k].append((c, m or 0, i or 0, idx == 0))
 
     lines = [BANNER_MD, "", "# Theses", "",
-             "Why isn't lab automation more widespread? Each company implicitly answers. Below: bet, what it predicts, what would falsify it, and who currently holds it.",
+             "Why isn't lab automation more widespread? Each company implicitly answers. ",
+             "Below: bet, what it predicts, what would falsify it, and who holds it (sorted by influence).",
              ""]
     for th in theses:
-        prim = sorted(primary_by_thes.get(th["key"], []), key=lambda c: c["name"].lower())
-        sec = sorted(secondary_by_thes.get(th["key"], []), key=lambda c: c["name"].lower())
+        rows = by_thes.get(th["key"], [])
+        rows_sorted = sorted(rows, key=lambda r: (-r[2], -r[1], r[0]["name"].lower()))
         lines.append(f"## {th['name']}")
         lines.append("")
         lines.append(f"> {th['bet'].strip()}")
@@ -1071,19 +1271,37 @@ def gen_theses_md(theses, companies):
         lines.append("")
         lines.append("**Falsifier:** " + th["falsifier"].strip().replace("\n", " "))
         lines.append("")
-        if prim:
-            lines.append("**Primary holders:** " + ", ".join(c["name"] for c in prim))
-        if sec:
-            lines.append("**Secondary holders:** " + ", ".join(c["name"] for c in sec))
-        if not prim and not sec:
-            lines.append("_(no companies in dataset hold this thesis)_")
+        if not rows_sorted:
+            lines.append("_(no companies hold this thesis)_")
+            lines.append("")
+            continue
+        lines.append("**Holders (influence-sorted):**")
+        lines.append("")
+        for c, m, i, primary in rows_sorted:
+            status = c.get("status") or "active"
+            status_tag = "" if status == "active" else f" `[{status}]`"
+            prim = "★ " if primary else ""
+            lines.append(f"- {prim}{c['name']}{status_tag} — m{m}/i{i}")
         lines.append("")
     (ROOT / "theses.md").write_text("\n".join(lines))
 
 
+def _tag_csv(items) -> str:
+    """Render a tag list for CSV: 'cat1:m4/i5; cat2:m3/i2'."""
+    out = []
+    for it in items or []:
+        k = tag_key(it)
+        m, i = tag_score(it)
+        if m is None and i is None:
+            out.append(k)
+        else:
+            out.append(f"{k}:m{m}/i{i}")
+    return "; ".join(out)
+
+
 def gen_companies_csv(companies):
     cols = ["name", "slug", "domain", "url", "categories", "theses",
-            "ai_level", "maturity", "customers", "pricing", "posture", "notes", "unverified"]
+            "ai_level", "maturity", "customers", "pricing", "status", "posture", "notes", "unverified"]
     with open(ROOT / "companies.csv", "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(cols)
@@ -1091,7 +1309,11 @@ def gen_companies_csv(companies):
             row = []
             for k in cols:
                 v = c.get(k)
-                if isinstance(v, list):
+                if k in ("categories", "theses"):
+                    v = _tag_csv(v)
+                elif k == "status":
+                    v = v or "active"
+                elif isinstance(v, list):
                     v = "; ".join(v)
                 row.append("" if v is None else v)
             w.writerow(row)

@@ -2,7 +2,8 @@
 
 # Theses
 
-Why isn't lab automation more widespread? Each company implicitly answers. Below: bet, what it predicts, what would falsify it, and who currently holds it.
+Why isn't lab automation more widespread? Each company implicitly answers. 
+Below: bet, what it predicts, what would falsify it, and who holds it (sorted by influence).
 
 ## Closed loop
 
@@ -13,8 +14,16 @@ model update → next hypothesis, with no human in the inner loop.
 
 **Falsifier:** If customers keep wanting human-in-the-loop checkpoints (regulatory, scientific judgment, trust), closed-loop PMF narrows to a few high-volume use cases (mAb discovery, cell line dev) and doesn't generalize.
 
-**Primary holders:** Lila Sciences, Medra
-**Secondary holders:** Emerald Cloud Lab, Ginkgo Bioworks, Strateos, Tetsuwan Scientific
+**Holders (influence-sorted):**
+
+- ★ Arctoris — m4/i3
+- Ginkgo Bioworks — m3/i3
+- ★ Lila Sciences — m5/i2
+- ★ Medra — m5/i2
+- Emerald Cloud Lab — m3/i2
+- Strateos `[dormant]` — m3/i2
+- Tetsuwan Scientific — m5/i1
+- Monomer Bio — m2/i1
 
 ## Dexterity
 
@@ -25,7 +34,14 @@ Better hands and perception unlock the rest.
 
 **Falsifier:** Standardization (SiLA + SBS plates) makes dexterity moot for 90% of tasks because everything moves through standardized fixtures.
 
-**Secondary holders:** Medra, Multiply Labs, Tetsuwan Scientific
+**Holders (influence-sorted):**
+
+- Multiply Labs — m4/i3
+- Cellares — m3/i3
+- Medra — m5/i2
+- ★ Robot On Rails — m5/i1
+- Tetsuwan Scientific — m5/i1
+- Zeon Systems — m5/i1
 
 ## VLA / mimicking scientists
 
@@ -36,8 +52,12 @@ are the cheapest path to general-purpose autonomy — bypassing formal protocol 
 
 **Falsifier:** Formal protocol authoring (Antha-style, Briefly-style) plus deterministic hardware is enough — imitation learning turns out unnecessary.
 
-**Primary holders:** Robot On Rails, Tetsuwan Scientific, Zeon Systems
-**Secondary holders:** Medra
+**Holders (influence-sorted):**
+
+- Medra — m5/i2
+- ★ Tetsuwan Scientific — m5/i1
+- ★ Zeon Systems — m5/i1
+- Robot On Rails — m4/i1
 
 ## Hardware modularity
 
@@ -48,8 +68,26 @@ modules with common interfaces — the lab equivalent of PCIe.
 
 **Falsifier:** Customers consistently prefer turnkey integrated cells because the integration cost of "modular" still falls on them.
 
-**Primary holders:** Agilent, Automata, Beckman Coulter Life Sciences, Celltrio, Cytiva, HighRes Biosolutions, Miltenyi Biotec, Molecular Devices, Multiply Labs, PerkinElmer / Revvity, Sartorius, Thermo Fisher Scientific, Trilobio
-**Secondary holders:** Hamilton, Robot On Rails, Tecan, Zeon Systems
+**Holders (influence-sorted):**
+
+- ★ Beckman Coulter Life Sciences — m4/i4
+- ★ Cytiva — m4/i4
+- ★ HighRes Biosolutions — m4/i4
+- Hamilton — m3/i4
+- ★ Sartorius — m3/i4
+- ★ Thermo Fisher Scientific — m3/i4
+- ★ Automata — m5/i3
+- Cellares — m4/i3
+- ★ Multiply Labs — m4/i3
+- ★ Agilent — m3/i3
+- ★ Miltenyi Biotec — m3/i3
+- ★ Molecular Devices — m3/i3
+- ★ PerkinElmer / Revvity — m3/i3
+- Tecan — m3/i3
+- ★ Celltrio — m3/i2
+- ★ Trilobio — m5/i1
+- Robot On Rails — m3/i1
+- Zeon Systems — m2/i1
 
 ## Compiler / abstraction / interface
 
@@ -60,8 +98,20 @@ hardware is available. Without this, every protocol is bound to a specific instr
 
 **Falsifier:** The abstraction leaks too much (liquid-class effects, instrument quirks) to compile cleanly, so people fall back to vendor-specific scripts.
 
-**Primary holders:** Artificial, Cheshire Labs, Genie Life Sciences, Scispot, Spaero Bio, Synthace
-**Secondary holders:** Biosero, Phylo, Trilobio, UniteLabs
+**Holders (influence-sorted):**
+
+- ★ Synthace — m5/i3
+- ★ Artificial — m4/i3
+- Biosero — m3/i3
+- UniteLabs — m4/i2
+- ★ Scispot — m3/i2
+- RetiSoft — m2/i2
+- ★ Cheshire Labs — m4/i1
+- ★ Genie Life Sciences — m4/i1
+- ★ Monomer Bio — m4/i1
+- ★ Spaero Bio — m4/i1
+- Trilobio — m4/i1
+- Phylo — m3/i1
 
 ## Standardization
 
@@ -72,8 +122,16 @@ every integration is N×M custom work.
 
 **Falsifier:** Vendors continue to defect (proprietary advantages outweigh interop benefits) and the de facto standard ends up being whichever orchestrator has critical mass.
 
-**Primary holders:** Biosero, PyLabRobot, RetiSoft, SiLA, UniteLabs
-**Secondary holders:** Artificial, Cheshire Labs, HighRes Biosolutions
+**Holders (influence-sorted):**
+
+- ★ SiLA — m5/i4
+- ★ Biosero — m4/i4
+- ★ PyLabRobot — m4/i3
+- ★ RetiSoft — m4/i3
+- Artificial — m3/i3
+- HighRes Biosolutions — m3/i3
+- ★ UniteLabs — m5/i2
+- Cheshire Labs — m3/i1
 
 ## DOE — Design of experiments
 
@@ -84,8 +142,11 @@ planning, not execution. Bayesian / active-learning planners win.
 
 **Falsifier:** Execution capacity is so limited that even naive experimental designs saturate it — better DOE doesn't help until throughput catches up.
 
-**Primary holders:** Kiin Bio
-**Secondary holders:** Phylo, Synthace
+**Holders (influence-sorted):**
+
+- Synthace — m4/i3
+- ★ Kiin Bio — m5/i2
+- Phylo — m3/i1
 
 ## Accountability
 
@@ -96,7 +157,26 @@ GMP-grade traceability, audit trails, signed protocol versions.
 
 **Falsifier:** Small biotechs (the actual buyers of new automation) don't care about this and the pharma-grade compliance load is a tax that prevents the modern stack from competing.
 
-**Secondary holders:** Benchling, Charles River, Dash Bio, Labguru, Miltenyi Biotec, Multiply Labs
+**Holders (influence-sorted):**
+
+- Charles River — m5/i5
+- Miltenyi Biotec — m5/i5
+- Cytiva — m4/i5
+- Hamilton — m4/i5
+- Sartorius — m4/i5
+- Thermo Fisher Scientific — m3/i5
+- ★ Cellares — m5/i4
+- Agilent — m3/i4
+- Beckman Coulter Life Sciences — m3/i4
+- Benchling — m3/i4
+- PerkinElmer / Revvity — m3/i4
+- Tecan — m3/i4
+- Multiply Labs — m5/i3
+- Dash Bio — m4/i3
+- Arctoris — m3/i3
+- Labguru — m3/i3
+- Celltrio — m2/i2
+- Monomer Bio — m3/i1
 
 ## Trust
 
@@ -107,7 +187,10 @@ experiment, inspect the data, see the LLM's reasoning.
 
 **Falsifier:** Customers actually treat automation like the dishwasher — once it works, they stop watching, and trust UX is over-invested.
 
-**Secondary holders:** Briefly Bio, Potato
+**Holders (influence-sorted):**
+
+- Briefly Bio — m3/i1
+- Potato — m3/i1
 
 ## Scale
 
@@ -118,8 +201,20 @@ Aggregate demand into a few cloud labs and amortize hardware capex.
 
 **Falsifier:** Turnaround latency, IP-leakage fears, or the "I need to watch my cells" instinct keep most science on-prem despite worse unit economics. (This has been the empirical pattern.)
 
-**Primary holders:** Charles River, Cromatic, Dash Bio, Emerald Cloud Lab, Ginkgo Bioworks, Plasmidsaurus, Strateos
-**Secondary holders:** Lila Sciences, Recursion
+**Holders (influence-sorted):**
+
+- ★ Charles River — m5/i5
+- Cellares — m5/i4
+- ★ Emerald Cloud Lab — m5/i4
+- ★ Ginkgo Bioworks — m5/i4
+- Recursion — m5/i4
+- ★ Plasmidsaurus — m4/i4
+- Arctoris — m4/i3
+- ★ Dash Bio — m4/i3
+- ★ Strateos `[dormant]` — m4/i3
+- Lila Sciences — m4/i2
+- ★ Cromatic — m3/i2
+- Cornucopia Bio — m3/i1
 
 ## Knowledge work bottlenecks
 
@@ -130,8 +225,26 @@ review, hypothesis generation, protocol authoring, data interpretation.
 
 **Falsifier:** Cognitive automation produces plausible-sounding but scientifically poor outputs that fail to translate; the bench execution problem reasserts itself.
 
-**Primary holders:** Benchling, Cornucopia Bio, Edison Scientific, Labguru, Phylo, Potato
-**Secondary holders:** Briefly Bio, Cromatic, Kiin Bio, Medra, Robot On Rails, Scispot, Zeon Systems
+**Holders (influence-sorted):**
+
+- ★ Benchling — m4/i4
+- ★ Labguru — m3/i3
+- ★ Edison Scientific — m5/i2
+- ★ Potato — m5/i2
+- Lila Sciences — m4/i2
+- Medra — m4/i2
+- Scispot — m4/i2
+- Artificial — m3/i2
+- Kiin Bio — m3/i2
+- Opentrons — m2/i2
+- ★ Phylo — m5/i1
+- Cornucopia Bio — m4/i1
+- Monomer Bio — m4/i1
+- Zeon Systems — m4/i1
+- Briefly Bio — m3/i1
+- Cheshire Labs — m3/i1
+- Robot On Rails — m3/i1
+- Cromatic — m2/i1
 
 ## Liquid classes
 
@@ -142,8 +255,19 @@ surfactants, volumes, surface chemistry. Whoever solves this owns the bottom of 
 
 **Falsifier:** Standard plate formats and reagent vendors converge on a small number of liquid classes, commoditizing this expertise.
 
-**Primary holders:** Cytena, Dispendix, Hamilton, SPT Labtech, Tecan
-**Secondary holders:** Beckman Coulter Life Sciences, Formulatrix, Integra Biosciences
+**Holders (influence-sorted):**
+
+- ★ Hamilton — m5/i5
+- ★ Dispendix — m5/i4
+- ★ Cytena — m4/i4
+- ★ SPT Labtech — m4/i4
+- ★ Tecan — m4/i4
+- Beckman Coulter Life Sciences — m3/i4
+- Formulatrix — m3/i3
+- Miltenyi Biotec — m2/i3
+- PerkinElmer / Revvity — m2/i3
+- Dynamic Devices — m3/i2
+- Integra Biosciences — m2/i2
 
 ## Hardware cost
 
@@ -154,8 +278,17 @@ of magnitude and adoption follows the way Opentrons proved at the low end.
 
 **Falsifier:** Total cost of ownership is dominated by integration and reagent consumables, not capex — so a cheaper instrument doesn't move the adoption needle.
 
-**Primary holders:** Dynamic Devices, Formulatrix, Integra Biosciences, Opentrons
-**Secondary holders:** Genie Life Sciences, PyLabRobot, SPT Labtech, Trilobio
+**Holders (influence-sorted):**
+
+- ★ Opentrons — m5/i4
+- ★ Formulatrix — m4/i4
+- ★ Dynamic Devices — m4/i3
+- ★ Integra Biosciences — m4/i3
+- PyLabRobot — m3/i3
+- SPT Labtech — m3/i3
+- Automata — m2/i2
+- Trilobio — m4/i1
+- Genie Life Sciences — m3/i1
 
 ## Predictive validity
 
@@ -167,8 +300,17 @@ the gap.
 
 **Falsifier:** Existing assays are predictive enough; the real bottleneck is throughput on those assays, not new readouts.
 
-**Primary holders:** Chai Discovery, Insilico Medicine, Isomorphic Labs, Owkin, Recursion, Relay Therapeutics
-**Secondary holders:** Cornucopia Bio, Edison Scientific, Lila Sciences
+**Holders (influence-sorted):**
+
+- ★ Insilico Medicine — m5/i4
+- ★ Isomorphic Labs — m5/i4
+- ★ Recursion — m5/i4
+- ★ Relay Therapeutics — m5/i4
+- ★ Owkin — m5/i3
+- ★ Chai Discovery — m4/i3
+- Lila Sciences — m4/i2
+- Arctoris — m2/i2
+- Edison Scientific — m2/i1
 
 ## Eroom's law / R&D productivity
 
@@ -179,7 +321,15 @@ that bends the curve. The thesis is macro, not technical.
 
 **Falsifier:** Newer modalities (ML-derived targets, GLP-1-style hits) drive productivity recovery without needing automation, and the curve bends without lab autonomy.
 
-**Secondary holders:** Ginkgo Bioworks, Insilico Medicine, Isomorphic Labs, Lila Sciences, Recursion
+**Holders (influence-sorted):**
+
+- Recursion — m5/i4
+- Insilico Medicine — m5/i3
+- Ginkgo Bioworks — m4/i3
+- Isomorphic Labs — m4/i3
+- Lila Sciences — m4/i2
+- Owkin — m3/i2
+- Edison Scientific — m3/i1
 
 ## Protocol libraries
 
@@ -190,5 +340,76 @@ wet lab. Once enough protocols are machine-readable, everything downstream gets 
 
 **Falsifier:** Protocols are too tacit / lab-specific to share at scale, and the corpus never reaches critical mass.
 
-**Primary holders:** Briefly Bio
-**Secondary holders:** Opentrons, Potato, Spaero Bio
+**Holders (influence-sorted):**
+
+- Opentrons — m4/i3
+- ★ Briefly Bio — m5/i2
+- PyLabRobot — m2/i2
+- Spaero Bio — m3/i1
+- Potato — m2/i1
+
+## Next-generation hardware
+
+> Incremental modularity isn't enough — the path forward is fundamentally new form
+factors: humanoid arms, novel actuators, bench-scale robots that look nothing like
+a Hamilton STAR.
+
+**Predicts:** General-purpose arms, glass-cube robotic scientists, rail-and-cart fleets, bipedal/wheeled mobile manipulators that share a deck with a human.
+
+**Falsifier:** Standardized SBS plates plus deterministic gantries are sufficient for >90% of biology, and "next-generation hardware" is a fundraising thesis that doesn't survive contact with assay-specific reality.
+
+**Holders (influence-sorted):**
+
+- Cellares — m4/i4
+- Multiply Labs — m4/i3
+- Medra — m4/i2
+- Automata — m3/i2
+- Tetsuwan Scientific — m5/i1
+- Robot On Rails — m4/i1
+- Zeon Systems — m4/i1
+- Trilobio — m3/i1
+
+## Remote execution
+
+> The binding constraint is physical proximity — scientists having to be in the
+building. Decoupling design from execution (cloud lab, browser-prompt CRO,
+distributed lab) is the unlock.
+
+**Predicts:** Browser/API-first interfaces, asynchronous protocols, no-physical-presence workflows, geographically distributed teams running experiments together.
+
+**Falsifier:** The "I need to watch my cells" instinct holds; remote execution stays niche because lab work has too much tacit, in-person knowledge transfer.
+
+**Holders (influence-sorted):**
+
+- Emerald Cloud Lab — m5/i5
+- Plasmidsaurus — m3/i4
+- Arctoris — m4/i3
+- Dash Bio — m4/i3
+- Strateos `[dormant]` — m4/i3
+- Charles River — m2/i3
+- ★ Cornucopia Bio — m5/i2
+- Lila Sciences — m3/i2
+- Medra — m3/i2
+- Ginkgo Bioworks — m2/i2
+
+## Multi-modal sensing
+
+> Visible-light cameras alone (the VLA route) miss too much: pipette aspiration
+feedback, weight, temperature, vibration, capacitance, force. The unlock is
+instruments that combine many sensor modalities.
+
+**Predicts:** Capacitive liquid-level detection, force-feedback dispensing, weight-on-deck integration, multi-spectral imaging, audio for failure detection.
+
+**Falsifier:** Vision + a small number of standardized fixtures is enough; richer sensing is over-engineered and the cost-per-error-caught isn't worth the integration burden.
+
+**Holders (influence-sorted):**
+
+- Molecular Devices — m4/i4
+- Hamilton — m3/i4
+- Dynamic Devices — m4/i3
+- Cellares — m2/i3
+- Cytena — m2/i3
+- Multiply Labs — m3/i2
+- Formulatrix — m2/i2
+- Spaero Bio — m4/i1
+- Genie Life Sciences — m3/i1

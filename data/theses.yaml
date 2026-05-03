@@ -209,3 +209,46 @@
   falsifier: |
     Protocols are too tacit / lab-specific to share at scale, and the corpus never reaches
     critical mass.
+
+- key: next-generation-hardware
+  name: Next-generation hardware
+  group: physical
+  bet: |
+    Incremental modularity isn't enough — the path forward is fundamentally new form
+    factors: humanoid arms, novel actuators, bench-scale robots that look nothing like
+    a Hamilton STAR.
+  predicts: |
+    General-purpose arms, glass-cube robotic scientists, rail-and-cart fleets,
+    bipedal/wheeled mobile manipulators that share a deck with a human.
+  falsifier: |
+    Standardized SBS plates plus deterministic gantries are sufficient for >90% of
+    biology, and "next-generation hardware" is a fundraising thesis that doesn't
+    survive contact with assay-specific reality.
+
+- key: remote-execution
+  name: Remote execution
+  group: business
+  bet: |
+    The binding constraint is physical proximity — scientists having to be in the
+    building. Decoupling design from execution (cloud lab, browser-prompt CRO,
+    distributed lab) is the unlock.
+  predicts: |
+    Browser/API-first interfaces, asynchronous protocols, no-physical-presence
+    workflows, geographically distributed teams running experiments together.
+  falsifier: |
+    The "I need to watch my cells" instinct holds; remote execution stays niche
+    because lab work has too much tacit, in-person knowledge transfer.
+
+- key: multi-modal-sensing
+  name: Multi-modal sensing
+  group: physical
+  bet: |
+    Visible-light cameras alone (the VLA route) miss too much: pipette aspiration
+    feedback, weight, temperature, vibration, capacitance, force. The unlock is
+    instruments that combine many sensor modalities.
+  predicts: |
+    Capacitive liquid-level detection, force-feedback dispensing, weight-on-deck
+    integration, multi-spectral imaging, audio for failure detection.
+  falsifier: |
+    Vision + a small number of standardized fixtures is enough; richer sensing is
+    over-engineered and the cost-per-error-caught isn't worth the integration burden.

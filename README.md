@@ -2,10 +2,10 @@
 
 # Autonomous Science Landscape
 
-Working catalog of **60 companies** in lab automation, autonomous science, and AI-for-bio. 
+Working catalog of **62 companies** in lab automation, autonomous science, and AI-for-bio. 
 Each is tagged with the functional category it occupies *and* the implicit thesis it holds about why lab automation hasn't gone the way of self-driving.
 
-Source v1: Cheshire Labs landscape image (May 2026). **1 entries have unverified fields** — flagged with `unverified: true` in the data.
+Source v1: Cheshire Labs landscape image (May 2026). **0 entries have unverified fields** — flagged with `unverified: true` in the data.
 
 ## Views
 
@@ -60,21 +60,21 @@ python3 scripts/generate.py --fetch-logos    # also download missing logos
 
 ## At a glance
 
-- **Companies:** 60
-- **Categories used:** 15 of 15
-- **Theses held:** 16 of 16
+- **Companies:** 62
+- **Categories used:** 19 of 19
+- **Theses held:** 19 of 19
 
 **By AI level:**
 
-- `ai-adjacent` — 22
-- `ai-adopting` — 20
+- `ai-adopting` — 23
+- `ai-adjacent` — 21
 - `ai-native` — 16
 - `standard-oss` — 2
 
 **By maturity:**
 
-- `early` — 16
-- `late-stage` — 13
+- `early` — 17
+- `late-stage` — 15
 - `public` — 12
 - `mature-private` — 12
 - `mid-stage` — 4
