@@ -657,8 +657,8 @@ __BANNER__
     return `<span class="pill ${classPrefix}-${value}" data-pill="${field}" data-val="${value}">${value}</span>`;
   }
   function logoCell(c) {
-    if (c.domain) {
-      return `<img src="logos/${c.slug}.png" alt="" loading="lazy" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>${(c.name[0]||'·').toUpperCase()}</div>'">`;
+    if (c.logo_path) {
+      return `<img src="${c.logo_path}" alt="" loading="lazy" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>${(c.name[0]||'·').toUpperCase()}</div>'">`;
     }
     return `<div class="placeholder">${(c.name[0]||'·').toUpperCase()}</div>`;
   }
@@ -762,10 +762,23 @@ __BANNER__
 
 
 def gen_index_html(categories, theses, companies):
+    # Attach actual logo path per company so the HTML can reference it directly.
+    # Searches for {slug}.{png,svg,jpg,jpeg,webp,ico} in logos/.
+    logo_exts = ("png", "svg", "jpg", "jpeg", "webp", "ico")
+    enriched = []
+    for c in companies:
+        c2 = dict(c)
+        slug = c["slug"]
+        c2["logo_path"] = None
+        for ext in logo_exts:
+            if (LOGOS / f"{slug}.{ext}").exists():
+                c2["logo_path"] = f"logos/{slug}.{ext}"
+                break
+        enriched.append(c2)
     data_json = json.dumps({
         "categories": categories,
         "theses": theses,
-        "companies": companies,
+        "companies": enriched,
     }, default=str, separators=(",", ":"))
     html = (INDEX_HTML
             .replace("__BANNER__", BANNER_HTML)

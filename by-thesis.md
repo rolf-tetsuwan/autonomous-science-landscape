@@ -12,30 +12,61 @@ Most companies hold 2–3.
 > Lab automation has been killed by monolithic islands. The win is mix-and-match
 modules with common interfaces — the lab equivalent of PCIe.
 
-**Holders: 17 total** (**very crowded**) — 14 primary, 3 secondary
+**Holders: 17 total** (**very crowded**) — 13 primary, 4 secondary
 
-**Primary holders:** Agilent, Automata, Beckman Coulter Life Sciences, Celltrio, Cytiva, HighRes Biosolutions, Miltenyi Biotec, Molecular Devices, Multiply Labs, PerkinElmer / Revvity, Robot On Rails, Sartorius, Thermo Fisher Scientific, Trilobio
-**Secondary holders:** Hamilton, Tecan, Zeon Systems
-
-## Scale
-
-> Centralized mega-foundries beat distributed cottage automation on cost-per-experiment.
-Aggregate demand into a few cloud labs and amortize hardware capex.
-
-**Holders: 8 total** (**very crowded**) — 6 primary, 2 secondary
-
-**Primary holders:** Charles River, Emerald Cloud Lab, Ginkgo Bioworks, Plasmidsaurus, Strateos, Zeon Systems
-**Secondary holders:** LILA Sciences, Recursion
+**Primary holders:** Agilent, Automata, Beckman Coulter Life Sciences, Celltrio, Cytiva, HighRes Biosolutions, Miltenyi Biotec, Molecular Devices, Multiply Labs, PerkinElmer / Revvity, Sartorius, Thermo Fisher Scientific, Trilobio
+**Secondary holders:** Hamilton, Robot On Rails, Tecan, Zeon Systems
 
 ## Knowledge work bottlenecks
 
 > The constraint isn't bench execution — it's the cognitive layer above: literature
 review, hypothesis generation, protocol authoring, data interpretation.
 
-**Holders: 8 total** (**very crowded**) — 4 primary, 4 secondary
+**Holders: 13 total** (**very crowded**) — 6 primary, 7 secondary
 
-**Primary holders:** Benchling, Edison, Labguru, Potato
-**Secondary holders:** Briefly Bio, Kiin Bio, Phylo, Scispot
+**Primary holders:** Benchling, Cornucopia Bio, Edison Scientific, Labguru, Phylo, Potato
+**Secondary holders:** Briefly Bio, Cromatic, Kiin Bio, Medra, Robot On Rails, Scispot, Zeon Systems
+
+## Compiler / abstraction / interface
+
+> Lab work needs an LLVM: a high-level protocol language that compiles down to whatever
+hardware is available. Without this, every protocol is bound to a specific instrument.
+
+**Holders: 10 total** (**very crowded**) — 6 primary, 4 secondary
+
+**Primary holders:** Artificial, Cheshire Labs, Genie Life Sciences, Scispot, Spaero Bio, Synthace
+**Secondary holders:** Biosero, Phylo, Trilobio, UniteLabs
+
+## Scale
+
+> Centralized mega-foundries beat distributed cottage automation on cost-per-experiment.
+Aggregate demand into a few cloud labs and amortize hardware capex.
+
+**Holders: 9 total** (**very crowded**) — 7 primary, 2 secondary
+
+**Primary holders:** Charles River, Cromatic, Dash Bio, Emerald Cloud Lab, Ginkgo Bioworks, Plasmidsaurus, Strateos
+**Secondary holders:** Lila Sciences, Recursion
+
+## Predictive validity
+
+> Most of the data we automate doesn't predict in-vivo / clinic. More-AI-friendly
+modalities (high-content phenomics, organoids on chip, multi-modal omics) close
+the gap.
+
+**Holders: 9 total** (**very crowded**) — 6 primary, 3 secondary
+
+**Primary holders:** Chai Discovery, Insilico Medicine, Isomorphic Labs, Owkin, Recursion, Relay Therapeutics
+**Secondary holders:** Cornucopia Bio, Edison Scientific, Lila Sciences
+
+## Standardization
+
+> The bottleneck is interop. Until there's a SiLA-equivalent that everyone implements,
+every integration is N×M custom work.
+
+**Holders: 8 total** (**very crowded**) — 5 primary, 3 secondary
+
+**Primary holders:** Biosero, PyLabRobot, RetiSoft, SiLA, UniteLabs
+**Secondary holders:** Artificial, Cheshire Labs, HighRes Biosolutions
 
 ## Liquid classes
 
@@ -55,38 +86,7 @@ of magnitude and adoption follows the way Opentrons proved at the low end.
 **Holders: 8 total** (**very crowded**) — 4 primary, 4 secondary
 
 **Primary holders:** Dynamic Devices, Formulatrix, Integra Biosciences, Opentrons
-**Secondary holders:** PyLabRobot, Robot On Rails, SPT Labtech, Trilobio
-
-## Predictive validity
-
-> Most of the data we automate doesn't predict in-vivo / clinic. More-AI-friendly
-modalities (high-content phenomics, organoids on chip, multi-modal omics) close
-the gap.
-
-**Holders: 8 total** (**very crowded**) — 6 primary, 2 secondary
-
-**Primary holders:** Chai Discovery, Insilico Medicine, Isomorphic Labs, Owkin, Recursion, Relay Therapeutics
-**Secondary holders:** Edison, LILA Sciences
-
-## Compiler / abstraction / interface
-
-> Lab work needs an LLVM: a high-level protocol language that compiles down to whatever
-hardware is available. Without this, every protocol is bound to a specific instrument.
-
-**Holders: 7 total** (**crowded**) — 3 primary, 4 secondary
-
-**Primary holders:** Artificial, Scispot, Synthace
-**Secondary holders:** Biosero, Medra, Trilobio, UniteLabs
-
-## Standardization
-
-> The bottleneck is interop. Until there's a SiLA-equivalent that everyone implements,
-every integration is N×M custom work.
-
-**Holders: 7 total** (**crowded**) — 5 primary, 2 secondary
-
-**Primary holders:** Biosero, PyLabRobot, RetiSoft, SiLA, UniteLabs
-**Secondary holders:** Artificial, HighRes Biosolutions
+**Secondary holders:** Genie Life Sciences, PyLabRobot, SPT Labtech, Trilobio
 
 ## Closed loop
 
@@ -95,7 +95,7 @@ model update → next hypothesis, with no human in the inner loop.
 
 **Holders: 6 total** (**crowded**) — 2 primary, 4 secondary
 
-**Primary holders:** LILA Sciences, Medra
+**Primary holders:** Lila Sciences, Medra
 **Secondary holders:** Emerald Cloud Lab, Ginkgo Bioworks, Strateos, Tetsuwan Scientific
 
 ## Accountability
@@ -103,9 +103,9 @@ model update → next hypothesis, with no human in the inner loop.
 > Nobody automates because nobody wants to own the failure mode. The unblocker is
 GMP-grade traceability, audit trails, signed protocol versions.
 
-**Holders: 5 total** (moderate) — 0 primary, 5 secondary
+**Holders: 6 total** (**crowded**) — 0 primary, 6 secondary
 
-**Secondary holders:** Benchling, Charles River, Labguru, Miltenyi Biotec, Multiply Labs
+**Secondary holders:** Benchling, Charles River, Dash Bio, Labguru, Miltenyi Biotec, Multiply Labs
 
 ## Eroom's law / R&D productivity
 
@@ -114,17 +114,27 @@ that bends the curve. The thesis is macro, not technical.
 
 **Holders: 5 total** (moderate) — 0 primary, 5 secondary
 
-**Secondary holders:** Ginkgo Bioworks, Insilico Medicine, Isomorphic Labs, LILA Sciences, Recursion
+**Secondary holders:** Ginkgo Bioworks, Insilico Medicine, Isomorphic Labs, Lila Sciences, Recursion
+
+## VLA / mimicking scientists
+
+> Vision-language-action models that watch a scientist and imitate the manipulations
+are the cheapest path to general-purpose autonomy — bypassing formal protocol specs.
+
+**Holders: 4 total** (moderate) — 3 primary, 1 secondary
+
+**Primary holders:** Robot On Rails, Tetsuwan Scientific, Zeon Systems
+**Secondary holders:** Medra
 
 ## Protocol libraries
 
 > The win is a shared, versioned, executable corpus of protocols — like GitHub for
 wet lab. Once enough protocols are machine-readable, everything downstream gets easier.
 
-**Holders: 4 total** (moderate) — 2 primary, 2 secondary
+**Holders: 4 total** (moderate) — 1 primary, 3 secondary
 
-**Primary holders:** Briefly Bio, Spaero Bio
-**Secondary holders:** Opentrons, Potato
+**Primary holders:** Briefly Bio
+**Secondary holders:** Opentrons, Potato, Spaero Bio
 
 ## Dexterity
 
@@ -140,10 +150,10 @@ Better hands and perception unlock the rest.
 > Scientists are running too few well-designed experiments. The constraint is in
 planning, not execution. Bayesian / active-learning planners win.
 
-**Holders: 3 total** (thin) — 2 primary, 1 secondary
+**Holders: 3 total** (thin) — 1 primary, 2 secondary
 
-**Primary holders:** Kiin Bio, Phylo
-**Secondary holders:** Synthace
+**Primary holders:** Kiin Bio
+**Secondary holders:** Phylo, Synthace
 
 ## Trust
 
@@ -154,34 +164,25 @@ experiment, inspect the data, see the LLM's reasoning.
 
 **Secondary holders:** Briefly Bio, Potato
 
-## VLA / mimicking scientists
-
-> Vision-language-action models that watch a scientist and imitate the manipulations
-are the cheapest path to general-purpose autonomy — bypassing formal protocol specs.
-
-**Holders: 1 total** (**very thin**) — 1 primary, 0 secondary
-
-**Primary holders:** Tetsuwan Scientific
-
 ---
 
 ## Density ranking
 
 | Thesis | Total holders | Primary | Secondary | Crowdedness |
 |---|---:|---:|---:|---|
-| Hardware modularity | 17 | 14 | 3 | very crowded |
-| Scale | 8 | 6 | 2 | very crowded |
-| Knowledge work bottlenecks | 8 | 4 | 4 | very crowded |
+| Hardware modularity | 17 | 13 | 4 | very crowded |
+| Knowledge work bottlenecks | 13 | 6 | 7 | very crowded |
+| Compiler / abstraction / interface | 10 | 6 | 4 | very crowded |
+| Scale | 9 | 7 | 2 | very crowded |
+| Predictive validity | 9 | 6 | 3 | very crowded |
+| Standardization | 8 | 5 | 3 | very crowded |
 | Liquid classes | 8 | 5 | 3 | very crowded |
 | Hardware cost | 8 | 4 | 4 | very crowded |
-| Predictive validity | 8 | 6 | 2 | very crowded |
-| Compiler / abstraction / interface | 7 | 3 | 4 | crowded |
-| Standardization | 7 | 5 | 2 | crowded |
 | Closed loop | 6 | 2 | 4 | crowded |
-| Accountability | 5 | 0 | 5 | moderate |
+| Accountability | 6 | 0 | 6 | crowded |
 | Eroom's law / R&D productivity | 5 | 0 | 5 | moderate |
-| Protocol libraries | 4 | 2 | 2 | moderate |
+| VLA / mimicking scientists | 4 | 3 | 1 | moderate |
+| Protocol libraries | 4 | 1 | 3 | moderate |
 | Dexterity | 3 | 0 | 3 | thin |
-| DOE — Design of experiments | 3 | 2 | 1 | thin |
+| DOE — Design of experiments | 3 | 1 | 2 | thin |
 | Trust | 2 | 0 | 2 | thin |
-| VLA / mimicking scientists | 1 | 1 | 0 | very thin |

@@ -11,7 +11,7 @@ Companies grouped by Cheshire-style functional category. A company in multiple c
 Incumbents own the pharma top-of-stack. Newer entrants compete on price (Opentrons),
 modularity (Trilobio, Robot On Rails), or specialty volumes (SPT, Cytena, Dispendix).
 
-**16 companies:** Agilent, Beckman Coulter Life Sciences, Dispendix, Dynamic Devices, Formulatrix, GENIE, Hamilton, Integra Biosciences, Medra, Opentrons, PerkinElmer / Revvity, Robot On Rails, SPT Labtech, Tecan, Thermo Fisher Scientific, Trilobio
+**16 companies:** Agilent, Beckman Coulter Life Sciences, Dispendix, Dynamic Devices, Formulatrix, Genie Life Sciences, Hamilton, Integra Biosciences, Medra, Opentrons, PerkinElmer / Revvity, Robot On Rails, SPT Labtech, Tecan, Thermo Fisher Scientific, Trilobio
 
 ## Mobility & material transport
 
@@ -30,7 +30,7 @@ The most contested column on the map. Old guard (Biosero, HighRes, RetiSoft) ver
 modern API-first (Artificial, Trilobio, UniteLabs, Scispot) versus AI-native autonomous
 (LILA, Medra).
 
-**13 companies:** Artificial, Automata, Biosero, GENIE, Ginkgo Bioworks, HighRes Biosolutions, LILA Sciences, Medra, Multiply Labs, RetiSoft, Scispot, Trilobio, UniteLabs
+**14 companies:** Artificial, Automata, Biosero, Cheshire Labs, Genie Life Sciences, Ginkgo Bioworks, HighRes Biosolutions, Lila Sciences, Medra, Multiply Labs, RetiSoft, Scispot, Trilobio, UniteLabs
 
 ## Hardware integration standards / software
 
@@ -39,7 +39,7 @@ modern API-first (Artificial, Trilobio, UniteLabs, Scispot) versus AI-native aut
 Where the standardization thesis is most explicit. Standards bodies, OSS projects, and
 a small number of vendors that commercialize them.
 
-**4 companies:** PyLabRobot, RetiSoft, SiLA, UniteLabs
+**5 companies:** Cheshire Labs, PyLabRobot, RetiSoft, SiLA, UniteLabs
 
 ## Cell culture automation
 
@@ -56,7 +56,7 @@ Small specialty players (Cytena, Celltrio, Multiply Labs) attack niches.
 
 Where the knowledge-work thesis lives. Heavy AI-native presence.
 
-**6 companies:** Edison, Isomorphic Labs, LILA Sciences, Owkin, Potato, Recursion
+**7 companies:** Edison Scientific, Isomorphic Labs, Lila Sciences, Owkin, Phylo, Potato, Recursion
 
 ## Biofoundation models
 
@@ -64,7 +64,7 @@ Where the knowledge-work thesis lives. Heavy AI-native presence.
 
 Almost every player here is AI-native. The "predictive validity" thesis lives here.
 
-**7 companies:** Chai Discovery, Insilico Medicine, Isomorphic Labs, LILA Sciences, Owkin, Recursion, Relay Therapeutics
+**7 companies:** Chai Discovery, Insilico Medicine, Isomorphic Labs, Lila Sciences, Owkin, Recursion, Relay Therapeutics
 
 ## LIMS
 
@@ -99,7 +99,7 @@ biofoundation-model layers.
 Heavy overlap with orchestration. The "where does the protocol live?" question is
 unsettled — vendor-specific scripts, DSLs, LLM-generated, or a shared library.
 
-**11 companies:** Briefly Bio, LILA Sciences, Medra, Opentrons, Potato, Robot On Rails, Spaero Bio, Synthace, Tetsuwan Scientific, Trilobio, Zeon Systems
+**12 companies:** Briefly Bio, Lila Sciences, Medra, Opentrons, Phylo, Potato, Robot On Rails, Spaero Bio, Synthace, Tetsuwan Scientific, Trilobio, Zeon Systems
 
 ## Closed-loop experimentation
 
@@ -108,7 +108,7 @@ unsettled — vendor-specific scripts, DSLs, LLM-generated, or a shared library.
 Thinnest column on the map. Either an under-served niche or a thesis that hasn't yet
 produced enough companies to fill a column.
 
-**2 companies:** LILA Sciences, Medra
+**3 companies:** Lila Sciences, Medra, Tetsuwan Scientific
 
 ## Data generation
 
@@ -117,7 +117,7 @@ produced enough companies to fill a column.
 Almost a one-company column on the Cheshire map (LILA). Recursion fits conceptually
 but is filed elsewhere.
 
-**1 companies:** LILA Sciences
+**1 companies:** Lila Sciences
 
 ## Cloud labs
 
@@ -126,7 +126,7 @@ but is filed elsewhere.
 The "scale" thesis in product form. Decade-old commercial pattern with mixed results
 — Emerald and Strateos are the proof points.
 
-**7 companies:** Emerald Cloud Lab, Ginkgo Bioworks, LILA Sciences, Medra, Strateos, Tetsuwan Scientific, Zeon Systems
+**7 companies:** Emerald Cloud Lab, Ginkgo Bioworks, Lila Sciences, Medra, Strateos, Tetsuwan Scientific, Zeon Systems
 
 ## CROs and Science as a Service
 
@@ -135,4 +135,4 @@ The "scale" thesis in product form. Decade-old commercial pattern with mixed res
 Where AI-native bets get tested commercially against the incumbent CRO model.
 Charles River anchors the traditional end; Recursion anchors the AI-native end.
 
-**6 companies:** Charles River, cornucopia bio, Cromatic Bio, DASH, Plasmidsaurus, Recursion
+**6 companies:** Charles River, Cornucopia Bio, Cromatic, Dash Bio, Plasmidsaurus, Recursion

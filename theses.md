@@ -13,7 +13,7 @@ model update → next hypothesis, with no human in the inner loop.
 
 **Falsifier:** If customers keep wanting human-in-the-loop checkpoints (regulatory, scientific judgment, trust), closed-loop PMF narrows to a few high-volume use cases (mAb discovery, cell line dev) and doesn't generalize.
 
-**Primary holders:** LILA Sciences, Medra
+**Primary holders:** Lila Sciences, Medra
 **Secondary holders:** Emerald Cloud Lab, Ginkgo Bioworks, Strateos, Tetsuwan Scientific
 
 ## Dexterity
@@ -36,7 +36,8 @@ are the cheapest path to general-purpose autonomy — bypassing formal protocol 
 
 **Falsifier:** Formal protocol authoring (Antha-style, Briefly-style) plus deterministic hardware is enough — imitation learning turns out unnecessary.
 
-**Primary holders:** Tetsuwan Scientific
+**Primary holders:** Robot On Rails, Tetsuwan Scientific, Zeon Systems
+**Secondary holders:** Medra
 
 ## Hardware modularity
 
@@ -47,8 +48,8 @@ modules with common interfaces — the lab equivalent of PCIe.
 
 **Falsifier:** Customers consistently prefer turnkey integrated cells because the integration cost of "modular" still falls on them.
 
-**Primary holders:** Agilent, Automata, Beckman Coulter Life Sciences, Celltrio, Cytiva, HighRes Biosolutions, Miltenyi Biotec, Molecular Devices, Multiply Labs, PerkinElmer / Revvity, Robot On Rails, Sartorius, Thermo Fisher Scientific, Trilobio
-**Secondary holders:** Hamilton, Tecan, Zeon Systems
+**Primary holders:** Agilent, Automata, Beckman Coulter Life Sciences, Celltrio, Cytiva, HighRes Biosolutions, Miltenyi Biotec, Molecular Devices, Multiply Labs, PerkinElmer / Revvity, Sartorius, Thermo Fisher Scientific, Trilobio
+**Secondary holders:** Hamilton, Robot On Rails, Tecan, Zeon Systems
 
 ## Compiler / abstraction / interface
 
@@ -59,8 +60,8 @@ hardware is available. Without this, every protocol is bound to a specific instr
 
 **Falsifier:** The abstraction leaks too much (liquid-class effects, instrument quirks) to compile cleanly, so people fall back to vendor-specific scripts.
 
-**Primary holders:** Artificial, Scispot, Synthace
-**Secondary holders:** Biosero, Medra, Trilobio, UniteLabs
+**Primary holders:** Artificial, Cheshire Labs, Genie Life Sciences, Scispot, Spaero Bio, Synthace
+**Secondary holders:** Biosero, Phylo, Trilobio, UniteLabs
 
 ## Standardization
 
@@ -72,7 +73,7 @@ every integration is N×M custom work.
 **Falsifier:** Vendors continue to defect (proprietary advantages outweigh interop benefits) and the de facto standard ends up being whichever orchestrator has critical mass.
 
 **Primary holders:** Biosero, PyLabRobot, RetiSoft, SiLA, UniteLabs
-**Secondary holders:** Artificial, HighRes Biosolutions
+**Secondary holders:** Artificial, Cheshire Labs, HighRes Biosolutions
 
 ## DOE — Design of experiments
 
@@ -83,8 +84,8 @@ planning, not execution. Bayesian / active-learning planners win.
 
 **Falsifier:** Execution capacity is so limited that even naive experimental designs saturate it — better DOE doesn't help until throughput catches up.
 
-**Primary holders:** Kiin Bio, Phylo
-**Secondary holders:** Synthace
+**Primary holders:** Kiin Bio
+**Secondary holders:** Phylo, Synthace
 
 ## Accountability
 
@@ -95,7 +96,7 @@ GMP-grade traceability, audit trails, signed protocol versions.
 
 **Falsifier:** Small biotechs (the actual buyers of new automation) don't care about this and the pharma-grade compliance load is a tax that prevents the modern stack from competing.
 
-**Secondary holders:** Benchling, Charles River, Labguru, Miltenyi Biotec, Multiply Labs
+**Secondary holders:** Benchling, Charles River, Dash Bio, Labguru, Miltenyi Biotec, Multiply Labs
 
 ## Trust
 
@@ -117,8 +118,8 @@ Aggregate demand into a few cloud labs and amortize hardware capex.
 
 **Falsifier:** Turnaround latency, IP-leakage fears, or the "I need to watch my cells" instinct keep most science on-prem despite worse unit economics. (This has been the empirical pattern.)
 
-**Primary holders:** Charles River, Emerald Cloud Lab, Ginkgo Bioworks, Plasmidsaurus, Strateos, Zeon Systems
-**Secondary holders:** LILA Sciences, Recursion
+**Primary holders:** Charles River, Cromatic, Dash Bio, Emerald Cloud Lab, Ginkgo Bioworks, Plasmidsaurus, Strateos
+**Secondary holders:** Lila Sciences, Recursion
 
 ## Knowledge work bottlenecks
 
@@ -129,8 +130,8 @@ review, hypothesis generation, protocol authoring, data interpretation.
 
 **Falsifier:** Cognitive automation produces plausible-sounding but scientifically poor outputs that fail to translate; the bench execution problem reasserts itself.
 
-**Primary holders:** Benchling, Edison, Labguru, Potato
-**Secondary holders:** Briefly Bio, Kiin Bio, Phylo, Scispot
+**Primary holders:** Benchling, Cornucopia Bio, Edison Scientific, Labguru, Phylo, Potato
+**Secondary holders:** Briefly Bio, Cromatic, Kiin Bio, Medra, Robot On Rails, Scispot, Zeon Systems
 
 ## Liquid classes
 
@@ -154,7 +155,7 @@ of magnitude and adoption follows the way Opentrons proved at the low end.
 **Falsifier:** Total cost of ownership is dominated by integration and reagent consumables, not capex — so a cheaper instrument doesn't move the adoption needle.
 
 **Primary holders:** Dynamic Devices, Formulatrix, Integra Biosciences, Opentrons
-**Secondary holders:** PyLabRobot, Robot On Rails, SPT Labtech, Trilobio
+**Secondary holders:** Genie Life Sciences, PyLabRobot, SPT Labtech, Trilobio
 
 ## Predictive validity
 
@@ -167,7 +168,7 @@ the gap.
 **Falsifier:** Existing assays are predictive enough; the real bottleneck is throughput on those assays, not new readouts.
 
 **Primary holders:** Chai Discovery, Insilico Medicine, Isomorphic Labs, Owkin, Recursion, Relay Therapeutics
-**Secondary holders:** Edison, LILA Sciences
+**Secondary holders:** Cornucopia Bio, Edison Scientific, Lila Sciences
 
 ## Eroom's law / R&D productivity
 
@@ -178,7 +179,7 @@ that bends the curve. The thesis is macro, not technical.
 
 **Falsifier:** Newer modalities (ML-derived targets, GLP-1-style hits) drive productivity recovery without needing automation, and the curve bends without lab autonomy.
 
-**Secondary holders:** Ginkgo Bioworks, Insilico Medicine, Isomorphic Labs, LILA Sciences, Recursion
+**Secondary holders:** Ginkgo Bioworks, Insilico Medicine, Isomorphic Labs, Lila Sciences, Recursion
 
 ## Protocol libraries
 
@@ -189,5 +190,5 @@ wet lab. Once enough protocols are machine-readable, everything downstream gets 
 
 **Falsifier:** Protocols are too tacit / lab-specific to share at scale, and the corpus never reaches critical mass.
 
-**Primary holders:** Briefly Bio, Spaero Bio
-**Secondary holders:** Opentrons, Potato
+**Primary holders:** Briefly Bio
+**Secondary holders:** Opentrons, Potato, Spaero Bio

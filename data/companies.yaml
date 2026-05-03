@@ -1,8 +1,9 @@
 # Companies in the autonomous-science / lab-automation landscape.
 #
-# Source v1: Cheshire Labs landscape image (May 2026).
-# `unverified: true` flags entries where identity, domain, or fields couldn't be
-# resolved with confidence. Treat these as TODOs.
+# Source v1: Cheshire Labs landscape image (May 2026); identities and fields
+# resolved via web research (May 2026).
+# `unverified: true` flags entries where identity or fields couldn't be
+# confirmed despite searching. Currently only ARES is unresolved.
 #
 # Field reference:
 #   slug         kebab-case id, used for filenames and HTML anchors
@@ -41,7 +42,7 @@
   customers: []
   pricing: null
   posture: unknown
-  notes: Identity unresolved from Cheshire image — possibly ARES Genetics or other cell-culture vendor.
+  notes: Identity could not be resolved despite searching — none of ARES Genetics, ARES Scientific, ARES Immunotherapy match the cell-culture-automation column. May be a logo we're misreading.
   unverified: true
 
 - name: Artificial
@@ -51,11 +52,11 @@
   categories: [orchestration-scheduling]
   theses: [compiler-abstraction, standardization]
   ai_level: ai-adopting
-  maturity: mid-stage
+  maturity: late-stage
   customers: [pharma]
   pricing: premium
-  posture: operating system for the lab
-  notes: Lab orchestration / workflow platform.
+  posture: the digital orchestration platform
+  notes: Whole-lab orchestration unifying instruments, informatics, and AI agents for pharma/biotech labs.
 
 - name: Automata
   slug: automata
@@ -164,44 +165,41 @@
 - name: Cheshire Labs
   slug: cheshire-labs
   domain: cheshirelabs.io
-  url: null
-  categories: []
-  theses: []
-  ai_level: null
-  maturity: null
-  customers: []
-  pricing: null
-  posture: landscape source
-  notes: Author of the source landscape image; not a vendor in any category.
-  unverified: true
+  url: https://cheshirelabs.io
+  categories: [orchestration-scheduling, hardware-integration-standards]
+  theses: [compiler-abstraction, standardization]
+  ai_level: ai-native
+  maturity: early
+  customers: [biotech, academia]
+  pricing: mid
+  posture: AI-native lab automation tools
+  notes: Builds the Orca scheduler and Swarm AI MCP layer for unified lab control. Publishes the lab-automation landscape map this catalog was extracted from.
 
-- name: cornucopia bio
+- name: Cornucopia Bio
   slug: cornucopia-bio
-  domain: null
-  url: null
+  domain: cornucopiabio.com
+  url: https://www.cornucopiabio.com
   categories: [cros-saas]
-  theses: []
-  ai_level: null
+  theses: [knowledge-work, predictive-validity]
+  ai_level: ai-native
   maturity: early
-  customers: []
-  pricing: null
-  posture: unknown
-  notes: Listed at corner of source image — unidentified.
-  unverified: true
+  customers: [biotech]
+  pricing: mid
+  posture: the AI-native CRO
+  notes: Remote, AI-driven CRO running qPCR and ELISA assays from a browser prompt. Founded 2025 in San Francisco.
 
-- name: Cromatic Bio
+- name: Cromatic
   slug: cromatic-bio
-  domain: null
-  url: null
+  domain: cromatic.bio
+  url: https://www.cromatic.bio
   categories: [cros-saas]
-  theses: []
-  ai_level: null
+  theses: [scale, knowledge-work]
+  ai_level: ai-adopting
   maturity: early
-  customers: []
-  pricing: null
-  posture: unknown
-  notes: Listed at corner of source image — unidentified.
-  unverified: true
+  customers: [biotech]
+  pricing: mid
+  posture: AI-native RevOps for life sciences
+  notes: Marketplace + project management platform matching biotechs with vetted CROs. $5.3M seed.
 
 - name: Cytena
   slug: cytena
@@ -229,19 +227,18 @@
   posture: bioprocess from research to GMP
   notes: Major bioprocess incumbent under Danaher.
 
-- name: DASH
-  slug: dash
-  domain: null
-  url: null
+- name: Dash Bio
+  slug: dash-bio
+  domain: dash.bio
+  url: https://www.dash.bio
   categories: [cros-saas]
-  theses: []
-  ai_level: null
-  maturity: null
-  customers: [pharma]
-  pricing: null
-  posture: unknown
-  notes: Identity ambiguous from source image — possibly Dash Bio.
-  unverified: true
+  theses: [scale, accountability]
+  ai_level: ai-adopting
+  maturity: mid-stage
+  customers: [pharma, biotech]
+  pricing: mid
+  posture: bioanalysis 10x faster
+  notes: Automated bioanalysis CRO running GLP-compliant ELISA, MSD, LCMS, and PCR via purpose-built automation. $17.5M total funding.
 
 - name: Dispendix
   slug: dispendix
@@ -269,19 +266,18 @@
   posture: agile liquid handlers
   notes: Lynx, Felix.
 
-- name: Edison
-  slug: edison
+- name: Edison Scientific
+  slug: edison-scientific
   domain: edisonscientific.com
-  url: null
+  url: https://edisonscientific.com
   categories: [hypothesis-generation]
   theses: [knowledge-work, predictive-validity]
   ai_level: ai-native
-  maturity: early
-  customers: [biotech, academia]
-  pricing: null
-  posture: AI scientist for literature & hypotheses
-  notes: AI-for-science / lit-review agent. Domain unconfirmed.
-  unverified: true
+  maturity: mid-stage
+  customers: [biotech, academia, pharma]
+  pricing: premium
+  posture: AI platform for scientific discovery
+  notes: FutureHouse spinout building Kosmos — an AI scientist agent for literature, hypothesis generation, and data analysis. $70M raised.
 
 - name: Emerald Cloud Lab
   slug: emerald-cloud-lab
@@ -309,19 +305,18 @@
   posture: instruments at every price tier
   notes: Mantis, Rover, Tempest.
 
-- name: GENIE
-  slug: genie
-  domain: null
-  url: null
+- name: Genie Life Sciences
+  slug: genie-life-sciences
+  domain: genielifesciences.com
+  url: https://genielifesciences.com
   categories: [liquid-handling-hardware, orchestration-scheduling]
-  theses: []
-  ai_level: null
-  maturity: null
-  customers: []
-  pricing: null
-  posture: unknown
-  notes: Identity ambiguous — possibly Genie Life Sciences or other.
-  unverified: true
+  theses: [compiler-abstraction, hardware-cost]
+  ai_level: ai-adopting
+  maturity: early
+  customers: [biotech, academia]
+  pricing: mid
+  posture: cloud-based lab execution
+  notes: LabOS orchestration plus LabMate liquid handler; integrates Opentrons and other third-party instruments via drag-and-drop protocol design.
 
 - name: Ginkgo Bioworks
   slug: ginkgo-bioworks
@@ -427,10 +422,10 @@
   posture: ELN for the long tail
   notes: Long-running ELN/LIMS by Cenevo.
 
-- name: LILA Sciences
+- name: Lila Sciences
   slug: lila-sciences
-  domain: lila.bio
-  url: https://lila.bio
+  domain: lila.ai
+  url: https://www.lila.ai
   categories:
     - orchestration-scheduling
     - hypothesis-generation
@@ -441,16 +436,16 @@
     - cloud-labs
   theses: [closed-loop, scale, predictive-validity, eroom]
   ai_level: ai-native
-  maturity: early
+  maturity: late-stage
   customers: [pharma, biotech]
   pricing: premium
-  posture: scientific superintelligence
-  notes: Flagship Pioneering. Most categories on the Cheshire map. Domain unconfirmed.
+  posture: building scientific superintelligence
+  notes: Flagship Pioneering company running AI Science Factories — autonomous labs with closed-loop hypothesis generation across bio, chem, materials. ~$550M raised.
 
 - name: Medra
   slug: medra
-  domain: medra.bio
-  url: null
+  domain: medra.ai
+  url: https://www.medra.ai
   categories:
     - liquid-handling-hardware
     - mobility-transport
@@ -458,14 +453,13 @@
     - flexible-protocol-generation
     - closed-loop-experimentation
     - cloud-labs
-  theses: [closed-loop, dexterity, compiler-abstraction]
+  theses: [closed-loop, vla-mimicking, dexterity, knowledge-work]
   ai_level: ai-native
-  maturity: early
-  customers: [biotech, academia]
-  pricing: null
-  posture: autonomous lab
-  notes: Autonomous-science platform; emergent player. Domain unconfirmed.
-  unverified: true
+  maturity: mid-stage
+  customers: [biotech, pharma, academia]
+  pricing: premium
+  posture: hand over lab work
+  notes: Physical AI scientist platform — general-purpose robots driven by natural language to run closed-loop life-science experiments. $52M Series A.
 
 - name: Miltenyi Biotec
   slug: miltenyi-biotec
@@ -548,16 +542,15 @@
 - name: Phylo
   slug: phylo
   domain: phylo.bio
-  url: null
-  categories: [experiment-planning]
-  theses: [doe, knowledge-work]
-  ai_level: ai-adopting
+  url: https://phylo.bio
+  categories: [experiment-planning, hypothesis-generation, flexible-protocol-generation]
+  theses: [knowledge-work, doe, compiler-abstraction]
+  ai_level: ai-native
   maturity: early
-  customers: [biotech]
-  pricing: null
-  posture: AI experiment planning
-  notes: Experiment planning / scheduling. Domain unconfirmed.
-  unverified: true
+  customers: [biotech, academia]
+  pricing: mid
+  posture: integrated biology environment
+  notes: Biomni Lab — agentic AI workspace where biologists plan, author, and execute experiments via natural language. $13.5M seed (a16z, Menlo).
 
 - name: Plasmidsaurus
   slug: plasmidsaurus
@@ -574,17 +567,16 @@
 
 - name: Potato
   slug: potato
-  domain: potato.com
-  url: null
+  domain: potato.ai
+  url: https://www.potato.ai
   categories: [hypothesis-generation, eln, experiment-planning, flexible-protocol-generation]
   theses: [knowledge-work, trust, protocol-libraries]
   ai_level: ai-native
   maturity: early
   customers: [biotech, academia]
-  pricing: null
-  posture: AI lab notebook & agent
-  notes: AI-native ELN / co-scientist agent. Domain unconfirmed.
-  unverified: true
+  pricing: mid
+  posture: accelerate scientific execution
+  notes: Tater AI co-scientist — hypothesis generation, protocol design, lit review, manuscript drafting. $4.5M seed (Draper).
 
 - name: PyLabRobot
   slug: pylabrobot
@@ -641,16 +633,15 @@
 - name: Robot On Rails
   slug: robot-on-rails
   domain: robotonrails.com
-  url: null
+  url: https://robotonrails.com
   categories: [liquid-handling-hardware, mobility-transport, flexible-protocol-generation]
-  theses: [hardware-modularity, hardware-cost]
-  ai_level: ai-adopting
+  theses: [vla-mimicking, knowledge-work, hardware-modularity]
+  ai_level: ai-native
   maturity: early
-  customers: [biotech]
-  pricing: null
-  posture: rail-based modular automation
-  notes: Rail-mounted modular robotics. Domain unconfirmed.
-  unverified: true
+  customers: [biotech, academia]
+  pricing: mid
+  posture: run more experiments autonomously
+  notes: Boston-based autonomous lab robot using natural language to service multiple workstations for pipetting, sample handling, reagent management.
 
 - name: Sartorius
   slug: sartorius
@@ -693,17 +684,16 @@
 
 - name: Spaero Bio
   slug: spaero-bio
-  domain: null
-  url: null
+  domain: spaero.bio
+  url: https://www.spaero.bio
   categories: [flexible-protocol-generation]
-  theses: [protocol-libraries]
+  theses: [compiler-abstraction, protocol-libraries]
   ai_level: ai-adopting
   maturity: early
-  customers: [academia]
-  pricing: null
-  posture: shared protocols
-  notes: Protocol management/sharing. Domain unconfirmed.
-  unverified: true
+  customers: [biotech, academia]
+  pricing: mid
+  posture: scale automation on existing handlers
+  notes: ML + computer-vision software layer that flexibly generates and adapts protocols on liquid handlers like Hamilton. Founded 2020, San Francisco.
 
 - name: SPT Labtech
   slug: spt-labtech
@@ -729,7 +719,7 @@
   customers: [pharma, biotech]
   pricing: premium
   posture: robotic cloud lab
-  notes: Formerly Transcriptic. Status post-restructuring needs verifying.
+  notes: Formerly Transcriptic.
 
 - name: Synthace
   slug: synthace
@@ -759,17 +749,16 @@
 
 - name: Tetsuwan Scientific
   slug: tetsuwan-scientific
-  domain: tetsuwan.co
-  url: null
-  categories: [flexible-protocol-generation, cloud-labs]
+  domain: tetsuwan.com
+  url: https://www.tetsuwan.com
+  categories: [flexible-protocol-generation, cloud-labs, closed-loop-experimentation]
   theses: [vla-mimicking, closed-loop, dexterity]
   ai_level: ai-native
   maturity: early
   customers: [pharma, biotech]
-  pricing: null
-  posture: humanoid robot scientist
-  notes: Japan-affiliated; Eve-style autonomous experimentation. Domain unconfirmed.
-  unverified: true
+  pricing: mid
+  posture: autonomous AI scientist robots
+  notes: Builds glass-cube robotic AI scientists running ResearchOS to autonomously evaluate and execute experiments. $2.7M pre-seed (2048 Ventures).
 
 - name: Thermo Fisher Scientific
   slug: thermo-fisher
@@ -800,27 +789,25 @@
 - name: UniteLabs
   slug: unitelabs
   domain: unitelabs.io
-  url: null
+  url: https://unitelabs.io
   categories: [orchestration-scheduling, hardware-integration-standards, lims]
   theses: [standardization, compiler-abstraction]
   ai_level: ai-adopting
   maturity: early
   customers: [biotech, academia]
-  pricing: null
-  posture: open driver layer
-  notes: SiLA-based open driver/connectivity layer. Domain unconfirmed.
-  unverified: true
+  pricing: mid
+  posture: automation OS for ambitious labs
+  notes: Munich-based Python connectivity platform with SiLA 2-compliant drivers and CDK linking 100+ instruments across vendors.
 
 - name: Zeon Systems
   slug: zeon-systems
-  domain: null
-  url: null
+  domain: zeonsystems.ai
+  url: https://www.zeonsystems.ai
   categories: [mobility-transport, flexible-protocol-generation, cloud-labs]
-  theses: [scale, hardware-modularity]
-  ai_level: ai-adopting
-  maturity: mid-stage
-  customers: []
-  pricing: null
-  posture: unknown
-  notes: Identity ambiguous in source image.
-  unverified: true
+  theses: [vla-mimicking, knowledge-work, hardware-modularity]
+  ai_level: ai-native
+  maturity: early
+  customers: [biotech, academia]
+  pricing: mid
+  posture: AI-powered robotics for labs
+  notes: YC S25 startup translating plain-English experiment descriptions into robotic-arm execution with computer-vision labware detection. Piloting at Stanford and UCSF.
