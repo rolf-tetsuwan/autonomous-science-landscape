@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Autonomous Science Landscape</title>
+<!-- GENERATED — edit data/*.yaml and run scripts/generate.py -->
+<style>
+  :root {
+    --bg: #fafafa;
+    --fg: #1f2024;
+    --muted: #6b7280;
+    --line: #e5e7eb;
+    --line-strong: #d1d5db;
+    --accent: #1849a9;
+    --row-hover: #f3f4f6;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font: 14px/1.45 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  }
+  header {
+    padding: 20px 24px 12px;
+    border-bottom: 1px solid var(--line);
+    background: white;
+  }
+  header h1 { margin: 0 0 4px; font-size: 20px; font-weight: 600; }
+  header p  { margin: 0; color: var(--muted); font-size: 13px; }
+  header a  { color: var(--accent); text-decoration: none; }
+
+  .filter-bar {
+    background: white;
+    border-bottom: 1px solid var(--line);
+    padding: 12px 24px;
+  }
+  .search-row {
+    display: flex; gap: 12px; align-items: center; margin-bottom: 8px;
+  }
+  .search-row input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+    font-size: 14px;
+    background: white;
+  }
+  .search-row input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .count { font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .clear-btn {
+    padding: 6px 10px;
+    border: 1px solid var(--line-strong);
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .clear-btn:hover { background: var(--row-hover); color: var(--fg); }
+
+  details.filter-group {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    margin-top: 8px;
+    background: white;
+  }
+  details.filter-group summary {
+    padding: 7px 12px;
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--muted);
+    list-style: none;
+    user-select: none;
+  }
+  details.filter-group summary::-webkit-details-marker { display: none; }
+  details.filter-group summary::before {
+    content: "▸ ";
+    display: inline-block;
+    transition: transform 0.15s;
+  }
+  details.filter-group[open] summary::before { transform: rotate(90deg); }
+  details.filter-group summary span.active { color: var(--accent); font-weight: 600; }
+  .chips {
+    padding: 0 12px 10px;
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+
+  .chip, .pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    line-height: 1.6;
+    background: #f2f4f7;
+    color: #475467;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .chip {
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid var(--line-strong);
+    background: white;
+    color: #475467;
+  }
+  .chip:hover { background: var(--row-hover); }
+  .chip.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+  .chip .ct { opacity: 0.6; margin-left: 4px; font-size: 10px; }
+
+  /* group-colored pills */
+  .g-hardware,  .g-physical  { background: #fee4e2; color: #b42318; }
+  .g-movement                 { background: #fef0c7; color: #b54708; }
+  .g-software                 { background: #e9d7fe; color: #6941c6; }
+  .g-records                  { background: #d1fadf; color: #027a48; }
+  .g-thinking, .g-cognitive   { background: #d1e9ff; color: #1849a9; }
+  .g-business                 { background: #ccfbef; color: #115e59; }
+  .g-data                     { background: #fce7ff; color: #9b1c8c; }
+  .g-macro                    { background: #f2f4f7; color: #475467; }
+
+  /* AI-level pill colors */
+  .ai-ai-native    { background: #d1e9ff; color: #1849a9; }
+  .ai-ai-adopting  { background: #d1fadf; color: #027a48; }
+  .ai-ai-adjacent  { background: #f2f4f7; color: #475467; }
+  .ai-standard-oss { background: #fef0c7; color: #b54708; }
+
+  /* Maturity badge */
+  .mat-public         { background: #1849a9; color: white; }
+  .mat-late-stage     { background: #344054; color: white; }
+  .mat-mid-stage      { background: #98a2b3; color: white; }
+  .mat-early          { background: #fef0c7; color: #b54708; }
+  .mat-stealth        { background: #475467; color: white; }
+  .mat-mature-private { background: #d0d5dd; color: #344054; }
+  .mat-standard       { background: #fef0c7; color: #b54708; }
+
+  /* Pricing pill */
+  .pricing-premium    { background: #ffe4e8; color: #b42318; }
+  .pricing-mid        { background: #fef0c7; color: #b54708; }
+  .pricing-economical { background: #d1fadf; color: #027a48; }
+  .pricing-free       { background: #e9d7fe; color: #6941c6; }
+
+  /* table */
+  main { padding: 0 24px 24px; }
+  .tbl-wrap {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: auto;
+    margin-top: 16px;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    position: sticky; top: 0; z-index: 1;
+    background: white;
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+  thead th:hover { color: var(--fg); }
+  thead th.sorted { color: var(--accent); }
+  thead th.sorted::after {
+    content: " ▾";
+    font-size: 10px;
+  }
+  thead th.sorted.asc::after { content: " ▴"; }
+  thead th.no-sort { cursor: default; }
+  thead th.no-sort:hover { color: var(--muted); }
+
+  tbody tr { border-bottom: 1px solid var(--line); }
+  tbody tr:hover { background: var(--row-hover); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td {
+    padding: 10px 12px;
+    vertical-align: top;
+    font-size: 13px;
+  }
+  tbody td.cell-tags { max-width: 240px; }
+  tbody td.cell-tags .pill { margin: 2px 2px 0 0; cursor: pointer; }
+  tbody td.cell-name {
+    font-weight: 500;
+    min-width: 160px;
+  }
+  tbody td.cell-name a {
+    color: var(--fg);
+    text-decoration: none;
+  }
+  tbody td.cell-name a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+  tbody td.cell-name .unverified-mark {
+    display: inline-block;
+    margin-left: 4px;
+    color: #b54708;
+    font-size: 11px;
+    cursor: help;
+  }
+  tbody td.cell-posture {
+    font-style: italic;
+    color: var(--muted);
+    max-width: 200px;
+  }
+  tbody td.cell-notes {
+    color: #475467;
+    font-size: 12px;
+    max-width: 320px;
+  }
+
+  td.cell-logo {
+    width: 40px;
+    padding: 8px 10px 8px 14px;
+  }
+  td.cell-logo img {
+    width: 28px; height: 28px;
+    object-fit: contain;
+    border-radius: 4px;
+    background: white;
+    border: 1px solid var(--line);
+  }
+  td.cell-logo .placeholder {
+    width: 28px; height: 28px;
+    border-radius: 4px;
+    background: #f2f4f7;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  .empty-state {
+    padding: 40px;
+    text-align: center;
+    color: var(--muted);
+  }
+
+  /* counts column right-aligned numbers */
+  td.num, th.num { text-align: right; }
+
+  /* footer */
+  footer {
+    margin-top: 32px;
+    padding: 20px 24px;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Autonomous Science Landscape</h1>
+  <p>
+    A working catalog of <span id="company-total">…</span> companies in lab automation, autonomous science, and AI-for-bio.
+    Source: Cheshire Labs landscape (May 2026).
+    Views: <a href="companies.md">companies.md</a> · <a href="by-category.md">by-category</a> · <a href="by-thesis.md">by-thesis</a> · <a href="theses.md">theses</a> · <a href="README.md">README</a>.
+  </p>
+</header>
+
+<div class="filter-bar">
+  <div class="search-row">
+    <input id="search" type="search" placeholder="Search name, posture, notes…" autocomplete="off">
+    <span class="count" id="count">…</span>
+    <button class="clear-btn" id="clear-btn" type="button">Clear filters</button>
+  </div>
+  <div id="filter-groups"></div>
+</div>
+
+<main>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr id="thead-row">
+          <th class="no-sort"></th>
+          <th data-sort="name">Company</th>
+          <th data-sort="categories" class="num">Cat</th>
+          <th class="no-sort">Categories</th>
+          <th class="no-sort">Theses</th>
+          <th data-sort="ai_level">AI level</th>
+          <th data-sort="maturity">Maturity</th>
+          <th data-sort="pricing">Pricing</th>
+          <th data-sort="posture">Posture</th>
+          <th class="no-sort">Notes</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div class="empty-state" id="empty" style="display:none">No companies match these filters.</div>
+  </div>
+</main>
+
+<footer>
+  Auto-generated. Edit <code>data/*.yaml</code> and run <code>python3 scripts/generate.py</code>.
+</footer>
+
+<script id="data-blob" type="application/json">{"categories":[{"key":"liquid-handling-hardware","name":"Liquid handling hardware","group":"hardware","one_liner":"The thing that pipettes.","commentary":"Incumbents own the pharma top-of-stack. Newer entrants compete on price (Opentrons),\nmodularity (Trilobio, Robot On Rails), or specialty volumes (SPT, Cytena, Dispendix).\n"},{"key":"mobility-transport","name":"Mobility & material transport","group":"movement","one_liner":"The thing that moves the plate from A to B.","commentary":"Linear rails, gantries, mobile robots. Crowded with both incumbents (HighRes,\nFormulatrix) and modern entrants (Automata, Multiply Labs).\n"},{"key":"orchestration-scheduling","name":"Automation orchestration & scheduling","group":"software","one_liner":"The brain that decides what runs when.","commentary":"The most contested column on the map. Old guard (Biosero, HighRes, RetiSoft) versus\nmodern API-first (Artificial, Trilobio, UniteLabs, Scispot) versus AI-native autonomous\n(LILA, Medra).\n"},{"key":"hardware-integration-standards","name":"Hardware integration standards / software","group":"software","one_liner":"The driver layer.","commentary":"Where the standardization thesis is most explicit. Standards bodies, OSS projects, and\na small number of vendors that commercialize them.\n"},{"key":"cell-culture-automation","name":"Cell culture automation","group":"hardware","one_liner":"Cells are special \u2014 they need their own infrastructure.","commentary":"Bioprocess incumbents dominate (Sartorius, Cytiva, Miltenyi, Beckman, ThermoFisher).\nSmall specialty players (Cytena, Celltrio, Multiply Labs) attack niches.\n"},{"key":"hypothesis-generation","name":"Hypothesis generation / Literature review","group":"thinking","one_liner":"AI co-scientist for reading and proposing.","commentary":"Where the knowledge-work thesis lives. Heavy AI-native presence.\n"},{"key":"biofoundation-models","name":"Biofoundation models","group":"thinking","one_liner":"Foundation models trained on biology.","commentary":"Almost every player here is AI-native. The \"predictive validity\" thesis lives here.\n"},{"key":"lims","name":"LIMS","group":"records","one_liner":"The system of record for samples.","commentary":"Benchling is dominant; Labguru is the long-tail incumbent; Scispot and UniteLabs are\nmodern challengers.\n"},{"key":"eln","name":"ELN / human scheduling / pipeline docs","group":"records","one_liner":"Where scientists actually write things down.","commentary":"Overlaps with LIMS. Briefly Bio and Potato are AI-native challengers to Benchling/Labguru.\n"},{"key":"experiment-planning","name":"Experiment planning, model integration","group":"thinking","one_liner":"What should I run next?","commentary":"Thin column. Most planning logic ends up bundled into orchestrators or\nbiofoundation-model layers.\n"},{"key":"flexible-protocol-generation","name":"Flexible protocol generation","group":"software","one_liner":"Write protocol once, run anywhere.","commentary":"Heavy overlap with orchestration. The \"where does the protocol live?\" question is\nunsettled \u2014 vendor-specific scripts, DSLs, LLM-generated, or a shared library.\n"},{"key":"closed-loop-experimentation","name":"Closed-loop experimentation","group":"business","one_liner":"Hypothesis \u2192 execute \u2192 learn \u2192 repeat, autonomously.","commentary":"Thinnest column on the map. Either an under-served niche or a thesis that hasn't yet\nproduced enough companies to fill a column.\n"},{"key":"data-generation","name":"Data generation","group":"business","one_liner":"We exist to produce structured data at scale.","commentary":"Almost a one-company column on the Cheshire map (LILA). Recursion fits conceptually\nbut is filed elsewhere.\n"},{"key":"cloud-labs","name":"Cloud labs","group":"business","one_liner":"Send your protocol, get data back.","commentary":"The \"scale\" thesis in product form. Decade-old commercial pattern with mixed results\n\u2014 Emerald and Strateos are the proof points.\n"},{"key":"cros-saas","name":"CROs and Science as a Service","group":"business","one_liner":"Outsourced experiments \u2014 the non-AI baseline.","commentary":"Where AI-native bets get tested commercially against the incumbent CRO model.\nCharles River anchors the traditional end; Recursion anchors the AI-native end.\n"}],"theses":[{"key":"closed-loop","name":"Closed loop","group":"business","bet":"The missing piece is end-to-end loop closure: hypothesis \u2192 plan \u2192 execute \u2192 data \u2192\nmodel update \u2192 next hypothesis, with no human in the inner loop.\n","predicts":"The winning shape is autonomous-lab-as-a-product, where the customer hands over a\ngoal (not a protocol) and the system iterates.\n","falsifier":"If customers keep wanting human-in-the-loop checkpoints (regulatory, scientific\njudgment, trust), closed-loop PMF narrows to a few high-volume use cases (mAb\ndiscovery, cell line dev) and doesn't generalize.\n"},{"key":"dexterity","name":"Dexterity","group":"physical","bet":"The actual bottleneck is physical: robots can't reliably manipulate fragile biology.\nBetter hands and perception unlock the rest.\n","predicts":"Humanoid or high-DoF arms, not gantry liquid handlers, eat the long tail.\n","falsifier":"Standardization (SiLA + SBS plates) makes dexterity moot for 90% of tasks because\neverything moves through standardized fixtures.\n"},{"key":"vla-mimicking","name":"VLA / mimicking scientists","group":"cognitive","bet":"Vision-language-action models that watch a scientist and imitate the manipulations\nare the cheapest path to general-purpose autonomy \u2014 bypassing formal protocol specs.\n","predicts":"Companies bet on data collection from human bench work. Hardware looks general-purpose\n(humanoid or arm-on-cart), not assay-specific.\n","falsifier":"Formal protocol authoring (Antha-style, Briefly-style) plus deterministic hardware\nis enough \u2014 imitation learning turns out unnecessary.\n"},{"key":"hardware-modularity","name":"Hardware modularity","group":"physical","bet":"Lab automation has been killed by monolithic islands. The win is mix-and-match\nmodules with common interfaces \u2014 the lab equivalent of PCIe.\n","predicts":"Rail-and-cart systems, swappable end-effectors, decoupled scheduler from instruments.\n","falsifier":"Customers consistently prefer turnkey integrated cells because the integration cost\nof \"modular\" still falls on them.\n"},{"key":"compiler-abstraction","name":"Compiler / abstraction / interface","group":"software","bet":"Lab work needs an LLVM: a high-level protocol language that compiles down to whatever\nhardware is available. Without this, every protocol is bound to a specific instrument.\n","predicts":"Declarative protocol DSLs, hardware-abstraction layers, scheduler-agnostic protocol\nformats.\n","falsifier":"The abstraction leaks too much (liquid-class effects, instrument quirks) to compile\ncleanly, so people fall back to vendor-specific scripts.\n"},{"key":"standardization","name":"Standardization","group":"software","bet":"The bottleneck is interop. Until there's a SiLA-equivalent that everyone implements,\nevery integration is N\u00d7M custom work.\n","predicts":"Open driver standards, consortium work, and tools that only work if many vendors play.\n","falsifier":"Vendors continue to defect (proprietary advantages outweigh interop benefits) and\nthe de facto standard ends up being whichever orchestrator has critical mass.\n"},{"key":"doe","name":"DOE \u2014 Design of experiments","group":"cognitive","bet":"Scientists are running too few well-designed experiments. The constraint is in\nplanning, not execution. Bayesian / active-learning planners win.\n","predicts":"Thin-software companies that sit on top of any execution layer and tell scientists\n\"run these 16 conditions next.\"\n","falsifier":"Execution capacity is so limited that even naive experimental designs saturate it\n\u2014 better DOE doesn't help until throughput catches up.\n"},{"key":"accountability","name":"Accountability","group":"business","bet":"Nobody automates because nobody wants to own the failure mode. The unblocker is\nGMP-grade traceability, audit trails, signed protocol versions.\n","predicts":"Companies emphasize compliance, 21 CFR Part 11, ALCOA+, electronic signatures.\n","falsifier":"Small biotechs (the actual buyers of new automation) don't care about this and the\npharma-grade compliance load is a tax that prevents the modern stack from competing.\n"},{"key":"trust","name":"Trust","group":"business","bet":"Humans won't act on automated results unless they can see the work \u2014 replay the\nexperiment, inspect the data, see the LLM's reasoning.\n","predicts":"Rich provenance UIs, replay features, structured chain-of-thought logs, video review.\n","falsifier":"Customers actually treat automation like the dishwasher \u2014 once it works, they stop\nwatching, and trust UX is over-invested.\n"},{"key":"scale","name":"Scale","group":"business","bet":"Centralized mega-foundries beat distributed cottage automation on cost-per-experiment.\nAggregate demand into a few cloud labs and amortize hardware capex.\n","predicts":"Cloud labs, biofoundries, \"send us your protocol, get data back\" services.\n","falsifier":"Turnaround latency, IP-leakage fears, or the \"I need to watch my cells\" instinct keep\nmost science on-prem despite worse unit economics. (This has been the empirical pattern.)\n"},{"key":"knowledge-work","name":"Knowledge work bottlenecks","group":"cognitive","bet":"The constraint isn't bench execution \u2014 it's the cognitive layer above: literature\nreview, hypothesis generation, protocol authoring, data interpretation.\n","predicts":"AI co-scientists, lit-review agents, ELN copilots, protocol generators.\n","falsifier":"Cognitive automation produces plausible-sounding but scientifically poor outputs that\nfail to translate; the bench execution problem reasserts itself.\n"},{"key":"liquid-classes","name":"Liquid classes","group":"physical","bet":"The unsexy real bottleneck of automation: dispensing accurately across viscosities,\nsurfactants, volumes, surface chemistry. Whoever solves this owns the bottom of the stack.\n","predicts":"Investment in non-contact dispensing (acoustic, drop-on-demand), better calibration,\ninstrument-side ML for liquid-class detection.\n","falsifier":"Standard plate formats and reagent vendors converge on a small number of liquid\nclasses, commoditizing this expertise.\n"},{"key":"hardware-cost","name":"Hardware cost","group":"physical","bet":"Automation is gated by per-workstation capex. Drop the entry-level cost an order\nof magnitude and adoption follows the way Opentrons proved at the low end.\n","predicts":"Open-source hardware, China-made supply chains, OEM-lite plays, subscription/leasing.\n","falsifier":"Total cost of ownership is dominated by integration and reagent consumables, not\ncapex \u2014 so a cheaper instrument doesn't move the adoption needle.\n"},{"key":"predictive-validity","name":"Predictive validity","group":"data","bet":"Most of the data we automate doesn't predict in-vivo / clinic. More-AI-friendly\nmodalities (high-content phenomics, organoids on chip, multi-modal omics) close\nthe gap.\n","predicts":"Phenotypic-screening platforms, organoid players, multi-modal data companies,\nAI-native CROs that own the readout.\n","falsifier":"Existing assays are predictive enough; the real bottleneck is throughput on those\nassays, not new readouts.\n"},{"key":"eroom","name":"Eroom's law / R&D productivity","group":"macro","bet":"Drug R&D productivity has been falling for 60 years. Automation is the only thing\nthat bends the curve. The thesis is macro, not technical.\n","predicts":"The background fundraising thesis for the entire category.\n","falsifier":"Newer modalities (ML-derived targets, GLP-1-style hits) drive productivity recovery\nwithout needing automation, and the curve bends without lab autonomy.\n"},{"key":"protocol-libraries","name":"Protocol libraries","group":"software","bet":"The win is a shared, versioned, executable corpus of protocols \u2014 like GitHub for\nwet lab. Once enough protocols are machine-readable, everything downstream gets easier.\n","predicts":"Companies that obsess over protocol formats, version control, sharing, and converting\nbetween them.\n","falsifier":"Protocols are too tacit / lab-specific to share at scale, and the corpus never reaches\ncritical mass.\n"}],"companies":[{"name":"Agilent","slug":"agilent","domain":"agilent.com","url":"https://www.agilent.com","categories":["liquid-handling-hardware"],"theses":["hardware-modularity"],"ai_level":"ai-adjacent","maturity":"public","customers":["pharma"],"pricing":"premium","posture":"trusted analytical instrument","notes":"Bravo, AssayMAP. Pharma incumbent on the analytical/automation crossover."},{"name":"ARES","slug":"ares","domain":null,"url":null,"categories":["cell-culture-automation"],"theses":[],"ai_level":"ai-adjacent","maturity":null,"customers":[],"pricing":null,"posture":"unknown","notes":"Identity unresolved from Cheshire image \u2014 possibly ARES Genetics or other cell-culture vendor.","unverified":true},{"name":"Artificial","slug":"artificial","domain":"artificial.com","url":"https://www.artificial.com","categories":["orchestration-scheduling"],"theses":["compiler-abstraction","standardization"],"ai_level":"ai-adopting","maturity":"mid-stage","customers":["pharma"],"pricing":"premium","posture":"operating system for the lab","notes":"Lab orchestration / workflow platform."},{"name":"Automata","slug":"automata","domain":"automata.tech","url":"https://automata.tech","categories":["mobility-transport","orchestration-scheduling"],"theses":["hardware-modularity"],"ai_level":"ai-adopting","maturity":"late-stage","customers":["pharma","biotech"],"pricing":"premium","posture":"linear movement, integrated workflows","notes":"UK-based; Linq linear-track system."},{"name":"Beckman Coulter Life Sciences","slug":"beckman-coulter","domain":"beckman.com","url":"https://www.beckman.com","categories":["liquid-handling-hardware","cell-culture-automation"],"theses":["hardware-modularity","liquid-classes"],"ai_level":"ai-adjacent","maturity":"public","customers":["pharma"],"pricing":"premium","posture":"the workhorse","notes":"Biomek line under Danaher. Pharma default since the 90s."},{"name":"Benchling","slug":"benchling","domain":"benchling.com","url":"https://www.benchling.com","categories":["lims","eln"],"theses":["knowledge-work","accountability"],"ai_level":"ai-adopting","maturity":"late-stage","customers":["biotech","pharma"],"pricing":"premium","posture":"modern biotech R&D cloud","notes":"Dominant biotech ELN/LIMS. Adding AI features."},{"name":"Biosero","slug":"biosero","domain":"biosero.com","url":"https://www.biosero.com","categories":["orchestration-scheduling"],"theses":["standardization","compiler-abstraction"],"ai_level":"ai-adopting","maturity":"mature-private","customers":["pharma"],"pricing":"premium","posture":"Green Button Go orchestration","notes":"Long-running orchestrator under BICO group."},{"name":"Briefly Bio","slug":"briefly-bio","domain":"briefly.bio","url":"https://briefly.bio","categories":["eln","flexible-protocol-generation"],"theses":["protocol-libraries","trust","knowledge-work"],"ai_level":"ai-adopting","maturity":"early","customers":["academia","biotech"],"pricing":null,"posture":"AI for protocols and provenance","notes":"Protocol authoring with structured provenance."},{"name":"Celltrio","slug":"celltrio","domain":"celltrio.com","url":"https://www.celltrio.com","categories":["cell-culture-automation"],"theses":["hardware-modularity"],"ai_level":"ai-adopting","maturity":"mid-stage","customers":["pharma","biotech"],"pricing":null,"posture":"cell culture robotics","notes":"Automated cell-culture/incubation systems."},{"name":"Chai Discovery","slug":"chai-discovery","domain":"chaidiscovery.com","url":"https://www.chaidiscovery.com","categories":["biofoundation-models"],"theses":["predictive-validity"],"ai_level":"ai-native","maturity":"early","customers":["pharma","biotech"],"pricing":"premium","posture":"open biology foundation models","notes":"Chai-1 structure prediction model."},{"name":"Charles River","slug":"charles-river","domain":"criver.com","url":"https://www.criver.com","categories":["cros-saas"],"theses":["scale","accountability"],"ai_level":"ai-adjacent","maturity":"public","customers":["pharma"],"pricing":"premium","posture":"the CRO","notes":"Largest preclinical CRO. The non-AI baseline for \"science as a service.\""},{"name":"Cheshire Labs","slug":"cheshire-labs","domain":"cheshirelabs.io","url":null,"categories":[],"theses":[],"ai_level":null,"maturity":null,"customers":[],"pricing":null,"posture":"landscape source","notes":"Author of the source landscape image; not a vendor in any category.","unverified":true},{"name":"cornucopia bio","slug":"cornucopia-bio","domain":null,"url":null,"categories":["cros-saas"],"theses":[],"ai_level":null,"maturity":"early","customers":[],"pricing":null,"posture":"unknown","notes":"Listed at corner of source image \u2014 unidentified.","unverified":true},{"name":"Cromatic Bio","slug":"cromatic-bio","domain":null,"url":null,"categories":["cros-saas"],"theses":[],"ai_level":null,"maturity":"early","customers":[],"pricing":null,"posture":"unknown","notes":"Listed at corner of source image \u2014 unidentified.","unverified":true},{"name":"Cytena","slug":"cytena","domain":"cytena.com","url":"https://www.cytena.com","categories":["cell-culture-automation"],"theses":["liquid-classes"],"ai_level":"ai-adjacent","maturity":"mature-private","customers":["biotech","pharma"],"pricing":"premium","posture":"single-cell printer","notes":"Single-cell dispensing for cell-line dev. Part of BICO group."},{"name":"Cytiva","slug":"cytiva","domain":"cytivalifesciences.com","url":"https://www.cytivalifesciences.com","categories":["cell-culture-automation"],"theses":["hardware-modularity"],"ai_level":"ai-adjacent","maturity":"public","customers":["pharma"],"pricing":"premium","posture":"bioprocess from research to GMP","notes":"Major bioprocess incumbent under Danaher."},{"name":"DASH","slug":"dash","domain":null,"url":null,"categories":["cros-saas"],"theses":[],"ai_level":null,"maturity":null,"customers":["pharma"],"pricing":null,"posture":"unknown","notes":"Identity ambiguous from source image \u2014 possibly Dash Bio.","unverified":true},{"name":"Dispendix","slug":"dispendix","domain":"dispendix.com","url":"https://www.dispendix.com","categories":["liquid-handling-hardware"],"theses":["liquid-classes"],"ai_level":"ai-adjacent","maturity":"mature-private","customers":["pharma","biotech"],"pricing":"premium","posture":"drop-on-demand dispensing","notes":"I.DOT non-contact picoliter dispenser. BICO group."},{"name":"Dynamic Devices","slug":"dynamic-devices","domain":"dynamicdevices.com","url":"https://www.dynamicdevices.com","categories":["liquid-handling-hardware"],"theses":["hardware-cost"],"ai_level":"ai-adjacent","maturity":"mature-private","customers":["pharma","biotech"],"pricing":"mid","posture":"agile liquid handlers","notes":"Lynx, Felix."},{"name":"Edison","slug":"edison","domain":"edisonscientific.com","url":null,"categories":["hypothesis-generation"],"theses":["knowledge-work","predictive-validity"],"ai_level":"ai-native","maturity":"early","customers":["biotech","academia"],"pricing":null,"posture":"AI scientist for literature & hypotheses","notes":"AI-for-science / lit-review agent. Domain unconfirmed.","unverified":true},{"name":"Emerald Cloud Lab","slug":"emerald-cloud-lab","domain":"emeraldcloudlab.com","url":"https://www.emeraldcloudlab.com","categories":["cloud-labs"],"theses":["scale","closed-loop"],"ai_level":"ai-adjacent","maturity":"late-stage","customers":["biotech","academia","pharma"],"pricing":"premium","posture":"the cloud lab","notes":"OG cloud lab. Long sales cycle, real revenue."},{"name":"Formulatrix","slug":"formulatrix","domain":"formulatrix.com","url":"https://formulatrix.com","categories":["liquid-handling-hardware","mobility-transport","cell-culture-automation"],"theses":["hardware-cost","liquid-classes"],"ai_level":"ai-adjacent","maturity":"mature-private","customers":["pharma","biotech","academia"],"pricing":"mid","posture":"instruments at every price tier","notes":"Mantis, Rover, Tempest."},{"name":"GENIE","slug":"genie","domain":null,"url":null,"categories":["liquid-handling-hardware","orchestration-scheduling"],"theses":[],"ai_level":null,"maturity":null,"customers":[],"pricing":null,"posture":"unknown","notes":"Identity ambiguous \u2014 possibly Genie Life Sciences or other.","unverified":true},{"name":"Ginkgo Bioworks","slug":"ginkgo-bioworks","domain":"ginkgobioworks.com","url":"https://www.ginkgobioworks.com","categories":["mobility-transport","orchestration-scheduling","cloud-labs"],"theses":["scale","eroom","closed-loop"],"ai_level":"ai-adopting","maturity":"public","customers":["biotech","pharma","synbio"],"pricing":"premium","posture":"the biofoundry","notes":"Largest US biofoundry. SPAC-era public co."},{"name":"Hamilton","slug":"hamilton","domain":"hamiltoncompany.com","url":"https://www.hamiltoncompany.com","categories":["liquid-handling-hardware","cell-culture-automation"],"theses":["liquid-classes","hardware-modularity"],"ai_level":"ai-adjacent","maturity":"mature-private","customers":["pharma","biotech"],"pricing":"premium","posture":"the precision instrument","notes":"STAR, Vantage. Proprietary liquid-class library is the moat."},{"name":"HighRes Biosolutions","slug":"highres-biosolutions","domain":"highresbio.com","url":"https://highresbio.com","categories":["mobility-transport","orchestration-scheduling"],"theses":["hardware-modularity","standardization"],"ai_level":"ai-adjacent","maturity":"mature-private","customers":["pharma"],"pricing":"premium","posture":"modular benchtop integrations","notes":"Custom workcell integrations."},{"name":"Insilico Medicine","slug":"insilico-medicine","domain":"insilico.com","url":"https://insilico.com","categories":["biofoundation-models"],"theses":["predictive-validity","eroom"],"ai_level":"ai-native","maturity":"late-stage","customers":["pharma"],"pricing":"premium","posture":"generative AI drug discovery","notes":"Generative chemistry + biology platform."},{"name":"Integra Biosciences","slug":"integra-biosciences","domain":"integra-biosciences.com","url":"https://www.integra-biosciences.com","categories":["liquid-handling-hardware"],"theses":["hardware-cost","liquid-classes"],"ai_level":"ai-adjacent","maturity":"mature-private","customers":["academia","biotech","pharma"],"pricing":"mid","posture":"ergonomic pipettes","notes":"Pipettes, ASSIST PLUS \u2014 entry-level automation."},{"name":"Isomorphic Labs","slug":"isomorphic-labs","domain":"isomorphiclabs.com","url":"https://www.isomorphiclabs.com","categories":["hypothesis-generation","biofoundation-models"],"theses":["predictive-validity","eroom"],"ai_level":"ai-native","maturity":"late-stage","customers":["pharma"],"pricing":"premium","posture":"AI-first drug design","notes":"Alphabet spin-out. AlphaFold lineage."},{"name":"Kiin Bio","slug":"kiin-bio","domain":"kiin.bio","url":"https://kiin.bio","categories":["experiment-planning"],"theses":["doe","knowledge-work"],"ai_level":"ai-adopting","maturity":"early","customers":["pharma","biotech"],"pricing":null,"posture":"AI-driven experiment design","notes":"Bayesian DOE / experiment planning."},{"name":"Labguru","slug":"labguru","domain":"labguru.com","url":"https://www.labguru.com","categories":["lims","eln"],"theses":["knowledge-work","accountability"],"ai_level":"ai-adopting","maturity":"mature-private","customers":["pharma","academia"],"pricing":"mid","posture":"ELN for the long tail","notes":"Long-running ELN/LIMS by Cenevo."},{"name":"LILA Sciences","slug":"lila-sciences","domain":"lila.bio","url":"https://lila.bio","categories":["orchestration-scheduling","hypothesis-generation","biofoundation-models","flexible-protocol-generation","closed-loop-experimentation","data-generation","cloud-labs"],"theses":["closed-loop","scale","predictive-validity","eroom"],"ai_level":"ai-native","maturity":"early","customers":["pharma","biotech"],"pricing":"premium","posture":"scientific superintelligence","notes":"Flagship Pioneering. Most categories on the Cheshire map. Domain unconfirmed."},{"name":"Medra","slug":"medra","domain":"medra.bio","url":null,"categories":["liquid-handling-hardware","mobility-transport","orchestration-scheduling","flexible-protocol-generation","closed-loop-experimentation","cloud-labs"],"theses":["closed-loop","dexterity","compiler-abstraction"],"ai_level":"ai-native","maturity":"early","customers":["biotech","academia"],"pricing":null,"posture":"autonomous lab","notes":"Autonomous-science platform; emergent player. Domain unconfirmed.","unverified":true},{"name":"Miltenyi Biotec","slug":"miltenyi-biotec","domain":"miltenyibiotec.com","url":"https://www.miltenyibiotec.com","categories":["cell-culture-automation"],"theses":["hardware-modularity","accountability"],"ai_level":"ai-adjacent","maturity":"mature-private","customers":["cell-therapy-gmp","pharma"],"pricing":"premium","posture":"cell therapy infrastructure","notes":"CliniMACS, MACSQuant."},{"name":"Molecular Devices","slug":"molecular-devices","domain":"moleculardevices.com","url":"https://www.moleculardevices.com","categories":["cell-culture-automation"],"theses":["hardware-modularity"],"ai_level":"ai-adjacent","maturity":"public","customers":["pharma","biotech"],"pricing":"premium","posture":"imaging & high-content readers","notes":"ImageXpress (Danaher)."},{"name":"Multiply Labs","slug":"multiply-labs","domain":"multiplylabs.com","url":"https://www.multiplylabs.com","categories":["mobility-transport","orchestration-scheduling","cell-culture-automation"],"theses":["hardware-modularity","accountability","dexterity"],"ai_level":"ai-adopting","maturity":"late-stage","customers":["cell-therapy-gmp","pharma"],"pricing":"premium","posture":"robotic cell therapy manufacturing","notes":"Cell & gene therapy GMP automation."},{"name":"Opentrons","slug":"opentrons","domain":"opentrons.com","url":"https://opentrons.com","categories":["liquid-handling-hardware","flexible-protocol-generation"],"theses":["hardware-cost","protocol-libraries"],"ai_level":"ai-adopting","maturity":"late-stage","customers":["academia","biotech"],"pricing":"economical","posture":"Python-scriptable, accessible automation","notes":"Open-source-friendly liquid handlers."},{"name":"Owkin","slug":"owkin","domain":"owkin.com","url":"https://owkin.com","categories":["hypothesis-generation","biofoundation-models"],"theses":["predictive-validity"],"ai_level":"ai-native","maturity":"late-stage","customers":["pharma"],"pricing":"premium","posture":"federated AI on patient data","notes":"Federated learning for biopharma."},{"name":"PerkinElmer / Revvity","slug":"perkinelmer-revvity","domain":"revvity.com","url":"https://www.revvity.com","categories":["liquid-handling-hardware"],"theses":["hardware-modularity"],"ai_level":"ai-adjacent","maturity":"public","customers":["pharma"],"pricing":"premium","posture":"lab analytics & automation","notes":"Janus, Sciclone. Now branded Revvity."},{"name":"Phylo","slug":"phylo","domain":"phylo.bio","url":null,"categories":["experiment-planning"],"theses":["doe","knowledge-work"],"ai_level":"ai-adopting","maturity":"early","customers":["biotech"],"pricing":null,"posture":"AI experiment planning","notes":"Experiment planning / scheduling. Domain unconfirmed.","unverified":true},{"name":"Plasmidsaurus","slug":"plasmidsaurus","domain":"plasmidsaurus.com","url":"https://www.plasmidsaurus.com","categories":["cros-saas"],"theses":["scale"],"ai_level":"ai-adjacent","maturity":"late-stage","customers":["academia","biotech"],"pricing":"economical","posture":"cheap, fast plasmid sequencing","notes":"Nanopore-based plasmid full-sequence service."},{"name":"Potato","slug":"potato","domain":"potato.com","url":null,"categories":["hypothesis-generation","eln","experiment-planning","flexible-protocol-generation"],"theses":["knowledge-work","trust","protocol-libraries"],"ai_level":"ai-native","maturity":"early","customers":["biotech","academia"],"pricing":null,"posture":"AI lab notebook & agent","notes":"AI-native ELN / co-scientist agent. Domain unconfirmed.","unverified":true},{"name":"PyLabRobot","slug":"pylabrobot","domain":"pylabrobot.org","url":"https://docs.pylabrobot.org","categories":["hardware-integration-standards"],"theses":["standardization","hardware-cost"],"ai_level":"standard-oss","maturity":"standard","customers":["academia"],"pricing":"free","posture":"open Python lab control","notes":"MIT-led open-source lab-control library."},{"name":"Recursion","slug":"recursion","domain":"recursion.com","url":"https://www.recursion.com","categories":["hypothesis-generation","biofoundation-models","cros-saas"],"theses":["predictive-validity","scale","eroom"],"ai_level":"ai-native","maturity":"public","customers":["pharma"],"pricing":"premium","posture":"industrialize drug discovery","notes":"Phenomic screening at scale. Merged with Exscientia."},{"name":"Relay Therapeutics","slug":"relay-therapeutics","domain":"relaytx.com","url":"https://relaytx.com","categories":["biofoundation-models"],"theses":["predictive-validity"],"ai_level":"ai-native","maturity":"public","customers":["pharma"],"pricing":"premium","posture":"motion-based drug design","notes":"Protein dynamics / motion-based discovery."},{"name":"RetiSoft","slug":"retisoft","domain":"retisoft.com","url":"https://www.retisoft.com","categories":["orchestration-scheduling","hardware-integration-standards"],"theses":["standardization"],"ai_level":"ai-adopting","maturity":"mature-private","customers":["pharma"],"pricing":"mid","posture":"vendor-neutral scheduler","notes":"Genera scheduler."},{"name":"Robot On Rails","slug":"robot-on-rails","domain":"robotonrails.com","url":null,"categories":["liquid-handling-hardware","mobility-transport","flexible-protocol-generation"],"theses":["hardware-modularity","hardware-cost"],"ai_level":"ai-adopting","maturity":"early","customers":["biotech"],"pricing":null,"posture":"rail-based modular automation","notes":"Rail-mounted modular robotics. Domain unconfirmed.","unverified":true},{"name":"Sartorius","slug":"sartorius","domain":"sartorius.com","url":"https://www.sartorius.com","categories":["cell-culture-automation"],"theses":["hardware-modularity"],"ai_level":"ai-adjacent","maturity":"public","customers":["pharma"],"pricing":"premium","posture":"bioprocess at scale","notes":"Bioprocess giant; integrating digital tools."},{"name":"Scispot","slug":"scispot","domain":"scispot.com","url":"https://www.scispot.com","categories":["lims","orchestration-scheduling"],"theses":["compiler-abstraction","knowledge-work"],"ai_level":"ai-adopting","maturity":"early","customers":["biotech","academia"],"pricing":"mid","posture":"AI-native LIMS","notes":"Lighter, modern LIMS with orchestration."},{"name":"SiLA","slug":"sila","domain":"sila-standard.org","url":"https://sila-standard.org","categories":["hardware-integration-standards"],"theses":["standardization"],"ai_level":"standard-oss","maturity":"standard","customers":["all"],"pricing":"free","posture":"the lab interop standard","notes":"Specification consortium, not a company."},{"name":"Spaero Bio","slug":"spaero-bio","domain":null,"url":null,"categories":["flexible-protocol-generation"],"theses":["protocol-libraries"],"ai_level":"ai-adopting","maturity":"early","customers":["academia"],"pricing":null,"posture":"shared protocols","notes":"Protocol management/sharing. Domain unconfirmed.","unverified":true},{"name":"SPT Labtech","slug":"spt-labtech","domain":"sptlabtech.com","url":"https://www.sptlabtech.com","categories":["liquid-handling-hardware"],"theses":["liquid-classes","hardware-cost"],"ai_level":"ai-adjacent","maturity":"mature-private","customers":["pharma","biotech"],"pricing":"premium","posture":"low-volume specialists","notes":"Mosquito (genomics low-volume), Firefly."},{"name":"Strateos","slug":"strateos","domain":"strateos.com","url":"https://www.strateos.com","categories":["cloud-labs"],"theses":["scale","closed-loop"],"ai_level":"ai-adjacent","maturity":"late-stage","customers":["pharma","biotech"],"pricing":"premium","posture":"robotic cloud lab","notes":"Formerly Transcriptic. Status post-restructuring needs verifying."},{"name":"Synthace","slug":"synthace","domain":"synthace.com","url":"https://www.synthace.com","categories":["flexible-protocol-generation"],"theses":["compiler-abstraction","doe"],"ai_level":"ai-adopting","maturity":"late-stage","customers":["pharma"],"pricing":"premium","posture":"computer-aided experimentation","notes":"Antha protocol language."},{"name":"Tecan","slug":"tecan","domain":"tecan.com","url":"https://www.tecan.com","categories":["liquid-handling-hardware"],"theses":["liquid-classes","hardware-modularity"],"ai_level":"ai-adjacent","maturity":"public","customers":["pharma"],"pricing":"premium","posture":"the European workhorse","notes":"Fluent, Freedom EVO."},{"name":"Tetsuwan Scientific","slug":"tetsuwan-scientific","domain":"tetsuwan.co","url":null,"categories":["flexible-protocol-generation","cloud-labs"],"theses":["vla-mimicking","closed-loop","dexterity"],"ai_level":"ai-native","maturity":"early","customers":["pharma","biotech"],"pricing":null,"posture":"humanoid robot scientist","notes":"Japan-affiliated; Eve-style autonomous experimentation. Domain unconfirmed.","unverified":true},{"name":"Thermo Fisher Scientific","slug":"thermo-fisher","domain":"thermofisher.com","url":"https://www.thermofisher.com","categories":["liquid-handling-hardware","cell-culture-automation"],"theses":["hardware-modularity"],"ai_level":"ai-adjacent","maturity":"public","customers":["pharma"],"pricing":"premium","posture":"the everything store","notes":"Largest life-sciences supplier. Many automation brands."},{"name":"Trilobio","slug":"trilobio","domain":"trilobio.com","url":"https://www.trilobio.com","categories":["liquid-handling-hardware","mobility-transport","orchestration-scheduling","flexible-protocol-generation"],"theses":["hardware-modularity","compiler-abstraction","hardware-cost"],"ai_level":"ai-adopting","maturity":"early","customers":["biotech","academia"],"pricing":"mid","posture":"software-defined modular automation","notes":"Modular hardware + software stack."},{"name":"UniteLabs","slug":"unitelabs","domain":"unitelabs.io","url":null,"categories":["orchestration-scheduling","hardware-integration-standards","lims"],"theses":["standardization","compiler-abstraction"],"ai_level":"ai-adopting","maturity":"early","customers":["biotech","academia"],"pricing":null,"posture":"open driver layer","notes":"SiLA-based open driver/connectivity layer. Domain unconfirmed.","unverified":true},{"name":"Zeon Systems","slug":"zeon-systems","domain":null,"url":null,"categories":["mobility-transport","flexible-protocol-generation","cloud-labs"],"theses":["scale","hardware-modularity"],"ai_level":"ai-adopting","maturity":"mid-stage","customers":[],"pricing":null,"posture":"unknown","notes":"Identity ambiguous in source image.","unverified":true}]}</script>
+<script>
+  const DATA = JSON.parse(document.getElementById("data-blob").textContent);
+
+  document.getElementById("company-total").textContent = DATA.companies.length;
+
+  const catByKey  = Object.fromEntries(DATA.categories.map(c => [c.key, c]));
+  const thesByKey = Object.fromEntries(DATA.theses.map(t => [t.key, t]));
+
+  const state = {
+    search: "",
+    filters: {
+      categories: new Set(),
+      theses: new Set(),
+      ai_level: new Set(),
+      maturity: new Set(),
+      pricing: new Set(),
+    },
+    sortBy: "name",
+    sortDir: "asc",
+  };
+
+  // --- filter UI ---
+  function buildFilterGroups() {
+    const root = document.getElementById("filter-groups");
+    const ctxs = [
+      { key: "categories", label: "Categories",
+        opts: DATA.categories.map(c => ({ value: c.key, label: c.name, group: c.group })) },
+      { key: "theses", label: "Theses",
+        opts: DATA.theses.map(t => ({ value: t.key, label: t.name, group: t.group })) },
+      { key: "ai_level", label: "AI level",
+        opts: ["ai-native","ai-adopting","ai-adjacent","standard-oss"].map(v => ({ value: v, label: v })) },
+      { key: "maturity", label: "Maturity",
+        opts: ["public","late-stage","mid-stage","early","stealth","mature-private","standard"].map(v => ({ value: v, label: v })) },
+      { key: "pricing", label: "Pricing",
+        opts: ["premium","mid","economical","free"].map(v => ({ value: v, label: v })) },
+    ];
+
+    // Counts per option, computed against companies that pass *all other* filter groups.
+    const counts = computeOptionCounts();
+
+    ctxs.forEach(ctx => {
+      const det = document.createElement("details");
+      det.className = "filter-group";
+      const sum = document.createElement("summary");
+      sum.innerHTML = `${ctx.label} <span class="ct" id="ct-${ctx.key}"></span>`;
+      det.appendChild(sum);
+      const wrap = document.createElement("div");
+      wrap.className = "chips";
+      ctx.opts.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "chip";
+        btn.dataset.filterKey = ctx.key;
+        btn.dataset.filterVal = opt.value;
+        const ct = counts[ctx.key]?.[opt.value] ?? 0;
+        btn.innerHTML = `${opt.label}<span class="ct">${ct}</span>`;
+        if (state.filters[ctx.key].has(opt.value)) btn.classList.add("active");
+        btn.addEventListener("click", () => toggleFilter(ctx.key, opt.value));
+        wrap.appendChild(btn);
+      });
+      det.appendChild(wrap);
+      root.appendChild(det);
+    });
+  }
+
+  function refreshFilterCounts() {
+    const counts = computeOptionCounts();
+    document.querySelectorAll(".chip").forEach(chip => {
+      const k = chip.dataset.filterKey;
+      const v = chip.dataset.filterVal;
+      const ct = counts[k]?.[v] ?? 0;
+      chip.querySelector(".ct").textContent = ct;
+      chip.classList.toggle("active", state.filters[k].has(v));
+    });
+    Object.keys(state.filters).forEach(k => {
+      const n = state.filters[k].size;
+      const el = document.getElementById(`ct-${k}`);
+      if (!el) return;
+      if (n > 0) {
+        el.textContent = `· ${n} active`;
+        el.classList.add("active");
+      } else {
+        el.textContent = "";
+        el.classList.remove("active");
+      }
+    });
+  }
+
+  function toggleFilter(key, val) {
+    const s = state.filters[key];
+    if (s.has(val)) s.delete(val); else s.add(val);
+    render();
+  }
+
+  // For each filter axis, count companies that match all *other* axes plus the search.
+  function computeOptionCounts() {
+    const out = {};
+    for (const k of Object.keys(state.filters)) {
+      out[k] = {};
+      for (const c of DATA.companies) {
+        if (!matchesExcept(c, k)) continue;
+        const vs = Array.isArray(c[k]) ? c[k] : (c[k] != null ? [c[k]] : []);
+        for (const v of vs) out[k][v] = (out[k][v] || 0) + 1;
+      }
+    }
+    return out;
+  }
+  function matchesExcept(c, exceptKey) {
+    if (state.search) {
+      const hay = [c.name, c.posture, c.notes].filter(Boolean).join(" ").toLowerCase();
+      if (!hay.includes(state.search.toLowerCase())) return false;
+    }
+    for (const k of Object.keys(state.filters)) {
+      if (k === exceptKey) continue;
+      const sel = state.filters[k];
+      if (sel.size === 0) continue;
+      const cv = c[k];
+      if (Array.isArray(cv)) {
+        if (!cv.some(v => sel.has(v))) return false;
+      } else {
+        if (!sel.has(cv)) return false;
+      }
+    }
+    return true;
+  }
+  function matchesAll(c) {
+    return matchesExcept(c, "__none__");
+  }
+
+  // --- table render ---
+  function pillCategory(key) {
+    const c = catByKey[key]; if (!c) return "";
+    return `<span class="pill g-${c.group}" data-pill="categories" data-val="${key}">${c.name}</span>`;
+  }
+  function pillThesis(key, primary) {
+    const t = thesByKey[key]; if (!t) return "";
+    const label = primary ? `<strong>${t.name}</strong>` : t.name;
+    return `<span class="pill g-${t.group}" data-pill="theses" data-val="${key}" title="${primary ? 'primary' : 'secondary'}">${label}</span>`;
+  }
+  function pillSimple(field, value, classPrefix) {
+    if (!value) return "";
+    return `<span class="pill ${classPrefix}-${value}" data-pill="${field}" data-val="${value}">${value}</span>`;
+  }
+  function logoCell(c) {
+    if (c.domain) {
+      return `<img src="logos/${c.slug}.png" alt="" loading="lazy" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>${(c.name[0]||'·').toUpperCase()}</div>'">`;
+    }
+    return `<div class="placeholder">${(c.name[0]||'·').toUpperCase()}</div>`;
+  }
+
+  function renderRow(c) {
+    const cats = (c.categories || []).map(k => pillCategory(k)).join(" ");
+    const thes = (c.theses || []).map((k, i) => pillThesis(k, i === 0)).join(" ");
+    const nameCell = c.url
+      ? `<a href="${c.url}" target="_blank" rel="noopener">${c.name}</a>`
+      : c.name;
+    const unverified = c.unverified
+      ? `<span class="unverified-mark" title="Some fields are unverified">?</span>`
+      : "";
+    return `<tr>
+      <td class="cell-logo">${logoCell(c)}</td>
+      <td class="cell-name">${nameCell}${unverified}</td>
+      <td class="num">${(c.categories || []).length}</td>
+      <td class="cell-tags">${cats}</td>
+      <td class="cell-tags">${thes}</td>
+      <td>${pillSimple('ai_level', c.ai_level, 'ai')}</td>
+      <td>${pillSimple('maturity', c.maturity, 'mat')}</td>
+      <td>${pillSimple('pricing', c.pricing, 'pricing')}</td>
+      <td class="cell-posture">${c.posture || ''}</td>
+      <td class="cell-notes">${c.notes || ''}</td>
+    </tr>`;
+  }
+
+  function sortKey(c) {
+    const k = state.sortBy;
+    if (k === "categories") return (c.categories || []).length;
+    let v = c[k];
+    if (Array.isArray(v)) v = v[0] || "";
+    return (v ?? "").toString().toLowerCase();
+  }
+
+  function render() {
+    const filtered = DATA.companies.filter(matchesAll);
+    filtered.sort((a, b) => {
+      const av = sortKey(a), bv = sortKey(b);
+      if (av < bv) return state.sortDir === "asc" ? -1 : 1;
+      if (av > bv) return state.sortDir === "asc" ? 1 : -1;
+      return a.name.localeCompare(b.name);
+    });
+
+    const tbody = document.getElementById("tbody");
+    tbody.innerHTML = filtered.map(renderRow).join("");
+    document.getElementById("count").textContent =
+      `${filtered.length} of ${DATA.companies.length} companies`;
+    document.getElementById("empty").style.display = filtered.length ? "none" : "block";
+
+    document.querySelectorAll("th[data-sort]").forEach(th => {
+      th.classList.remove("sorted", "asc");
+      if (th.dataset.sort === state.sortBy) {
+        th.classList.add("sorted");
+        if (state.sortDir === "asc") th.classList.add("asc");
+      }
+    });
+
+    refreshFilterCounts();
+  }
+
+  // --- events ---
+  document.getElementById("search").addEventListener("input", e => {
+    state.search = e.target.value;
+    render();
+  });
+
+  document.getElementById("clear-btn").addEventListener("click", () => {
+    state.search = "";
+    document.getElementById("search").value = "";
+    Object.values(state.filters).forEach(s => s.clear());
+    render();
+  });
+
+  document.querySelectorAll("th[data-sort]").forEach(th => {
+    th.addEventListener("click", () => {
+      const k = th.dataset.sort;
+      if (state.sortBy === k) {
+        state.sortDir = state.sortDir === "asc" ? "desc" : "asc";
+      } else {
+        state.sortBy = k;
+        state.sortDir = "asc";
+      }
+      render();
+    });
+  });
+
+  // Click pill in table = toggle that filter
+  document.getElementById("tbody").addEventListener("click", e => {
+    const pill = e.target.closest(".pill[data-pill]");
+    if (!pill) return;
+    toggleFilter(pill.dataset.pill, pill.dataset.val);
+  });
+
+  buildFilterGroups();
+  render();
+</script>
+</body>
+</html>

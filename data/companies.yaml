@@ -1,0 +1,826 @@
+# Companies in the autonomous-science / lab-automation landscape.
+#
+# Source v1: Cheshire Labs landscape image (May 2026).
+# `unverified: true` flags entries where identity, domain, or fields couldn't be
+# resolved with confidence. Treat these as TODOs.
+#
+# Field reference:
+#   slug         kebab-case id, used for filenames and HTML anchors
+#   domain       used by scripts/fetch_logos.py
+#   url          link target in HTML
+#   categories   keys from data/categories.yaml
+#   theses       keys from data/theses.yaml — first entry is the *primary* thesis
+#   ai_level     ai-native | ai-adopting | ai-adjacent | standard-oss
+#   maturity     public | late-stage | mid-stage | early | stealth | mature-private | standard
+#   customers    pharma | big-pharma-cro | biotech | academia | synbio | cell-therapy-gmp | diagnostics | cloud-lab-users | all
+#   pricing      premium | mid | economical | free
+#   posture      short phrase (≤6 words) capturing public messaging tilt
+#   notes        1–2 sentences
+
+- name: Agilent
+  slug: agilent
+  domain: agilent.com
+  url: https://www.agilent.com
+  categories: [liquid-handling-hardware]
+  theses: [hardware-modularity]
+  ai_level: ai-adjacent
+  maturity: public
+  customers: [pharma]
+  pricing: premium
+  posture: trusted analytical instrument
+  notes: Bravo, AssayMAP. Pharma incumbent on the analytical/automation crossover.
+
+- name: ARES
+  slug: ares
+  domain: null
+  url: null
+  categories: [cell-culture-automation]
+  theses: []
+  ai_level: ai-adjacent
+  maturity: null
+  customers: []
+  pricing: null
+  posture: unknown
+  notes: Identity unresolved from Cheshire image — possibly ARES Genetics or other cell-culture vendor.
+  unverified: true
+
+- name: Artificial
+  slug: artificial
+  domain: artificial.com
+  url: https://www.artificial.com
+  categories: [orchestration-scheduling]
+  theses: [compiler-abstraction, standardization]
+  ai_level: ai-adopting
+  maturity: mid-stage
+  customers: [pharma]
+  pricing: premium
+  posture: operating system for the lab
+  notes: Lab orchestration / workflow platform.
+
+- name: Automata
+  slug: automata
+  domain: automata.tech
+  url: https://automata.tech
+  categories: [mobility-transport, orchestration-scheduling]
+  theses: [hardware-modularity]
+  ai_level: ai-adopting
+  maturity: late-stage
+  customers: [pharma, biotech]
+  pricing: premium
+  posture: linear movement, integrated workflows
+  notes: UK-based; Linq linear-track system.
+
+- name: Beckman Coulter Life Sciences
+  slug: beckman-coulter
+  domain: beckman.com
+  url: https://www.beckman.com
+  categories: [liquid-handling-hardware, cell-culture-automation]
+  theses: [hardware-modularity, liquid-classes]
+  ai_level: ai-adjacent
+  maturity: public
+  customers: [pharma]
+  pricing: premium
+  posture: the workhorse
+  notes: Biomek line under Danaher. Pharma default since the 90s.
+
+- name: Benchling
+  slug: benchling
+  domain: benchling.com
+  url: https://www.benchling.com
+  categories: [lims, eln]
+  theses: [knowledge-work, accountability]
+  ai_level: ai-adopting
+  maturity: late-stage
+  customers: [biotech, pharma]
+  pricing: premium
+  posture: modern biotech R&D cloud
+  notes: Dominant biotech ELN/LIMS. Adding AI features.
+
+- name: Biosero
+  slug: biosero
+  domain: biosero.com
+  url: https://www.biosero.com
+  categories: [orchestration-scheduling]
+  theses: [standardization, compiler-abstraction]
+  ai_level: ai-adopting
+  maturity: mature-private
+  customers: [pharma]
+  pricing: premium
+  posture: Green Button Go orchestration
+  notes: Long-running orchestrator under BICO group.
+
+- name: Briefly Bio
+  slug: briefly-bio
+  domain: briefly.bio
+  url: https://briefly.bio
+  categories: [eln, flexible-protocol-generation]
+  theses: [protocol-libraries, trust, knowledge-work]
+  ai_level: ai-adopting
+  maturity: early
+  customers: [academia, biotech]
+  pricing: null
+  posture: AI for protocols and provenance
+  notes: Protocol authoring with structured provenance.
+
+- name: Celltrio
+  slug: celltrio
+  domain: celltrio.com
+  url: https://www.celltrio.com
+  categories: [cell-culture-automation]
+  theses: [hardware-modularity]
+  ai_level: ai-adopting
+  maturity: mid-stage
+  customers: [pharma, biotech]
+  pricing: null
+  posture: cell culture robotics
+  notes: Automated cell-culture/incubation systems.
+
+- name: Chai Discovery
+  slug: chai-discovery
+  domain: chaidiscovery.com
+  url: https://www.chaidiscovery.com
+  categories: [biofoundation-models]
+  theses: [predictive-validity]
+  ai_level: ai-native
+  maturity: early
+  customers: [pharma, biotech]
+  pricing: premium
+  posture: open biology foundation models
+  notes: Chai-1 structure prediction model.
+
+- name: Charles River
+  slug: charles-river
+  domain: criver.com
+  url: https://www.criver.com
+  categories: [cros-saas]
+  theses: [scale, accountability]
+  ai_level: ai-adjacent
+  maturity: public
+  customers: [pharma]
+  pricing: premium
+  posture: the CRO
+  notes: Largest preclinical CRO. The non-AI baseline for "science as a service."
+
+- name: Cheshire Labs
+  slug: cheshire-labs
+  domain: cheshirelabs.io
+  url: null
+  categories: []
+  theses: []
+  ai_level: null
+  maturity: null
+  customers: []
+  pricing: null
+  posture: landscape source
+  notes: Author of the source landscape image; not a vendor in any category.
+  unverified: true
+
+- name: cornucopia bio
+  slug: cornucopia-bio
+  domain: null
+  url: null
+  categories: [cros-saas]
+  theses: []
+  ai_level: null
+  maturity: early
+  customers: []
+  pricing: null
+  posture: unknown
+  notes: Listed at corner of source image — unidentified.
+  unverified: true
+
+- name: Cromatic Bio
+  slug: cromatic-bio
+  domain: null
+  url: null
+  categories: [cros-saas]
+  theses: []
+  ai_level: null
+  maturity: early
+  customers: []
+  pricing: null
+  posture: unknown
+  notes: Listed at corner of source image — unidentified.
+  unverified: true
+
+- name: Cytena
+  slug: cytena
+  domain: cytena.com
+  url: https://www.cytena.com
+  categories: [cell-culture-automation]
+  theses: [liquid-classes]
+  ai_level: ai-adjacent
+  maturity: mature-private
+  customers: [biotech, pharma]
+  pricing: premium
+  posture: single-cell printer
+  notes: Single-cell dispensing for cell-line dev. Part of BICO group.
+
+- name: Cytiva
+  slug: cytiva
+  domain: cytivalifesciences.com
+  url: https://www.cytivalifesciences.com
+  categories: [cell-culture-automation]
+  theses: [hardware-modularity]
+  ai_level: ai-adjacent
+  maturity: public
+  customers: [pharma]
+  pricing: premium
+  posture: bioprocess from research to GMP
+  notes: Major bioprocess incumbent under Danaher.
+
+- name: DASH
+  slug: dash
+  domain: null
+  url: null
+  categories: [cros-saas]
+  theses: []
+  ai_level: null
+  maturity: null
+  customers: [pharma]
+  pricing: null
+  posture: unknown
+  notes: Identity ambiguous from source image — possibly Dash Bio.
+  unverified: true
+
+- name: Dispendix
+  slug: dispendix
+  domain: dispendix.com
+  url: https://www.dispendix.com
+  categories: [liquid-handling-hardware]
+  theses: [liquid-classes]
+  ai_level: ai-adjacent
+  maturity: mature-private
+  customers: [pharma, biotech]
+  pricing: premium
+  posture: drop-on-demand dispensing
+  notes: I.DOT non-contact picoliter dispenser. BICO group.
+
+- name: Dynamic Devices
+  slug: dynamic-devices
+  domain: dynamicdevices.com
+  url: https://www.dynamicdevices.com
+  categories: [liquid-handling-hardware]
+  theses: [hardware-cost]
+  ai_level: ai-adjacent
+  maturity: mature-private
+  customers: [pharma, biotech]
+  pricing: mid
+  posture: agile liquid handlers
+  notes: Lynx, Felix.
+
+- name: Edison
+  slug: edison
+  domain: edisonscientific.com
+  url: null
+  categories: [hypothesis-generation]
+  theses: [knowledge-work, predictive-validity]
+  ai_level: ai-native
+  maturity: early
+  customers: [biotech, academia]
+  pricing: null
+  posture: AI scientist for literature & hypotheses
+  notes: AI-for-science / lit-review agent. Domain unconfirmed.
+  unverified: true
+
+- name: Emerald Cloud Lab
+  slug: emerald-cloud-lab
+  domain: emeraldcloudlab.com
+  url: https://www.emeraldcloudlab.com
+  categories: [cloud-labs]
+  theses: [scale, closed-loop]
+  ai_level: ai-adjacent
+  maturity: late-stage
+  customers: [biotech, academia, pharma]
+  pricing: premium
+  posture: the cloud lab
+  notes: OG cloud lab. Long sales cycle, real revenue.
+
+- name: Formulatrix
+  slug: formulatrix
+  domain: formulatrix.com
+  url: https://formulatrix.com
+  categories: [liquid-handling-hardware, mobility-transport, cell-culture-automation]
+  theses: [hardware-cost, liquid-classes]
+  ai_level: ai-adjacent
+  maturity: mature-private
+  customers: [pharma, biotech, academia]
+  pricing: mid
+  posture: instruments at every price tier
+  notes: Mantis, Rover, Tempest.
+
+- name: GENIE
+  slug: genie
+  domain: null
+  url: null
+  categories: [liquid-handling-hardware, orchestration-scheduling]
+  theses: []
+  ai_level: null
+  maturity: null
+  customers: []
+  pricing: null
+  posture: unknown
+  notes: Identity ambiguous — possibly Genie Life Sciences or other.
+  unverified: true
+
+- name: Ginkgo Bioworks
+  slug: ginkgo-bioworks
+  domain: ginkgobioworks.com
+  url: https://www.ginkgobioworks.com
+  categories: [mobility-transport, orchestration-scheduling, cloud-labs]
+  theses: [scale, eroom, closed-loop]
+  ai_level: ai-adopting
+  maturity: public
+  customers: [biotech, pharma, synbio]
+  pricing: premium
+  posture: the biofoundry
+  notes: Largest US biofoundry. SPAC-era public co.
+
+- name: Hamilton
+  slug: hamilton
+  domain: hamiltoncompany.com
+  url: https://www.hamiltoncompany.com
+  categories: [liquid-handling-hardware, cell-culture-automation]
+  theses: [liquid-classes, hardware-modularity]
+  ai_level: ai-adjacent
+  maturity: mature-private
+  customers: [pharma, biotech]
+  pricing: premium
+  posture: the precision instrument
+  notes: STAR, Vantage. Proprietary liquid-class library is the moat.
+
+- name: HighRes Biosolutions
+  slug: highres-biosolutions
+  domain: highresbio.com
+  url: https://highresbio.com
+  categories: [mobility-transport, orchestration-scheduling]
+  theses: [hardware-modularity, standardization]
+  ai_level: ai-adjacent
+  maturity: mature-private
+  customers: [pharma]
+  pricing: premium
+  posture: modular benchtop integrations
+  notes: Custom workcell integrations.
+
+- name: Insilico Medicine
+  slug: insilico-medicine
+  domain: insilico.com
+  url: https://insilico.com
+  categories: [biofoundation-models]
+  theses: [predictive-validity, eroom]
+  ai_level: ai-native
+  maturity: late-stage
+  customers: [pharma]
+  pricing: premium
+  posture: generative AI drug discovery
+  notes: Generative chemistry + biology platform.
+
+- name: Integra Biosciences
+  slug: integra-biosciences
+  domain: integra-biosciences.com
+  url: https://www.integra-biosciences.com
+  categories: [liquid-handling-hardware]
+  theses: [hardware-cost, liquid-classes]
+  ai_level: ai-adjacent
+  maturity: mature-private
+  customers: [academia, biotech, pharma]
+  pricing: mid
+  posture: ergonomic pipettes
+  notes: Pipettes, ASSIST PLUS — entry-level automation.
+
+- name: Isomorphic Labs
+  slug: isomorphic-labs
+  domain: isomorphiclabs.com
+  url: https://www.isomorphiclabs.com
+  categories: [hypothesis-generation, biofoundation-models]
+  theses: [predictive-validity, eroom]
+  ai_level: ai-native
+  maturity: late-stage
+  customers: [pharma]
+  pricing: premium
+  posture: AI-first drug design
+  notes: Alphabet spin-out. AlphaFold lineage.
+
+- name: Kiin Bio
+  slug: kiin-bio
+  domain: kiin.bio
+  url: https://kiin.bio
+  categories: [experiment-planning]
+  theses: [doe, knowledge-work]
+  ai_level: ai-adopting
+  maturity: early
+  customers: [pharma, biotech]
+  pricing: null
+  posture: AI-driven experiment design
+  notes: Bayesian DOE / experiment planning.
+
+- name: Labguru
+  slug: labguru
+  domain: labguru.com
+  url: https://www.labguru.com
+  categories: [lims, eln]
+  theses: [knowledge-work, accountability]
+  ai_level: ai-adopting
+  maturity: mature-private
+  customers: [pharma, academia]
+  pricing: mid
+  posture: ELN for the long tail
+  notes: Long-running ELN/LIMS by Cenevo.
+
+- name: LILA Sciences
+  slug: lila-sciences
+  domain: lila.bio
+  url: https://lila.bio
+  categories:
+    - orchestration-scheduling
+    - hypothesis-generation
+    - biofoundation-models
+    - flexible-protocol-generation
+    - closed-loop-experimentation
+    - data-generation
+    - cloud-labs
+  theses: [closed-loop, scale, predictive-validity, eroom]
+  ai_level: ai-native
+  maturity: early
+  customers: [pharma, biotech]
+  pricing: premium
+  posture: scientific superintelligence
+  notes: Flagship Pioneering. Most categories on the Cheshire map. Domain unconfirmed.
+
+- name: Medra
+  slug: medra
+  domain: medra.bio
+  url: null
+  categories:
+    - liquid-handling-hardware
+    - mobility-transport
+    - orchestration-scheduling
+    - flexible-protocol-generation
+    - closed-loop-experimentation
+    - cloud-labs
+  theses: [closed-loop, dexterity, compiler-abstraction]
+  ai_level: ai-native
+  maturity: early
+  customers: [biotech, academia]
+  pricing: null
+  posture: autonomous lab
+  notes: Autonomous-science platform; emergent player. Domain unconfirmed.
+  unverified: true
+
+- name: Miltenyi Biotec
+  slug: miltenyi-biotec
+  domain: miltenyibiotec.com
+  url: https://www.miltenyibiotec.com
+  categories: [cell-culture-automation]
+  theses: [hardware-modularity, accountability]
+  ai_level: ai-adjacent
+  maturity: mature-private
+  customers: [cell-therapy-gmp, pharma]
+  pricing: premium
+  posture: cell therapy infrastructure
+  notes: CliniMACS, MACSQuant.
+
+- name: Molecular Devices
+  slug: molecular-devices
+  domain: moleculardevices.com
+  url: https://www.moleculardevices.com
+  categories: [cell-culture-automation]
+  theses: [hardware-modularity]
+  ai_level: ai-adjacent
+  maturity: public
+  customers: [pharma, biotech]
+  pricing: premium
+  posture: imaging & high-content readers
+  notes: ImageXpress (Danaher).
+
+- name: Multiply Labs
+  slug: multiply-labs
+  domain: multiplylabs.com
+  url: https://www.multiplylabs.com
+  categories: [mobility-transport, orchestration-scheduling, cell-culture-automation]
+  theses: [hardware-modularity, accountability, dexterity]
+  ai_level: ai-adopting
+  maturity: late-stage
+  customers: [cell-therapy-gmp, pharma]
+  pricing: premium
+  posture: robotic cell therapy manufacturing
+  notes: Cell & gene therapy GMP automation.
+
+- name: Opentrons
+  slug: opentrons
+  domain: opentrons.com
+  url: https://opentrons.com
+  categories: [liquid-handling-hardware, flexible-protocol-generation]
+  theses: [hardware-cost, protocol-libraries]
+  ai_level: ai-adopting
+  maturity: late-stage
+  customers: [academia, biotech]
+  pricing: economical
+  posture: Python-scriptable, accessible automation
+  notes: Open-source-friendly liquid handlers.
+
+- name: Owkin
+  slug: owkin
+  domain: owkin.com
+  url: https://owkin.com
+  categories: [hypothesis-generation, biofoundation-models]
+  theses: [predictive-validity]
+  ai_level: ai-native
+  maturity: late-stage
+  customers: [pharma]
+  pricing: premium
+  posture: federated AI on patient data
+  notes: Federated learning for biopharma.
+
+- name: PerkinElmer / Revvity
+  slug: perkinelmer-revvity
+  domain: revvity.com
+  url: https://www.revvity.com
+  categories: [liquid-handling-hardware]
+  theses: [hardware-modularity]
+  ai_level: ai-adjacent
+  maturity: public
+  customers: [pharma]
+  pricing: premium
+  posture: lab analytics & automation
+  notes: Janus, Sciclone. Now branded Revvity.
+
+- name: Phylo
+  slug: phylo
+  domain: phylo.bio
+  url: null
+  categories: [experiment-planning]
+  theses: [doe, knowledge-work]
+  ai_level: ai-adopting
+  maturity: early
+  customers: [biotech]
+  pricing: null
+  posture: AI experiment planning
+  notes: Experiment planning / scheduling. Domain unconfirmed.
+  unverified: true
+
+- name: Plasmidsaurus
+  slug: plasmidsaurus
+  domain: plasmidsaurus.com
+  url: https://www.plasmidsaurus.com
+  categories: [cros-saas]
+  theses: [scale]
+  ai_level: ai-adjacent
+  maturity: late-stage
+  customers: [academia, biotech]
+  pricing: economical
+  posture: cheap, fast plasmid sequencing
+  notes: Nanopore-based plasmid full-sequence service.
+
+- name: Potato
+  slug: potato
+  domain: potato.com
+  url: null
+  categories: [hypothesis-generation, eln, experiment-planning, flexible-protocol-generation]
+  theses: [knowledge-work, trust, protocol-libraries]
+  ai_level: ai-native
+  maturity: early
+  customers: [biotech, academia]
+  pricing: null
+  posture: AI lab notebook & agent
+  notes: AI-native ELN / co-scientist agent. Domain unconfirmed.
+  unverified: true
+
+- name: PyLabRobot
+  slug: pylabrobot
+  domain: pylabrobot.org
+  url: https://docs.pylabrobot.org
+  categories: [hardware-integration-standards]
+  theses: [standardization, hardware-cost]
+  ai_level: standard-oss
+  maturity: standard
+  customers: [academia]
+  pricing: free
+  posture: open Python lab control
+  notes: MIT-led open-source lab-control library.
+
+- name: Recursion
+  slug: recursion
+  domain: recursion.com
+  url: https://www.recursion.com
+  categories: [hypothesis-generation, biofoundation-models, cros-saas]
+  theses: [predictive-validity, scale, eroom]
+  ai_level: ai-native
+  maturity: public
+  customers: [pharma]
+  pricing: premium
+  posture: industrialize drug discovery
+  notes: Phenomic screening at scale. Merged with Exscientia.
+
+- name: Relay Therapeutics
+  slug: relay-therapeutics
+  domain: relaytx.com
+  url: https://relaytx.com
+  categories: [biofoundation-models]
+  theses: [predictive-validity]
+  ai_level: ai-native
+  maturity: public
+  customers: [pharma]
+  pricing: premium
+  posture: motion-based drug design
+  notes: Protein dynamics / motion-based discovery.
+
+- name: RetiSoft
+  slug: retisoft
+  domain: retisoft.com
+  url: https://www.retisoft.com
+  categories: [orchestration-scheduling, hardware-integration-standards]
+  theses: [standardization]
+  ai_level: ai-adopting
+  maturity: mature-private
+  customers: [pharma]
+  pricing: mid
+  posture: vendor-neutral scheduler
+  notes: Genera scheduler.
+
+- name: Robot On Rails
+  slug: robot-on-rails
+  domain: robotonrails.com
+  url: null
+  categories: [liquid-handling-hardware, mobility-transport, flexible-protocol-generation]
+  theses: [hardware-modularity, hardware-cost]
+  ai_level: ai-adopting
+  maturity: early
+  customers: [biotech]
+  pricing: null
+  posture: rail-based modular automation
+  notes: Rail-mounted modular robotics. Domain unconfirmed.
+  unverified: true
+
+- name: Sartorius
+  slug: sartorius
+  domain: sartorius.com
+  url: https://www.sartorius.com
+  categories: [cell-culture-automation]
+  theses: [hardware-modularity]
+  ai_level: ai-adjacent
+  maturity: public
+  customers: [pharma]
+  pricing: premium
+  posture: bioprocess at scale
+  notes: Bioprocess giant; integrating digital tools.
+
+- name: Scispot
+  slug: scispot
+  domain: scispot.com
+  url: https://www.scispot.com
+  categories: [lims, orchestration-scheduling]
+  theses: [compiler-abstraction, knowledge-work]
+  ai_level: ai-adopting
+  maturity: early
+  customers: [biotech, academia]
+  pricing: mid
+  posture: AI-native LIMS
+  notes: Lighter, modern LIMS with orchestration.
+
+- name: SiLA
+  slug: sila
+  domain: sila-standard.org
+  url: https://sila-standard.org
+  categories: [hardware-integration-standards]
+  theses: [standardization]
+  ai_level: standard-oss
+  maturity: standard
+  customers: [all]
+  pricing: free
+  posture: the lab interop standard
+  notes: Specification consortium, not a company.
+
+- name: Spaero Bio
+  slug: spaero-bio
+  domain: null
+  url: null
+  categories: [flexible-protocol-generation]
+  theses: [protocol-libraries]
+  ai_level: ai-adopting
+  maturity: early
+  customers: [academia]
+  pricing: null
+  posture: shared protocols
+  notes: Protocol management/sharing. Domain unconfirmed.
+  unverified: true
+
+- name: SPT Labtech
+  slug: spt-labtech
+  domain: sptlabtech.com
+  url: https://www.sptlabtech.com
+  categories: [liquid-handling-hardware]
+  theses: [liquid-classes, hardware-cost]
+  ai_level: ai-adjacent
+  maturity: mature-private
+  customers: [pharma, biotech]
+  pricing: premium
+  posture: low-volume specialists
+  notes: Mosquito (genomics low-volume), Firefly.
+
+- name: Strateos
+  slug: strateos
+  domain: strateos.com
+  url: https://www.strateos.com
+  categories: [cloud-labs]
+  theses: [scale, closed-loop]
+  ai_level: ai-adjacent
+  maturity: late-stage
+  customers: [pharma, biotech]
+  pricing: premium
+  posture: robotic cloud lab
+  notes: Formerly Transcriptic. Status post-restructuring needs verifying.
+
+- name: Synthace
+  slug: synthace
+  domain: synthace.com
+  url: https://www.synthace.com
+  categories: [flexible-protocol-generation]
+  theses: [compiler-abstraction, doe]
+  ai_level: ai-adopting
+  maturity: late-stage
+  customers: [pharma]
+  pricing: premium
+  posture: computer-aided experimentation
+  notes: Antha protocol language.
+
+- name: Tecan
+  slug: tecan
+  domain: tecan.com
+  url: https://www.tecan.com
+  categories: [liquid-handling-hardware]
+  theses: [liquid-classes, hardware-modularity]
+  ai_level: ai-adjacent
+  maturity: public
+  customers: [pharma]
+  pricing: premium
+  posture: the European workhorse
+  notes: Fluent, Freedom EVO.
+
+- name: Tetsuwan Scientific
+  slug: tetsuwan-scientific
+  domain: tetsuwan.co
+  url: null
+  categories: [flexible-protocol-generation, cloud-labs]
+  theses: [vla-mimicking, closed-loop, dexterity]
+  ai_level: ai-native
+  maturity: early
+  customers: [pharma, biotech]
+  pricing: null
+  posture: humanoid robot scientist
+  notes: Japan-affiliated; Eve-style autonomous experimentation. Domain unconfirmed.
+  unverified: true
+
+- name: Thermo Fisher Scientific
+  slug: thermo-fisher
+  domain: thermofisher.com
+  url: https://www.thermofisher.com
+  categories: [liquid-handling-hardware, cell-culture-automation]
+  theses: [hardware-modularity]
+  ai_level: ai-adjacent
+  maturity: public
+  customers: [pharma]
+  pricing: premium
+  posture: the everything store
+  notes: Largest life-sciences supplier. Many automation brands.
+
+- name: Trilobio
+  slug: trilobio
+  domain: trilobio.com
+  url: https://www.trilobio.com
+  categories: [liquid-handling-hardware, mobility-transport, orchestration-scheduling, flexible-protocol-generation]
+  theses: [hardware-modularity, compiler-abstraction, hardware-cost]
+  ai_level: ai-adopting
+  maturity: early
+  customers: [biotech, academia]
+  pricing: mid
+  posture: software-defined modular automation
+  notes: Modular hardware + software stack.
+
+- name: UniteLabs
+  slug: unitelabs
+  domain: unitelabs.io
+  url: null
+  categories: [orchestration-scheduling, hardware-integration-standards, lims]
+  theses: [standardization, compiler-abstraction]
+  ai_level: ai-adopting
+  maturity: early
+  customers: [biotech, academia]
+  pricing: null
+  posture: open driver layer
+  notes: SiLA-based open driver/connectivity layer. Domain unconfirmed.
+  unverified: true
+
+- name: Zeon Systems
+  slug: zeon-systems
+  domain: null
+  url: null
+  categories: [mobility-transport, flexible-protocol-generation, cloud-labs]
+  theses: [scale, hardware-modularity]
+  ai_level: ai-adopting
+  maturity: mid-stage
+  customers: []
+  pricing: null
+  posture: unknown
+  notes: Identity ambiguous in source image.
+  unverified: true

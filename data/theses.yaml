@@ -1,0 +1,211 @@
+# Theses on why lab automation hasn't gone the way of self-driving.
+# `group` controls tag-pill coloring in the HTML view.
+#
+# groups:
+#   physical    — bets about hardware / dexterity / instruments
+#   software    — bets about abstractions, drivers, standards
+#   cognitive   — bets about the "thinking" layer above the bench
+#   data        — bets about predictive readouts / data quality
+#   business    — bets about market structure (scale, cost, accountability)
+#   macro       — narrative-only theses (eroom)
+
+- key: closed-loop
+  name: Closed loop
+  group: business
+  bet: |
+    The missing piece is end-to-end loop closure: hypothesis → plan → execute → data →
+    model update → next hypothesis, with no human in the inner loop.
+  predicts: |
+    The winning shape is autonomous-lab-as-a-product, where the customer hands over a
+    goal (not a protocol) and the system iterates.
+  falsifier: |
+    If customers keep wanting human-in-the-loop checkpoints (regulatory, scientific
+    judgment, trust), closed-loop PMF narrows to a few high-volume use cases (mAb
+    discovery, cell line dev) and doesn't generalize.
+
+- key: dexterity
+  name: Dexterity
+  group: physical
+  bet: |
+    The actual bottleneck is physical: robots can't reliably manipulate fragile biology.
+    Better hands and perception unlock the rest.
+  predicts: |
+    Humanoid or high-DoF arms, not gantry liquid handlers, eat the long tail.
+  falsifier: |
+    Standardization (SiLA + SBS plates) makes dexterity moot for 90% of tasks because
+    everything moves through standardized fixtures.
+
+- key: vla-mimicking
+  name: VLA / mimicking scientists
+  group: cognitive
+  bet: |
+    Vision-language-action models that watch a scientist and imitate the manipulations
+    are the cheapest path to general-purpose autonomy — bypassing formal protocol specs.
+  predicts: |
+    Companies bet on data collection from human bench work. Hardware looks general-purpose
+    (humanoid or arm-on-cart), not assay-specific.
+  falsifier: |
+    Formal protocol authoring (Antha-style, Briefly-style) plus deterministic hardware
+    is enough — imitation learning turns out unnecessary.
+
+- key: hardware-modularity
+  name: Hardware modularity
+  group: physical
+  bet: |
+    Lab automation has been killed by monolithic islands. The win is mix-and-match
+    modules with common interfaces — the lab equivalent of PCIe.
+  predicts: |
+    Rail-and-cart systems, swappable end-effectors, decoupled scheduler from instruments.
+  falsifier: |
+    Customers consistently prefer turnkey integrated cells because the integration cost
+    of "modular" still falls on them.
+
+- key: compiler-abstraction
+  name: Compiler / abstraction / interface
+  group: software
+  bet: |
+    Lab work needs an LLVM: a high-level protocol language that compiles down to whatever
+    hardware is available. Without this, every protocol is bound to a specific instrument.
+  predicts: |
+    Declarative protocol DSLs, hardware-abstraction layers, scheduler-agnostic protocol
+    formats.
+  falsifier: |
+    The abstraction leaks too much (liquid-class effects, instrument quirks) to compile
+    cleanly, so people fall back to vendor-specific scripts.
+
+- key: standardization
+  name: Standardization
+  group: software
+  bet: |
+    The bottleneck is interop. Until there's a SiLA-equivalent that everyone implements,
+    every integration is N×M custom work.
+  predicts: |
+    Open driver standards, consortium work, and tools that only work if many vendors play.
+  falsifier: |
+    Vendors continue to defect (proprietary advantages outweigh interop benefits) and
+    the de facto standard ends up being whichever orchestrator has critical mass.
+
+- key: doe
+  name: DOE — Design of experiments
+  group: cognitive
+  bet: |
+    Scientists are running too few well-designed experiments. The constraint is in
+    planning, not execution. Bayesian / active-learning planners win.
+  predicts: |
+    Thin-software companies that sit on top of any execution layer and tell scientists
+    "run these 16 conditions next."
+  falsifier: |
+    Execution capacity is so limited that even naive experimental designs saturate it
+    — better DOE doesn't help until throughput catches up.
+
+- key: accountability
+  name: Accountability
+  group: business
+  bet: |
+    Nobody automates because nobody wants to own the failure mode. The unblocker is
+    GMP-grade traceability, audit trails, signed protocol versions.
+  predicts: |
+    Companies emphasize compliance, 21 CFR Part 11, ALCOA+, electronic signatures.
+  falsifier: |
+    Small biotechs (the actual buyers of new automation) don't care about this and the
+    pharma-grade compliance load is a tax that prevents the modern stack from competing.
+
+- key: trust
+  name: Trust
+  group: business
+  bet: |
+    Humans won't act on automated results unless they can see the work — replay the
+    experiment, inspect the data, see the LLM's reasoning.
+  predicts: |
+    Rich provenance UIs, replay features, structured chain-of-thought logs, video review.
+  falsifier: |
+    Customers actually treat automation like the dishwasher — once it works, they stop
+    watching, and trust UX is over-invested.
+
+- key: scale
+  name: Scale
+  group: business
+  bet: |
+    Centralized mega-foundries beat distributed cottage automation on cost-per-experiment.
+    Aggregate demand into a few cloud labs and amortize hardware capex.
+  predicts: |
+    Cloud labs, biofoundries, "send us your protocol, get data back" services.
+  falsifier: |
+    Turnaround latency, IP-leakage fears, or the "I need to watch my cells" instinct keep
+    most science on-prem despite worse unit economics. (This has been the empirical pattern.)
+
+- key: knowledge-work
+  name: Knowledge work bottlenecks
+  group: cognitive
+  bet: |
+    The constraint isn't bench execution — it's the cognitive layer above: literature
+    review, hypothesis generation, protocol authoring, data interpretation.
+  predicts: |
+    AI co-scientists, lit-review agents, ELN copilots, protocol generators.
+  falsifier: |
+    Cognitive automation produces plausible-sounding but scientifically poor outputs that
+    fail to translate; the bench execution problem reasserts itself.
+
+- key: liquid-classes
+  name: Liquid classes
+  group: physical
+  bet: |
+    The unsexy real bottleneck of automation: dispensing accurately across viscosities,
+    surfactants, volumes, surface chemistry. Whoever solves this owns the bottom of the stack.
+  predicts: |
+    Investment in non-contact dispensing (acoustic, drop-on-demand), better calibration,
+    instrument-side ML for liquid-class detection.
+  falsifier: |
+    Standard plate formats and reagent vendors converge on a small number of liquid
+    classes, commoditizing this expertise.
+
+- key: hardware-cost
+  name: Hardware cost
+  group: physical
+  bet: |
+    Automation is gated by per-workstation capex. Drop the entry-level cost an order
+    of magnitude and adoption follows the way Opentrons proved at the low end.
+  predicts: |
+    Open-source hardware, China-made supply chains, OEM-lite plays, subscription/leasing.
+  falsifier: |
+    Total cost of ownership is dominated by integration and reagent consumables, not
+    capex — so a cheaper instrument doesn't move the adoption needle.
+
+- key: predictive-validity
+  name: Predictive validity
+  group: data
+  bet: |
+    Most of the data we automate doesn't predict in-vivo / clinic. More-AI-friendly
+    modalities (high-content phenomics, organoids on chip, multi-modal omics) close
+    the gap.
+  predicts: |
+    Phenotypic-screening platforms, organoid players, multi-modal data companies,
+    AI-native CROs that own the readout.
+  falsifier: |
+    Existing assays are predictive enough; the real bottleneck is throughput on those
+    assays, not new readouts.
+
+- key: eroom
+  name: Eroom's law / R&D productivity
+  group: macro
+  bet: |
+    Drug R&D productivity has been falling for 60 years. Automation is the only thing
+    that bends the curve. The thesis is macro, not technical.
+  predicts: |
+    The background fundraising thesis for the entire category.
+  falsifier: |
+    Newer modalities (ML-derived targets, GLP-1-style hits) drive productivity recovery
+    without needing automation, and the curve bends without lab autonomy.
+
+- key: protocol-libraries
+  name: Protocol libraries
+  group: software
+  bet: |
+    The win is a shared, versioned, executable corpus of protocols — like GitHub for
+    wet lab. Once enough protocols are machine-readable, everything downstream gets easier.
+  predicts: |
+    Companies that obsess over protocol formats, version control, sharing, and converting
+    between them.
+  falsifier: |
+    Protocols are too tacit / lab-specific to share at scale, and the corpus never reaches
+    critical mass.

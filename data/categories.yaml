@@ -1,0 +1,128 @@
+# Functional categories — the columns of the Cheshire Labs landscape map.
+# `group` is used for tag-pill coloring in the HTML view.
+#
+# groups:
+#   hardware  — physical instruments
+#   movement  — material transport / mobility
+#   software  — orchestration, abstraction, drivers
+#   records   — LIMS, ELN, structured documentation
+#   thinking  — hypothesis, planning, models
+#   business  — cloud labs, CROs, closed-loop products
+
+- key: liquid-handling-hardware
+  name: Liquid handling hardware
+  group: hardware
+  one_liner: The thing that pipettes.
+  commentary: |
+    Incumbents own the pharma top-of-stack. Newer entrants compete on price (Opentrons),
+    modularity (Trilobio, Robot On Rails), or specialty volumes (SPT, Cytena, Dispendix).
+
+- key: mobility-transport
+  name: Mobility & material transport
+  group: movement
+  one_liner: The thing that moves the plate from A to B.
+  commentary: |
+    Linear rails, gantries, mobile robots. Crowded with both incumbents (HighRes,
+    Formulatrix) and modern entrants (Automata, Multiply Labs).
+
+- key: orchestration-scheduling
+  name: Automation orchestration & scheduling
+  group: software
+  one_liner: The brain that decides what runs when.
+  commentary: |
+    The most contested column on the map. Old guard (Biosero, HighRes, RetiSoft) versus
+    modern API-first (Artificial, Trilobio, UniteLabs, Scispot) versus AI-native autonomous
+    (LILA, Medra).
+
+- key: hardware-integration-standards
+  name: Hardware integration standards / software
+  group: software
+  one_liner: The driver layer.
+  commentary: |
+    Where the standardization thesis is most explicit. Standards bodies, OSS projects, and
+    a small number of vendors that commercialize them.
+
+- key: cell-culture-automation
+  name: Cell culture automation
+  group: hardware
+  one_liner: Cells are special — they need their own infrastructure.
+  commentary: |
+    Bioprocess incumbents dominate (Sartorius, Cytiva, Miltenyi, Beckman, ThermoFisher).
+    Small specialty players (Cytena, Celltrio, Multiply Labs) attack niches.
+
+- key: hypothesis-generation
+  name: Hypothesis generation / Literature review
+  group: thinking
+  one_liner: AI co-scientist for reading and proposing.
+  commentary: |
+    Where the knowledge-work thesis lives. Heavy AI-native presence.
+
+- key: biofoundation-models
+  name: Biofoundation models
+  group: thinking
+  one_liner: Foundation models trained on biology.
+  commentary: |
+    Almost every player here is AI-native. The "predictive validity" thesis lives here.
+
+- key: lims
+  name: LIMS
+  group: records
+  one_liner: The system of record for samples.
+  commentary: |
+    Benchling is dominant; Labguru is the long-tail incumbent; Scispot and UniteLabs are
+    modern challengers.
+
+- key: eln
+  name: ELN / human scheduling / pipeline docs
+  group: records
+  one_liner: Where scientists actually write things down.
+  commentary: |
+    Overlaps with LIMS. Briefly Bio and Potato are AI-native challengers to Benchling/Labguru.
+
+- key: experiment-planning
+  name: Experiment planning, model integration
+  group: thinking
+  one_liner: What should I run next?
+  commentary: |
+    Thin column. Most planning logic ends up bundled into orchestrators or
+    biofoundation-model layers.
+
+- key: flexible-protocol-generation
+  name: Flexible protocol generation
+  group: software
+  one_liner: Write protocol once, run anywhere.
+  commentary: |
+    Heavy overlap with orchestration. The "where does the protocol live?" question is
+    unsettled — vendor-specific scripts, DSLs, LLM-generated, or a shared library.
+
+- key: closed-loop-experimentation
+  name: Closed-loop experimentation
+  group: business
+  one_liner: Hypothesis → execute → learn → repeat, autonomously.
+  commentary: |
+    Thinnest column on the map. Either an under-served niche or a thesis that hasn't yet
+    produced enough companies to fill a column.
+
+- key: data-generation
+  name: Data generation
+  group: business
+  one_liner: We exist to produce structured data at scale.
+  commentary: |
+    Almost a one-company column on the Cheshire map (LILA). Recursion fits conceptually
+    but is filed elsewhere.
+
+- key: cloud-labs
+  name: Cloud labs
+  group: business
+  one_liner: Send your protocol, get data back.
+  commentary: |
+    The "scale" thesis in product form. Decade-old commercial pattern with mixed results
+    — Emerald and Strateos are the proof points.
+
+- key: cros-saas
+  name: CROs and Science as a Service
+  group: business
+  one_liner: Outsourced experiments — the non-AI baseline.
+  commentary: |
+    Where AI-native bets get tested commercially against the incumbent CRO model.
+    Charles River anchors the traditional end; Recursion anchors the AI-native end.

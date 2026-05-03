@@ -1,80 +1,85 @@
-# Master Company Table
+<!-- GENERATED — edit data/*.yaml and run `python3 scripts/generate.py` -->
 
-One row per company. Multi-value fields use `; ` as separator. `?` marks uncertain values that need verification.
+# Master company table
 
-Sorted alphabetically. See [`by-category.md`](./by-category.md) and [`by-thesis.md`](./by-thesis.md) for grouped views.
+60 companies. One row each. Multi-value fields use `; `. `?` after a name flags entries with unverified fields.
+
+For sortable / filterable views, use [`index.html`](./index.html).
 
 | Company | Categories | Theses (primary first) | AI level | Maturity | Customer | Pricing | Posture | Notes |
 |---|---|---|---|---|---|---|---|---|
-| Agilent | liquid-handling-hardware | hardware-modularity | AI-adjacent | Public | Pharma | Premium | "trusted analytical instrument" | Bravo, AssayMAP. Massive incumbent on the pharma side of automation. |
-| ARES (?) | cell-culture-automation | ? | ? | ? | ? | ? | unknown | Unable to firmly identify — possibly ARES Genetics or smaller cell-culture vendor. |
-| Artificial | orchestration-scheduling | compiler-abstraction; standardization | AI-adopting | Mid-stage? | Pharma | Mid–Premium | "operating system for the lab" | Lab orchestration / workflow platform. |
-| Automata | mobility-transport; orchestration-scheduling | hardware-modularity | AI-adopting | Late-stage | Pharma; Biotech | Premium | "linear movement, integrated workflows" | UK-based; Linq linear-track system. |
-| Beckman Coulter Life Sciences | liquid-handling-hardware; cell-culture-automation | hardware-modularity; liquid-classes | AI-adjacent | Public (Danaher) | Pharma | Premium | "the workhorse" | Biomek line. Pharma-default since the 90s. |
-| Benchling | lims; eln | knowledge-work; accountability | AI-adopting | Late-stage | Biotech; Pharma | Premium | "modern biotech R&D cloud" | Dominant biotech ELN/LIMS. Adding AI features. |
-| Biosero (BICO) | orchestration-scheduling | standardization; compiler-abstraction | AI-adopting | Mature private | Pharma | Premium | "Green Button Go orchestration" | GBG scheduler — long-running orchestrator. |
-| Briefly Bio | eln; flexible-protocol-generation | protocol-libraries; trust; knowledge-work | AI-adopting | Early | Academia; Biotech | ? | "AI for protocols and provenance" | Protocol authoring with structured provenance. |
-| Celltrio | cell-culture-automation | hardware-modularity | AI-adopting | Mid-stage? | Pharma; Biotech | ? | "cell culture robotics" | Automated cell-culture/incubation systems. |
-| Charles River | cros-saas | scale; accountability | AI-adjacent | Public | Pharma | Premium | "the CRO" | Largest preclinical CRO. The non-AI baseline for "science as a service." |
-| Chai Discovery | biofoundation-models | predictive-validity | AI-native | Early | Pharma; Biotech | Premium | "open biology foundation models" | Chai-1 structure prediction model. |
-| cheshire labs (?) | landscape-source | n/a | ? | ? | ? | ? | unknown | Source/author of the landscape image; not necessarily a vendor in any column. |
-| cornucopia bio (?) | cros-saas | ? | ? | Early | ? | ? | unknown | Listed at corner of image — unidentified. |
-| Cromatic bio (?) | cros-saas | ? | ? | Early | ? | ? | unknown | Listed at corner of image — unidentified. |
-| Cytena (BICO) | cell-culture-automation | liquid-classes | AI-adjacent | Mature private | Biotech; Pharma | Premium | "single-cell printer" | Single-cell dispensing for cell-line dev. |
-| Cytiva | cell-culture-automation | hardware-modularity | AI-adjacent | Public (Danaher) | Pharma | Premium | "bioprocess from research to GMP" | Major bioprocess incumbent. |
-| DASH (?) | cros-saas | ? | ? | ? | Pharma | ? | unknown | Possibly Dash Bio — needs identification. |
-| Dispendix (BICO) | liquid-handling-hardware | liquid-classes | AI-adjacent | Mature private | Pharma; Biotech | Premium | "drop-on-demand dispensing" | I.DOT non-contact picoliter dispenser. |
-| Dynamic Devices | liquid-handling-hardware | hardware-cost | AI-adjacent | Mature private | Pharma; Biotech | Mid | "agile liquid handlers" | Lynx, Felix. |
-| Edison | hypothesis-generation | knowledge-work; predictive-validity | AI-native | Early | Biotech; Academia | ? | "AI scientist for literature & hypotheses" | AI-for-science / lit-review agent. |
-| Emerald Cloud Lab | cloud-labs | scale; closed-loop | AI-adjacent | Late-stage | Biotech; Academia; Pharma | Premium | "the cloud lab" | OG cloud lab. Long sales cycle, real revenue. |
-| Formulatrix | liquid-handling-hardware; mobility-transport; cell-culture-automation | hardware-cost; liquid-classes | AI-adjacent | Mature private | Pharma; Biotech; Academia | Mid | "instruments at every price tier" | Mantis, Rover, Tempest. |
-| GENIE (?) | liquid-handling-hardware; orchestration-scheduling | ? | ? | ? | ? | ? | unknown | Could be Genie Life Sciences or other — unverified. |
-| Ginkgo Bioworks | mobility-transport; orchestration-scheduling; cloud-labs | scale; eroom; closed-loop | AI-adopting | Public | Biotech; Pharma; Synbio | Premium | "the biofoundry" | Largest US biofoundry. SPAC-era public co. |
-| Hamilton | liquid-handling-hardware; cell-culture-automation | liquid-classes; hardware-modularity | AI-adjacent | Mature private | Pharma; Biotech | Premium | "the precision instrument" | STAR, Vantage. The pharma default. Proprietary liquid-class library is the moat. |
-| HighRes Biosolutions | mobility-transport; orchestration-scheduling | hardware-modularity; standardization | AI-adjacent | Mature private | Pharma | Premium | "modular benchtop integrations" | Custom workcell integrations. |
-| Insilico Medicine | biofoundation-models | predictive-validity; eroom | AI-native | Late-stage | Pharma | Premium | "generative AI drug discovery" | Generative chemistry + biology platform. |
-| Integra Biosciences | liquid-handling-hardware | hardware-cost; liquid-classes | AI-adjacent | Mature private | Academia; Biotech; Pharma | Mid | "ergonomic pipettes" | Pipettes, ASSIST PLUS — entry-level automation. |
-| Isomorphic Labs | hypothesis-generation; biofoundation-models | predictive-validity; eroom | AI-native | Late-stage | Pharma | Premium | "AI-first drug design" | Alphabet spin-out. AlphaFold lineage. |
-| Kiin Bio | experiment-planning | doe; knowledge-work | AI-adopting | Early | Pharma; Biotech | ? | "AI-driven experiment design" | Bayesian DOE / experiment planning. |
-| Labguru (Cenevo) | lims; eln | knowledge-work; accountability | AI-adopting | Mature private | Pharma; Academia | Mid | "ELN for the long tail" | Long-running ELN/LIMS. |
-| LILA Sciences | orchestration-scheduling; hypothesis-generation; biofoundation-models; flexible-protocol-generation; closed-loop-experimentation; data-generation; cloud-labs | closed-loop; scale; predictive-validity; eroom | AI-native | Early (well-funded) | Pharma; Biotech | Premium | "scientific superintelligence" | Flagship Pioneering. The most categories on the Cheshire map. |
-| Medra | liquid-handling-hardware; mobility-transport; orchestration-scheduling; flexible-protocol-generation; closed-loop-experimentation; cloud-labs | closed-loop; dexterity; compiler-abstraction | AI-native | Early | Biotech; Academia | ? | "autonomous lab" | Autonomous-science platform; emergent player. |
-| Miltenyi Biotec | cell-culture-automation | hardware-modularity; accountability | AI-adjacent | Mature private | Cell-therapy GMP; Pharma | Premium | "cell therapy infrastructure" | CliniMACS, MACSQuant. |
-| Molecular Devices | cell-culture-automation | hardware-modularity | AI-adjacent | Public (Danaher) | Pharma; Biotech | Premium | "imaging & high-content readers" | ImageXpress; high-content analysis. |
-| Multiply Labs | mobility-transport; orchestration-scheduling; cell-culture-automation | hardware-modularity; accountability; dexterity | AI-adopting | Late-stage | Cell-therapy GMP; Pharma | Premium | "robotic cell therapy manufacturing" | Cell & gene therapy GMP automation. |
-| Opentrons | liquid-handling-hardware; flexible-protocol-generation | hardware-cost; protocol-libraries | AI-adopting | Late-stage | Academia; Biotech | Economical | "Python-scriptable, accessible automation" | Open-source-friendly liquid handlers. Now also Lab.ai. |
-| Owkin | hypothesis-generation; biofoundation-models | predictive-validity | AI-native | Late-stage | Pharma | Premium | "federated AI on patient data" | Federated learning for biopharma. |
-| PerkinElmer / Revvity | liquid-handling-hardware | hardware-modularity | AI-adjacent | Public | Pharma | Premium | "lab analytics & automation" | Janus, Sciclone. Now branded Revvity. |
-| Phylo | experiment-planning | doe; knowledge-work | AI-adopting | Early | Biotech | ? | "AI experiment planning" | Experiment planning / scheduling. |
-| plasmidasaurus | cros-saas | scale | AI-adjacent | Late-stage? | Academia; Biotech | Economical | "cheap, fast plasmid sequencing" | Nanopore-based plasmid full-sequence service. |
-| Potato | hypothesis-generation; eln; experiment-planning; flexible-protocol-generation | knowledge-work; trust; protocol-libraries | AI-native | Early | Biotech; Academia | ? | "AI lab notebook / agent" | AI-native ELN / co-scientist agent. |
-| PyLabRobot | hardware-integration-standards | standardization; hardware-cost | Standard / OSS | n/a | Academia | Free | "open Python lab control" | MIT-led open-source lab-control library. |
-| Recursion | hypothesis-generation; biofoundation-models; cros-saas | predictive-validity; scale; eroom | AI-native | Public | Pharma | Premium | "industrialize drug discovery" | Phenomic screening at scale; merged with Exscientia. |
-| Relay Therapeutics | biofoundation-models | predictive-validity | AI-native | Public | Pharma | Premium | "motion-based drug design" | Protein dynamics / motion-based discovery. |
-| RetiSoft | orchestration-scheduling; hardware-integration-standards | standardization | AI-adopting | Mature private | Pharma | Mid | "vendor-neutral scheduler" | Genera scheduler. |
-| Robot On Rails | liquid-handling-hardware; mobility-transport; flexible-protocol-generation | hardware-modularity; hardware-cost | AI-adopting | Early | Biotech | ? | "rail-based modular automation" | Rail-mounted modular robotics. |
-| Sartorius | cell-culture-automation | hardware-modularity | AI-adjacent | Public | Pharma | Premium | "bioprocess at scale" | Bioprocess; integrating digital tools. |
-| Scispot | lims; orchestration-scheduling | compiler-abstraction; knowledge-work | AI-adopting | Early | Biotech; Academia | Mid | "AI-native LIMS" | Lighter, modern LIMS with orchestration. |
-| SiLA | hardware-integration-standards | standardization | Standard / OSS | n/a | All | Free | "the lab interop standard" | Specification consortium, not a company. |
-| Spaero Bio | flexible-protocol-generation | protocol-libraries | AI-adopting | Early | Academia | ? | "shared protocols" | Protocol management/sharing. |
-| SPT Labtech | liquid-handling-hardware | liquid-classes; hardware-cost | AI-adjacent | Mature private | Pharma; Biotech | Premium | "low-volume specialists" | Mosquito (genomics low-volume), Firefly. |
-| Strateos | cloud-labs | scale; closed-loop | AI-adjacent | Late-stage | Pharma; Biotech | Premium | "robotic cloud lab" | Formerly Transcriptic. Status post-restructuring needs verifying. |
-| Synthace | flexible-protocol-generation | compiler-abstraction; doe | AI-adopting | Late-stage | Pharma | Premium | "computer-aided experimentation" | Antha protocol language. |
-| Tecan | liquid-handling-hardware | liquid-classes; hardware-modularity | AI-adjacent | Public | Pharma | Premium | "the European workhorse" | Fluent, Freedom EVO. |
-| Tetsuwan Scientific | flexible-protocol-generation; cloud-labs | vla-mimicking; closed-loop; dexterity | AI-native | Early | Pharma; Biotech | ? | "humanoid robot scientist" | Japanese; Eve-style autonomous experimentation. |
-| ThermoFisher Scientific | liquid-handling-hardware; cell-culture-automation | hardware-modularity | AI-adjacent | Public | Pharma | Premium | "the everything store" | Largest life-sciences supplier. Many automation brands. |
-| Trilobio | liquid-handling-hardware; mobility-transport; orchestration-scheduling; flexible-protocol-generation | hardware-modularity; compiler-abstraction; hardware-cost | AI-adopting | Early | Biotech; Academia | Mid | "software-defined modular automation" | Modular open(-ish) hardware + software stack. |
-| UniteLabs | orchestration-scheduling; hardware-integration-standards; lims | standardization; compiler-abstraction | AI-adopting | Early | Biotech; Academia | ? | "open driver layer" | SiLA-based open driver/connectivity layer. |
-| Zeon Systems (?) | mobility-transport; flexible-protocol-generation; cloud-labs | scale; hardware-modularity | AI-adopting | Mid-stage? | ? | ? | unknown | Identity ambiguous — confirm which "Zeon." |
+| [Agilent](https://www.agilent.com) | Liquid handling hardware | Hardware modularity | ai-adjacent | public | pharma | premium | trusted analytical instrument | Bravo, AssayMAP. Pharma incumbent on the analytical/automation crossover. |
+| ARES <sup>?</sup> | Cell culture automation | — | ai-adjacent | — | — | — | unknown | Identity unresolved from Cheshire image — possibly ARES Genetics or other cell-culture vendor. |
+| [Artificial](https://www.artificial.com) | Automation orchestration & scheduling | Compiler / abstraction / interface; Standardization | ai-adopting | mid-stage | pharma | premium | operating system for the lab | Lab orchestration / workflow platform. |
+| [Automata](https://automata.tech) | Mobility & material transport; Automation orchestration & scheduling | Hardware modularity | ai-adopting | late-stage | pharma; biotech | premium | linear movement, integrated workflows | UK-based; Linq linear-track system. |
+| [Beckman Coulter Life Sciences](https://www.beckman.com) | Liquid handling hardware; Cell culture automation | Hardware modularity; Liquid classes | ai-adjacent | public | pharma | premium | the workhorse | Biomek line under Danaher. Pharma default since the 90s. |
+| [Benchling](https://www.benchling.com) | LIMS; ELN / human scheduling / pipeline docs | Knowledge work bottlenecks; Accountability | ai-adopting | late-stage | biotech; pharma | premium | modern biotech R&D cloud | Dominant biotech ELN/LIMS. Adding AI features. |
+| [Biosero](https://www.biosero.com) | Automation orchestration & scheduling | Standardization; Compiler / abstraction / interface | ai-adopting | mature-private | pharma | premium | Green Button Go orchestration | Long-running orchestrator under BICO group. |
+| [Briefly Bio](https://briefly.bio) | ELN / human scheduling / pipeline docs; Flexible protocol generation | Protocol libraries; Trust; Knowledge work bottlenecks | ai-adopting | early | academia; biotech | — | AI for protocols and provenance | Protocol authoring with structured provenance. |
+| [Celltrio](https://www.celltrio.com) | Cell culture automation | Hardware modularity | ai-adopting | mid-stage | pharma; biotech | — | cell culture robotics | Automated cell-culture/incubation systems. |
+| [Chai Discovery](https://www.chaidiscovery.com) | Biofoundation models | Predictive validity | ai-native | early | pharma; biotech | premium | open biology foundation models | Chai-1 structure prediction model. |
+| [Charles River](https://www.criver.com) | CROs and Science as a Service | Scale; Accountability | ai-adjacent | public | pharma | premium | the CRO | Largest preclinical CRO. The non-AI baseline for "science as a service." |
+| Cheshire Labs <sup>?</sup> | — | — | — | — | — | — | landscape source | Author of the source landscape image; not a vendor in any category. |
+| cornucopia bio <sup>?</sup> | CROs and Science as a Service | — | — | early | — | — | unknown | Listed at corner of source image — unidentified. |
+| Cromatic Bio <sup>?</sup> | CROs and Science as a Service | — | — | early | — | — | unknown | Listed at corner of source image — unidentified. |
+| [Cytena](https://www.cytena.com) | Cell culture automation | Liquid classes | ai-adjacent | mature-private | biotech; pharma | premium | single-cell printer | Single-cell dispensing for cell-line dev. Part of BICO group. |
+| [Cytiva](https://www.cytivalifesciences.com) | Cell culture automation | Hardware modularity | ai-adjacent | public | pharma | premium | bioprocess from research to GMP | Major bioprocess incumbent under Danaher. |
+| DASH <sup>?</sup> | CROs and Science as a Service | — | — | — | pharma | — | unknown | Identity ambiguous from source image — possibly Dash Bio. |
+| [Dispendix](https://www.dispendix.com) | Liquid handling hardware | Liquid classes | ai-adjacent | mature-private | pharma; biotech | premium | drop-on-demand dispensing | I.DOT non-contact picoliter dispenser. BICO group. |
+| [Dynamic Devices](https://www.dynamicdevices.com) | Liquid handling hardware | Hardware cost | ai-adjacent | mature-private | pharma; biotech | mid | agile liquid handlers | Lynx, Felix. |
+| Edison <sup>?</sup> | Hypothesis generation / Literature review | Knowledge work bottlenecks; Predictive validity | ai-native | early | biotech; academia | — | AI scientist for literature & hypotheses | AI-for-science / lit-review agent. Domain unconfirmed. |
+| [Emerald Cloud Lab](https://www.emeraldcloudlab.com) | Cloud labs | Scale; Closed loop | ai-adjacent | late-stage | biotech; academia; pharma | premium | the cloud lab | OG cloud lab. Long sales cycle, real revenue. |
+| [Formulatrix](https://formulatrix.com) | Liquid handling hardware; Mobility & material transport; Cell culture automation | Hardware cost; Liquid classes | ai-adjacent | mature-private | pharma; biotech; academia | mid | instruments at every price tier | Mantis, Rover, Tempest. |
+| GENIE <sup>?</sup> | Liquid handling hardware; Automation orchestration & scheduling | — | — | — | — | — | unknown | Identity ambiguous — possibly Genie Life Sciences or other. |
+| [Ginkgo Bioworks](https://www.ginkgobioworks.com) | Mobility & material transport; Automation orchestration & scheduling; Cloud labs | Scale; Eroom's law / R&D productivity; Closed loop | ai-adopting | public | biotech; pharma; synbio | premium | the biofoundry | Largest US biofoundry. SPAC-era public co. |
+| [Hamilton](https://www.hamiltoncompany.com) | Liquid handling hardware; Cell culture automation | Liquid classes; Hardware modularity | ai-adjacent | mature-private | pharma; biotech | premium | the precision instrument | STAR, Vantage. Proprietary liquid-class library is the moat. |
+| [HighRes Biosolutions](https://highresbio.com) | Mobility & material transport; Automation orchestration & scheduling | Hardware modularity; Standardization | ai-adjacent | mature-private | pharma | premium | modular benchtop integrations | Custom workcell integrations. |
+| [Insilico Medicine](https://insilico.com) | Biofoundation models | Predictive validity; Eroom's law / R&D productivity | ai-native | late-stage | pharma | premium | generative AI drug discovery | Generative chemistry + biology platform. |
+| [Integra Biosciences](https://www.integra-biosciences.com) | Liquid handling hardware | Hardware cost; Liquid classes | ai-adjacent | mature-private | academia; biotech; pharma | mid | ergonomic pipettes | Pipettes, ASSIST PLUS — entry-level automation. |
+| [Isomorphic Labs](https://www.isomorphiclabs.com) | Hypothesis generation / Literature review; Biofoundation models | Predictive validity; Eroom's law / R&D productivity | ai-native | late-stage | pharma | premium | AI-first drug design | Alphabet spin-out. AlphaFold lineage. |
+| [Kiin Bio](https://kiin.bio) | Experiment planning, model integration | DOE — Design of experiments; Knowledge work bottlenecks | ai-adopting | early | pharma; biotech | — | AI-driven experiment design | Bayesian DOE / experiment planning. |
+| [Labguru](https://www.labguru.com) | LIMS; ELN / human scheduling / pipeline docs | Knowledge work bottlenecks; Accountability | ai-adopting | mature-private | pharma; academia | mid | ELN for the long tail | Long-running ELN/LIMS by Cenevo. |
+| [LILA Sciences](https://lila.bio) | Automation orchestration & scheduling; Hypothesis generation / Literature review; Biofoundation models; Flexible protocol generation; Closed-loop experimentation; Data generation; Cloud labs | Closed loop; Scale; Predictive validity; Eroom's law / R&D productivity | ai-native | early | pharma; biotech | premium | scientific superintelligence | Flagship Pioneering. Most categories on the Cheshire map. Domain unconfirmed. |
+| Medra <sup>?</sup> | Liquid handling hardware; Mobility & material transport; Automation orchestration & scheduling; Flexible protocol generation; Closed-loop experimentation; Cloud labs | Closed loop; Dexterity; Compiler / abstraction / interface | ai-native | early | biotech; academia | — | autonomous lab | Autonomous-science platform; emergent player. Domain unconfirmed. |
+| [Miltenyi Biotec](https://www.miltenyibiotec.com) | Cell culture automation | Hardware modularity; Accountability | ai-adjacent | mature-private | cell-therapy-gmp; pharma | premium | cell therapy infrastructure | CliniMACS, MACSQuant. |
+| [Molecular Devices](https://www.moleculardevices.com) | Cell culture automation | Hardware modularity | ai-adjacent | public | pharma; biotech | premium | imaging & high-content readers | ImageXpress (Danaher). |
+| [Multiply Labs](https://www.multiplylabs.com) | Mobility & material transport; Automation orchestration & scheduling; Cell culture automation | Hardware modularity; Accountability; Dexterity | ai-adopting | late-stage | cell-therapy-gmp; pharma | premium | robotic cell therapy manufacturing | Cell & gene therapy GMP automation. |
+| [Opentrons](https://opentrons.com) | Liquid handling hardware; Flexible protocol generation | Hardware cost; Protocol libraries | ai-adopting | late-stage | academia; biotech | economical | Python-scriptable, accessible automation | Open-source-friendly liquid handlers. |
+| [Owkin](https://owkin.com) | Hypothesis generation / Literature review; Biofoundation models | Predictive validity | ai-native | late-stage | pharma | premium | federated AI on patient data | Federated learning for biopharma. |
+| [PerkinElmer / Revvity](https://www.revvity.com) | Liquid handling hardware | Hardware modularity | ai-adjacent | public | pharma | premium | lab analytics & automation | Janus, Sciclone. Now branded Revvity. |
+| Phylo <sup>?</sup> | Experiment planning, model integration | DOE — Design of experiments; Knowledge work bottlenecks | ai-adopting | early | biotech | — | AI experiment planning | Experiment planning / scheduling. Domain unconfirmed. |
+| [Plasmidsaurus](https://www.plasmidsaurus.com) | CROs and Science as a Service | Scale | ai-adjacent | late-stage | academia; biotech | economical | cheap, fast plasmid sequencing | Nanopore-based plasmid full-sequence service. |
+| Potato <sup>?</sup> | Hypothesis generation / Literature review; ELN / human scheduling / pipeline docs; Experiment planning, model integration; Flexible protocol generation | Knowledge work bottlenecks; Trust; Protocol libraries | ai-native | early | biotech; academia | — | AI lab notebook & agent | AI-native ELN / co-scientist agent. Domain unconfirmed. |
+| [PyLabRobot](https://docs.pylabrobot.org) | Hardware integration standards / software | Standardization; Hardware cost | standard-oss | standard | academia | free | open Python lab control | MIT-led open-source lab-control library. |
+| [Recursion](https://www.recursion.com) | Hypothesis generation / Literature review; Biofoundation models; CROs and Science as a Service | Predictive validity; Scale; Eroom's law / R&D productivity | ai-native | public | pharma | premium | industrialize drug discovery | Phenomic screening at scale. Merged with Exscientia. |
+| [Relay Therapeutics](https://relaytx.com) | Biofoundation models | Predictive validity | ai-native | public | pharma | premium | motion-based drug design | Protein dynamics / motion-based discovery. |
+| [RetiSoft](https://www.retisoft.com) | Automation orchestration & scheduling; Hardware integration standards / software | Standardization | ai-adopting | mature-private | pharma | mid | vendor-neutral scheduler | Genera scheduler. |
+| Robot On Rails <sup>?</sup> | Liquid handling hardware; Mobility & material transport; Flexible protocol generation | Hardware modularity; Hardware cost | ai-adopting | early | biotech | — | rail-based modular automation | Rail-mounted modular robotics. Domain unconfirmed. |
+| [Sartorius](https://www.sartorius.com) | Cell culture automation | Hardware modularity | ai-adjacent | public | pharma | premium | bioprocess at scale | Bioprocess giant; integrating digital tools. |
+| [Scispot](https://www.scispot.com) | LIMS; Automation orchestration & scheduling | Compiler / abstraction / interface; Knowledge work bottlenecks | ai-adopting | early | biotech; academia | mid | AI-native LIMS | Lighter, modern LIMS with orchestration. |
+| [SiLA](https://sila-standard.org) | Hardware integration standards / software | Standardization | standard-oss | standard | all | free | the lab interop standard | Specification consortium, not a company. |
+| Spaero Bio <sup>?</sup> | Flexible protocol generation | Protocol libraries | ai-adopting | early | academia | — | shared protocols | Protocol management/sharing. Domain unconfirmed. |
+| [SPT Labtech](https://www.sptlabtech.com) | Liquid handling hardware | Liquid classes; Hardware cost | ai-adjacent | mature-private | pharma; biotech | premium | low-volume specialists | Mosquito (genomics low-volume), Firefly. |
+| [Strateos](https://www.strateos.com) | Cloud labs | Scale; Closed loop | ai-adjacent | late-stage | pharma; biotech | premium | robotic cloud lab | Formerly Transcriptic. Status post-restructuring needs verifying. |
+| [Synthace](https://www.synthace.com) | Flexible protocol generation | Compiler / abstraction / interface; DOE — Design of experiments | ai-adopting | late-stage | pharma | premium | computer-aided experimentation | Antha protocol language. |
+| [Tecan](https://www.tecan.com) | Liquid handling hardware | Liquid classes; Hardware modularity | ai-adjacent | public | pharma | premium | the European workhorse | Fluent, Freedom EVO. |
+| Tetsuwan Scientific <sup>?</sup> | Flexible protocol generation; Cloud labs | VLA / mimicking scientists; Closed loop; Dexterity | ai-native | early | pharma; biotech | — | humanoid robot scientist | Japan-affiliated; Eve-style autonomous experimentation. Domain unconfirmed. |
+| [Thermo Fisher Scientific](https://www.thermofisher.com) | Liquid handling hardware; Cell culture automation | Hardware modularity | ai-adjacent | public | pharma | premium | the everything store | Largest life-sciences supplier. Many automation brands. |
+| [Trilobio](https://www.trilobio.com) | Liquid handling hardware; Mobility & material transport; Automation orchestration & scheduling; Flexible protocol generation | Hardware modularity; Compiler / abstraction / interface; Hardware cost | ai-adopting | early | biotech; academia | mid | software-defined modular automation | Modular hardware + software stack. |
+| UniteLabs <sup>?</sup> | Automation orchestration & scheduling; Hardware integration standards / software; LIMS | Standardization; Compiler / abstraction / interface | ai-adopting | early | biotech; academia | — | open driver layer | SiLA-based open driver/connectivity layer. Domain unconfirmed. |
+| Zeon Systems <sup>?</sup> | Mobility & material transport; Flexible protocol generation; Cloud labs | Scale; Hardware modularity | ai-adopting | mid-stage | — | — | unknown | Identity ambiguous in source image. |
 
 ---
 
-## Quick stats (from the rows above)
+## Quick stats
 
-- **Total companies extracted:** ~60 (3 are corner-of-image labels of uncertain status)
-- **AI-native:** 11 — Chai, Edison, Insilico, Isomorphic, LILA, Medra, Owkin, Potato, Recursion, Relay, Tetsuwan
-- **AI-adopting:** 17 (most newer software/orchestration plays)
-- **AI-adjacent:** 18 (most legacy hardware vendors)
-- **Standard/OSS:** 2 — SiLA, PyLabRobot
-- **Public companies:** 8 — Agilent, Beckman/Danaher, Cytiva/Danaher, Ginkgo, Insilico (?), Molecular Devices/Danaher, PerkinElmer/Revvity, Recursion, Relay, Sartorius, Tecan, ThermoFisher
-- **Single most-categorized company:** **LILA Sciences** at 7 categories — the broadest claim on the map. Only Medra (6) comes close.
+- **Total:** 60 companies
+- **ai-adjacent:** 22
+- **ai-adopting:** 20
+- **ai-native:** 11
+- **standard-oss:** 2
+
+**Broadest claims (most categories):**
+- LILA Sciences — 7 categories
+- Medra — 6 categories
+- Potato — 4 categories

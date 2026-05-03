@@ -1,181 +1,138 @@
-# By Category
+<!-- GENERATED — edit data/*.yaml and run `python3 scripts/generate.py` -->
 
-Companies grouped by Cheshire-style functional category (the columns on the landscape image). Companies appearing in multiple categories are listed in each.
+# By category
 
-Order within each category: rough proxy for **public influence / installed base** — incumbents on top, newer / emergent below the rule.
-
----
+Companies grouped by Cheshire-style functional category. A company in multiple categories appears in each.
 
 ## Liquid handling hardware
 
-> "The thing that pipettes."
+> The thing that pipettes.
 
-Incumbents own the pharma top-of-stack. Newer entrants compete on price (Opentrons), modularity (Trilobio, Robot On Rails), or specialty volumes (SPT, Cytena, Dispendix).
+Incumbents own the pharma top-of-stack. Newer entrants compete on price (Opentrons),
+modularity (Trilobio, Robot On Rails), or specialty volumes (SPT, Cytena, Dispendix).
 
-**Incumbents (mature):** ThermoFisher · Hamilton · Tecan · Beckman Coulter LS · Agilent · PerkinElmer/Revvity · Integra · SPT Labtech · Dynamic Devices · Formulatrix · Dispendix (BICO) · Genie (?)
+**16 companies:** Agilent, Beckman Coulter Life Sciences, Dispendix, Dynamic Devices, Formulatrix, GENIE, Hamilton, Integra Biosciences, Medra, Opentrons, PerkinElmer / Revvity, Robot On Rails, SPT Labtech, Tecan, Thermo Fisher Scientific, Trilobio
 
----
+## Mobility & material transport
 
-**Modern / new entrants:** Opentrons · Trilobio · Robot On Rails · Medra
+> The thing that moves the plate from A to B.
 
-**Dominant theses in this column:** liquid-classes (incumbents), hardware-cost (Opentrons, Trilobio), hardware-modularity.
+Linear rails, gantries, mobile robots. Crowded with both incumbents (HighRes,
+Formulatrix) and modern entrants (Automata, Multiply Labs).
 
----
-
-## Mobility & material transport hardware
-
-> "The thing that moves the plate from A to B."
-
-**Players:** Zeon Systems (?) · Ginkgo Bioworks · Multiply Labs · Automata · HighRes Biosolutions · Robot On Rails · Medra · Formulatrix
-
-**Dominant theses:** hardware-modularity, scale (cloud-lab adjacent).
-
----
+**9 companies:** Automata, Formulatrix, Ginkgo Bioworks, HighRes Biosolutions, Medra, Multiply Labs, Robot On Rails, Trilobio, Zeon Systems
 
 ## Automation orchestration & scheduling
 
-> "The brain that decides what runs when."
+> The brain that decides what runs when.
 
-This is the most crowded column on the landscape — and arguably the most contested. Old guard (Biosero, HighRes, RetiSoft) versus modern API-first (Artificial, Trilobio, UniteLabs, Scispot) versus AI-native autonomous (LILA, Medra).
+The most contested column on the map. Old guard (Biosero, HighRes, RetiSoft) versus
+modern API-first (Artificial, Trilobio, UniteLabs, Scispot) versus AI-native autonomous
+(LILA, Medra).
 
-**Old guard / proven:** Biosero (BICO) · HighRes Biosolutions · RetiSoft
-
-**Modern software-first:** Automata · Artificial · Scispot · UniteLabs · Trilobio · Multiply Labs
-
-**AI-native autonomous:** LILA · Medra · Ginkgo · Tetsuwan (via Cloud labs)
-
-**Other:** GENIE (?)
-
-**Dominant theses:** standardization, compiler-abstraction, closed-loop.
-
----
+**13 companies:** Artificial, Automata, Biosero, GENIE, Ginkgo Bioworks, HighRes Biosolutions, LILA Sciences, Medra, Multiply Labs, RetiSoft, Scispot, Trilobio, UniteLabs
 
 ## Hardware integration standards / software
 
-> "The driver layer."
+> The driver layer.
 
-**Players:** SiLA (standard) · PyLabRobot (OSS) · UniteLabs · RetiSoft
+Where the standardization thesis is most explicit. Standards bodies, OSS projects, and
+a small number of vendors that commercialize them.
 
-**Dominant thesis:** standardization. This is the column where the bet is most explicit.
-
----
+**4 companies:** PyLabRobot, RetiSoft, SiLA, UniteLabs
 
 ## Cell culture automation
 
-> "Cells are special — they need their own infrastructure."
+> Cells are special — they need their own infrastructure.
 
-Bioprocess incumbents dominate (Sartorius, Cytiva, Miltenyi, Beckman, ThermoFisher). Small specialty players (Cytena, Celltrio, Multiply Labs) attack niches.
+Bioprocess incumbents dominate (Sartorius, Cytiva, Miltenyi, Beckman, ThermoFisher).
+Small specialty players (Cytena, Celltrio, Multiply Labs) attack niches.
 
-**Players:** ThermoFisher · Hamilton · Beckman Coulter LS · Cytiva · Sartorius · Miltenyi Biotec · Molecular Devices · Cytena (BICO) · Celltrio · Formulatrix · Multiply Labs · ARES (?)
-
-**Dominant theses:** liquid-classes (single-cell), hardware-modularity, accountability (cell-therapy GMP).
-
----
+**12 companies:** ARES, Beckman Coulter Life Sciences, Celltrio, Cytena, Cytiva, Formulatrix, Hamilton, Miltenyi Biotec, Molecular Devices, Multiply Labs, Sartorius, Thermo Fisher Scientific
 
 ## Hypothesis generation / Literature review
 
-> "AI co-scientist for reading and proposing."
+> AI co-scientist for reading and proposing.
 
-**Players:** Edison · Potato · LILA · Isomorphic Labs · Owkin · Recursion
+Where the knowledge-work thesis lives. Heavy AI-native presence.
 
-**Dominant theses:** knowledge-work, predictive-validity, eroom.
-
----
+**6 companies:** Edison, Isomorphic Labs, LILA Sciences, Owkin, Potato, Recursion
 
 ## Biofoundation models
 
-> "Foundation models trained on biology."
+> Foundation models trained on biology.
 
-**Players:** Chai Discovery · Relay Therapeutics · LILA · Isomorphic Labs · Insilico Medicine · Recursion · Owkin
+Almost every player here is AI-native. The "predictive validity" thesis lives here.
 
-**Dominant thesis:** predictive-validity. This is the column where almost every player is AI-native.
-
----
+**7 companies:** Chai Discovery, Insilico Medicine, Isomorphic Labs, LILA Sciences, Owkin, Recursion, Relay Therapeutics
 
 ## LIMS
 
-> "The system of record for samples."
+> The system of record for samples.
 
-**Incumbents:** Labguru (Cenevo) · Benchling
+Benchling is dominant; Labguru is the long-tail incumbent; Scispot and UniteLabs are
+modern challengers.
 
-**Modern:** UniteLabs · Scispot
+**4 companies:** Benchling, Labguru, Scispot, UniteLabs
 
-**Dominant theses:** knowledge-work, accountability.
+## ELN / human scheduling / pipeline docs
 
----
+> Where scientists actually write things down.
 
-## ELN / Human scheduling / Pipeline docs
+Overlaps with LIMS. Briefly Bio and Potato are AI-native challengers to Benchling/Labguru.
 
-> "Where scientists actually write things down."
-
-**Players:** Labguru · Benchling · Potato · Briefly Bio
-
-**Dominant theses:** knowledge-work, trust, accountability.
-
----
+**4 companies:** Benchling, Briefly Bio, Labguru, Potato
 
 ## Experiment planning, model integration
 
-> "What should I run next?"
+> What should I run next?
 
-**Players:** Kiin Bio · Potato · Phylo
+Thin column. Most planning logic ends up bundled into orchestrators or
+biofoundation-model layers.
 
-**Dominant theses:** doe, knowledge-work.
-
-This is a thin column — relatively few pure plays. Most experiment-planning logic ends up bundled into either the orchestrator or the biofoundation-model layer.
-
----
+**3 companies:** Kiin Bio, Phylo, Potato
 
 ## Flexible protocol generation
 
-> "Write protocol once, run anywhere."
+> Write protocol once, run anywhere.
 
-**Players:** Synthace · Spaero Bio · Briefly Bio · Potato · Trilobio · Medra · Robot On Rails · Tetsuwan Scientific · Opentrons · Zeon Systems (?)
+Heavy overlap with orchestration. The "where does the protocol live?" question is
+unsettled — vendor-specific scripts, DSLs, LLM-generated, or a shared library.
 
-**Dominant theses:** compiler-abstraction, protocol-libraries.
-
-This column overlaps heavily with orchestration — the question of where "the protocol" lives is unsettled.
-
----
+**11 companies:** Briefly Bio, LILA Sciences, Medra, Opentrons, Potato, Robot On Rails, Spaero Bio, Synthace, Tetsuwan Scientific, Trilobio, Zeon Systems
 
 ## Closed-loop experimentation
 
-> "Hypothesis → execute → learn → repeat, autonomously."
+> Hypothesis → execute → learn → repeat, autonomously.
 
-**Players:** Medra · LILA
+Thinnest column on the map. Either an under-served niche or a thesis that hasn't yet
+produced enough companies to fill a column.
 
-The thinnest column on the map. Either an under-served niche or a thesis that hasn't yet produced enough companies to be a column. (Strateos / Emerald are arguably here too, depending on how you read "closed loop.")
-
-**Dominant thesis:** closed-loop.
-
----
+**2 companies:** LILA Sciences, Medra
 
 ## Data generation
 
-> "We exist to produce structured data at scale."
+> We exist to produce structured data at scale.
 
-**Players:** LILA
+Almost a one-company column on the Cheshire map (LILA). Recursion fits conceptually
+but is filed elsewhere.
 
-Almost a one-company column on this map. Recursion would fit conceptually but Cheshire put it elsewhere.
-
----
+**1 companies:** LILA Sciences
 
 ## Cloud labs
 
-> "Send your protocol, get data back."
+> Send your protocol, get data back.
 
-**Players:** Emerald Cloud Lab · LILA · Ginkgo Bioworks · Zeon Systems (?) · Strateos · Tetsuwan Scientific · Medra
+The "scale" thesis in product form. Decade-old commercial pattern with mixed results
+— Emerald and Strateos are the proof points.
 
-**Dominant thesis:** scale, sometimes closed-loop.
-
----
+**7 companies:** Emerald Cloud Lab, Ginkgo Bioworks, LILA Sciences, Medra, Strateos, Tetsuwan Scientific, Zeon Systems
 
 ## CROs and Science as a Service
 
-> "Outsourced experiments — the non-AI baseline that AI cloud labs are competing with."
+> Outsourced experiments — the non-AI baseline.
 
-**Players:** Recursion · Charles River · DASH (?) · plasmidasaurus · cornucopia bio (?) · Cromatic bio (?)
+Where AI-native bets get tested commercially against the incumbent CRO model.
+Charles River anchors the traditional end; Recursion anchors the AI-native end.
 
-**Dominant theses:** scale (Charles River end), predictive-validity + eroom (Recursion end).
-
-This column is where the AI-native bets get tested commercially — does AI-driven discovery actually beat the incumbent CRO model on cost or quality?
+**6 companies:** Charles River, cornucopia bio, Cromatic Bio, DASH, Plasmidsaurus, Recursion
