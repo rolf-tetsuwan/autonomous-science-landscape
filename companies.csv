@@ -1,0 +1,61 @@
+company,categories,theses,ai_level,maturity,customer,pricing,posture,notes
+Agilent,liquid-handling-hardware,hardware-modularity,AI-adjacent,Public,Pharma,Premium,trusted analytical instrument,"Bravo, AssayMAP. Massive incumbent."
+ARES,cell-culture-automation,?,?,?,?,?,unknown,Possibly ARES Genetics or similar; needs identification.
+Artificial,orchestration-scheduling,compiler-abstraction;standardization,AI-adopting,Mid-stage?,Pharma,Mid-Premium,operating system for the lab,Lab orchestration platform.
+Automata,mobility-transport;orchestration-scheduling,hardware-modularity,AI-adopting,Late-stage,Pharma;Biotech,Premium,linear movement and integrated workflows,UK-based; Linq linear-track system.
+Beckman Coulter Life Sciences,liquid-handling-hardware;cell-culture-automation,hardware-modularity;liquid-classes,AI-adjacent,Public (Danaher),Pharma,Premium,the workhorse,Biomek line; pharma-default since the 90s.
+Benchling,lims;eln,knowledge-work;accountability,AI-adopting,Late-stage,Biotech;Pharma,Premium,modern biotech R&D cloud,Dominant biotech ELN/LIMS.
+Biosero,orchestration-scheduling,standardization;compiler-abstraction,AI-adopting,Mature private,Pharma,Premium,Green Button Go orchestration,GBG scheduler; long-running orchestrator.
+Briefly Bio,eln;flexible-protocol-generation,protocol-libraries;trust;knowledge-work,AI-adopting,Early,Academia;Biotech,?,AI for protocols and provenance,Protocol authoring with structured provenance.
+Celltrio,cell-culture-automation,hardware-modularity,AI-adopting,Mid-stage?,Pharma;Biotech,?,cell culture robotics,Cell culture/incubation systems.
+Charles River,cros-saas,scale;accountability,AI-adjacent,Public,Pharma,Premium,the CRO,Largest preclinical CRO.
+Chai Discovery,biofoundation-models,predictive-validity,AI-native,Early,Pharma;Biotech,Premium,open biology foundation models,Chai-1 structure prediction model.
+cheshire labs,landscape-source,n/a,?,?,?,?,unknown,Source of landscape image; not necessarily a vendor.
+cornucopia bio,cros-saas,?,?,Early,?,?,unknown,Listed at corner of image.
+Cromatic bio,cros-saas,?,?,Early,?,?,unknown,Listed at corner of image.
+Cytena,cell-culture-automation,liquid-classes,AI-adjacent,Mature private,Biotech;Pharma,Premium,single-cell printer,Single-cell dispensing for cell-line dev.
+Cytiva,cell-culture-automation,hardware-modularity,AI-adjacent,Public (Danaher),Pharma,Premium,bioprocess from research to GMP,Major bioprocess incumbent.
+DASH,cros-saas,?,?,?,Pharma,?,unknown,Possibly Dash Bio.
+Dispendix,liquid-handling-hardware,liquid-classes,AI-adjacent,Mature private,Pharma;Biotech,Premium,drop-on-demand dispensing,I.DOT non-contact picoliter dispenser.
+Dynamic Devices,liquid-handling-hardware,hardware-cost,AI-adjacent,Mature private,Pharma;Biotech,Mid,agile liquid handlers,"Lynx, Felix."
+Edison,hypothesis-generation,knowledge-work;predictive-validity,AI-native,Early,Biotech;Academia,?,AI scientist for literature and hypotheses,AI-for-science / lit-review agent.
+Emerald Cloud Lab,cloud-labs,scale;closed-loop,AI-adjacent,Late-stage,Biotech;Academia;Pharma,Premium,the cloud lab,OG cloud lab.
+Formulatrix,liquid-handling-hardware;mobility-transport;cell-culture-automation,hardware-cost;liquid-classes,AI-adjacent,Mature private,Pharma;Biotech;Academia,Mid,instruments at every price tier,"Mantis, Rover, Tempest."
+GENIE,liquid-handling-hardware;orchestration-scheduling,?,?,?,?,?,unknown,Identity ambiguous in source image.
+Ginkgo Bioworks,mobility-transport;orchestration-scheduling;cloud-labs,scale;eroom;closed-loop,AI-adopting,Public,Biotech;Pharma;Synbio,Premium,the biofoundry,Largest US biofoundry.
+Hamilton,liquid-handling-hardware;cell-culture-automation,liquid-classes;hardware-modularity,AI-adjacent,Mature private,Pharma;Biotech,Premium,the precision instrument,"STAR, Vantage. Proprietary liquid-class library is the moat."
+HighRes Biosolutions,mobility-transport;orchestration-scheduling,hardware-modularity;standardization,AI-adjacent,Mature private,Pharma,Premium,modular benchtop integrations,Custom workcell integrations.
+Insilico Medicine,biofoundation-models,predictive-validity;eroom,AI-native,Late-stage,Pharma,Premium,generative AI drug discovery,Generative chemistry + biology platform.
+Integra Biosciences,liquid-handling-hardware,hardware-cost;liquid-classes,AI-adjacent,Mature private,Academia;Biotech;Pharma,Mid,ergonomic pipettes,"Pipettes, ASSIST PLUS."
+Isomorphic Labs,hypothesis-generation;biofoundation-models,predictive-validity;eroom,AI-native,Late-stage,Pharma,Premium,AI-first drug design,Alphabet spin-out; AlphaFold lineage.
+Kiin Bio,experiment-planning,doe;knowledge-work,AI-adopting,Early,Pharma;Biotech,?,AI-driven experiment design,Bayesian DOE / experiment planning.
+Labguru,lims;eln,knowledge-work;accountability,AI-adopting,Mature private,Pharma;Academia,Mid,ELN for the long tail,Long-running ELN/LIMS by Cenevo.
+LILA Sciences,orchestration-scheduling;hypothesis-generation;biofoundation-models;flexible-protocol-generation;closed-loop-experimentation;data-generation;cloud-labs,closed-loop;scale;predictive-validity;eroom,AI-native,Early (well-funded),Pharma;Biotech,Premium,scientific superintelligence,Flagship Pioneering. Most categories on the Cheshire map.
+Medra,liquid-handling-hardware;mobility-transport;orchestration-scheduling;flexible-protocol-generation;closed-loop-experimentation;cloud-labs,closed-loop;dexterity;compiler-abstraction,AI-native,Early,Biotech;Academia,?,autonomous lab,Autonomous-science platform; emergent player.
+Miltenyi Biotec,cell-culture-automation,hardware-modularity;accountability,AI-adjacent,Mature private,Cell-therapy GMP;Pharma,Premium,cell therapy infrastructure,"CliniMACS, MACSQuant."
+Molecular Devices,cell-culture-automation,hardware-modularity,AI-adjacent,Public (Danaher),Pharma;Biotech,Premium,imaging and high-content readers,ImageXpress.
+Multiply Labs,mobility-transport;orchestration-scheduling;cell-culture-automation,hardware-modularity;accountability;dexterity,AI-adopting,Late-stage,Cell-therapy GMP;Pharma,Premium,robotic cell therapy manufacturing,Cell & gene therapy GMP automation.
+Opentrons,liquid-handling-hardware;flexible-protocol-generation,hardware-cost;protocol-libraries,AI-adopting,Late-stage,Academia;Biotech,Economical,Python-scriptable accessible automation,Open-source-friendly liquid handlers.
+Owkin,hypothesis-generation;biofoundation-models,predictive-validity,AI-native,Late-stage,Pharma,Premium,federated AI on patient data,Federated learning for biopharma.
+PerkinElmer Revvity,liquid-handling-hardware,hardware-modularity,AI-adjacent,Public,Pharma,Premium,lab analytics and automation,"Janus, Sciclone. Now branded Revvity."
+Phylo,experiment-planning,doe;knowledge-work,AI-adopting,Early,Biotech,?,AI experiment planning,Experiment planning / scheduling.
+plasmidasaurus,cros-saas,scale,AI-adjacent,Late-stage?,Academia;Biotech,Economical,cheap fast plasmid sequencing,Nanopore-based plasmid full-sequence service.
+Potato,hypothesis-generation;eln;experiment-planning;flexible-protocol-generation,knowledge-work;trust;protocol-libraries,AI-native,Early,Biotech;Academia,?,AI lab notebook and agent,AI-native ELN / co-scientist agent.
+PyLabRobot,hardware-integration-standards,standardization;hardware-cost,Standard / OSS,n/a,Academia,Free,open Python lab control,MIT-led open-source lab-control library.
+Recursion,hypothesis-generation;biofoundation-models;cros-saas,predictive-validity;scale;eroom,AI-native,Public,Pharma,Premium,industrialize drug discovery,Phenomic screening at scale; merged with Exscientia.
+Relay Therapeutics,biofoundation-models,predictive-validity,AI-native,Public,Pharma,Premium,motion-based drug design,Protein dynamics / motion-based discovery.
+RetiSoft,orchestration-scheduling;hardware-integration-standards,standardization,AI-adopting,Mature private,Pharma,Mid,vendor-neutral scheduler,Genera scheduler.
+Robot On Rails,liquid-handling-hardware;mobility-transport;flexible-protocol-generation,hardware-modularity;hardware-cost,AI-adopting,Early,Biotech,?,rail-based modular automation,Rail-mounted modular robotics.
+Sartorius,cell-culture-automation,hardware-modularity,AI-adjacent,Public,Pharma,Premium,bioprocess at scale,Bioprocess; integrating digital tools.
+Scispot,lims;orchestration-scheduling,compiler-abstraction;knowledge-work,AI-adopting,Early,Biotech;Academia,Mid,AI-native LIMS,Lighter modern LIMS with orchestration.
+SiLA,hardware-integration-standards,standardization,Standard / OSS,n/a,All,Free,the lab interop standard,Specification consortium.
+Spaero Bio,flexible-protocol-generation,protocol-libraries,AI-adopting,Early,Academia,?,shared protocols,Protocol management/sharing.
+SPT Labtech,liquid-handling-hardware,liquid-classes;hardware-cost,AI-adjacent,Mature private,Pharma;Biotech,Premium,low-volume specialists,"Mosquito, Firefly."
+Strateos,cloud-labs,scale;closed-loop,AI-adjacent,Late-stage,Pharma;Biotech,Premium,robotic cloud lab,Formerly Transcriptic.
+Synthace,flexible-protocol-generation,compiler-abstraction;doe,AI-adopting,Late-stage,Pharma,Premium,computer-aided experimentation,Antha protocol language.
+Tecan,liquid-handling-hardware,liquid-classes;hardware-modularity,AI-adjacent,Public,Pharma,Premium,the European workhorse,"Fluent, Freedom EVO."
+Tetsuwan Scientific,flexible-protocol-generation;cloud-labs,vla-mimicking;closed-loop;dexterity,AI-native,Early,Pharma;Biotech,?,humanoid robot scientist,Japanese; Eve-style autonomous experimentation.
+ThermoFisher Scientific,liquid-handling-hardware;cell-culture-automation,hardware-modularity,AI-adjacent,Public,Pharma,Premium,the everything store,Largest life-sciences supplier.
+Trilobio,liquid-handling-hardware;mobility-transport;orchestration-scheduling;flexible-protocol-generation,hardware-modularity;compiler-abstraction;hardware-cost,AI-adopting,Early,Biotech;Academia,Mid,software-defined modular automation,Modular hardware + software stack.
+UniteLabs,orchestration-scheduling;hardware-integration-standards;lims,standardization;compiler-abstraction,AI-adopting,Early,Biotech;Academia,?,open driver layer,SiLA-based open driver/connectivity layer.
+Zeon Systems,mobility-transport;flexible-protocol-generation;cloud-labs,scale;hardware-modularity,AI-adopting,Mid-stage?,?,?,unknown,Identity ambiguous; verify which Zeon.
